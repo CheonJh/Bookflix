@@ -1,0 +1,47 @@
+@charset "UTF-8";
+body *{
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  color: #333;
+}
+
+.foot {
+  width: 100%; height: 100%;
+}
+
+.foot-nav {
+  background-color: #eee;
+}
+
+.nav-li li {
+  float: left;
+  width: 14.2857%;
+  text-align: center;
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.nav-li li a {
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+
+}
+
+.foot-info {
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.foot-info .company-info {
+  margin-top: 20px;
+  margin-bottom: 20px;;
+}

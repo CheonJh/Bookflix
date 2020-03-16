@@ -1,0 +1,53 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.wrap {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wrapinfo {
+  height: 350px;
+  position: relative;
+}
+
+.wrapinfo form {
+  position: absolute;
+  bottom: 0;
+}
+
+.wrapintro {
+  margin-top: 50px;
+}
+
+.recommend {
+  margin-top: 50px;
+}
+
+.reclist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.reclist div {
+  text-align: center;
+}
+
+.sidetop {
+  position: fixed;
+  top: 50%;
+  right: 0;
+}
