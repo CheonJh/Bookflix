@@ -49,7 +49,7 @@ public class HomeController {
 	  
 	  return "member/test";
 	}
-	
+	 // 브랜치 커밋 테스트용 주석
 	 // 타일즈 테스트 좌측 네비
   @RequestMapping(value="adminBook/testLeft", method=RequestMethod.GET)
   public String testLeft(Locale locale, Model model) {
