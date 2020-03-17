@@ -30,4 +30,6 @@ public class MemberController {
     return "member/login"; // views / member / login.jsp로 포워드
   }
   
+  // 깃헙 브랜치 테스트용 주석
+  
 }
