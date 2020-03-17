@@ -25,6 +25,7 @@
 	</beans:bean>
   -->
 	
+  <!--  -->
 	<context:component-scan base-package="com.green.bookflix" />
   <context:component-scan base-package="com.green.adminBook.controller"/>
   <context:component-scan base-package="com.green.adminInfo.controller"/>
