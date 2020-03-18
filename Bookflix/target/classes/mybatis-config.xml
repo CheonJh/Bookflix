@@ -6,4 +6,15 @@
 <!-- 여기에는 추후 <typeAliases> 태그를 통해 VO 클래스를 등록해 둘 것이다. 
 이렇게 등록을 하면 mapper.xml 에서 VO 클래스를 mybatis-config.xml 등록한 이름으로 사용할 수 있다. -->
 
+<typeAliases>
+  <package name="com.green.adminBook.domain"/>
+  <package name="com.green.adminInfo.domain"/>
+  <package name="com.green.book.domain"/>
+  <package name="com.green.info.domain"/>
+  <package name="com.green.main.domain"/>
+  <package name="com.green.member.domain"/>
+  <package name="com.green.myPage.domain"/>
+  <package name="com.green.search.domain"/>
+</typeAliases>
+
 </configuration>

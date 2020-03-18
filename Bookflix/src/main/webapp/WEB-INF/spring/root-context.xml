@@ -42,5 +42,39 @@
     <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
   </bean>
   
+  <!-- 패키지 연결 가능하도록 연결 -->
+  <!-- adminBook -->
+  <context:component-scan base-package="com.green.adminBook.domain"/>
+  <context:component-scan base-package="com.green.adminBook.model"/>
+  <context:component-scan base-package="com.green.adminBook.service"/>
+  <!-- adminInfo -->
+  <context:component-scan base-package="com.green.adminInfo.domain"/>
+  <context:component-scan base-package="com.green.adminInfo.model"/>
+  <context:component-scan base-package="com.green.adminInfo.service"/>
+  <!-- book -->
+  <context:component-scan base-package="com.green.book.domain"/>
+  <context:component-scan base-package="com.green.book.model"/>
+  <context:component-scan base-package="com.green.book.service"/>
+  <!-- info -->
+  <context:component-scan base-package="com.green.info.domain"/>
+  <context:component-scan base-package="com.green.info.model"/>
+  <context:component-scan base-package="com.green.info.service"/>
+  <!-- main -->
+  <context:component-scan base-package="com.green.main.domain"/>
+  <context:component-scan base-package="com.green.main.model"/>
+  <context:component-scan base-package="com.green.main.service"/>
+  <!-- member -->
+  <context:component-scan base-package="com.green.member.domain"/>
+  <context:component-scan base-package="com.green.member.model"/>
+  <context:component-scan base-package="com.green.member.service"/>
+  <!-- myPage -->
+  <context:component-scan base-package="com.green.myPage.domain"/>
+  <context:component-scan base-package="com.green.myPage.model"/>
+  <context:component-scan base-package="com.green.myPage.service"/>
+  <!-- search -->
+  <context:component-scan base-package="com.green.search.domain"/>
+  <context:component-scan base-package="com.green.search.model"/>
+  <context:component-scan base-package="com.green.search.service"/>
+  
   
 </beans>
