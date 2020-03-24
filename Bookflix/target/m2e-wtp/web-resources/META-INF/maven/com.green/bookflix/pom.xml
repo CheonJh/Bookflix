@@ -9,7 +9,6 @@
   <packaging>war</packaging>
   <version>1.0.0-BUILD-SNAPSHOT</version>
 
-
   <properties>
     <java-version>1.8</java-version>
     <org.springframework-version>4.3.16.RELEASE</org.springframework-version>
@@ -21,7 +20,6 @@
     <!-- 타일즈 프레임워크 -->
     <org.apache.tiles-version>3.0.8</org.apache.tiles-version>
   </properties>
-
 
   <dependencies>
     <!-- Spring -->
@@ -174,7 +172,6 @@
       <version>${org.springframework-version}</version>
     </dependency>
 
-
     <!-- 타일즈 프레임워크 -->
     <dependency>
       <groupId>org.apache.tiles</groupId>
@@ -201,11 +198,22 @@
       <artifactId>tiles-template</artifactId>
       <version>${org.apache.tiles-version}</version>
     </dependency>
+
+    <!-- 제이슨 -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.6</version>
+    </dependency>
     
+   <!-- 파일 업로드 -->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.4</version>
+    </dependency>
     
   </dependencies>
-
-
 
   <build>
     <plugins>
@@ -235,6 +243,7 @@
           <showDeprecation>true</showDeprecation>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
