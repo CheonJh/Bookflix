@@ -1,12 +1,15 @@
 @charset "UTF-8";
 
-body *{
-  margin: 0;
-  padding: 0;
-}
+/*************************************************** 
+  초기화 및 기본 설정
+***************************************************/
+* { margin: 0; padding: 0; }
+li { list-style: none; }
+a { text-decoration: none; color: #222328; }
 
-li{
-  list-style: none;
-}
+body { background-color: #fff; color: #222328; }
+body * { box-sizing: border-box; }
+.cf:after { content: ''; display: block; clear: both; }
+
 
 /* @import url(commonFont.css); */
