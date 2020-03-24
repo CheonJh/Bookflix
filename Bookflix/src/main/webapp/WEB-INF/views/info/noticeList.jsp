@@ -81,9 +81,9 @@ a, a:hover {
  
   <div id="notignb">
     <ul class="clearfix">
-      <li><a href="#">공지사항</a></li>
-      <li><a href="#">업데이트</a></li>
-      <li><a href="#">이벤트</a></li>
+      <li><a href="/info/noticeList?num=1?cat=1">공지사항</a></li>
+      <li><a href="/info/noticeList?num=1?cat=2">업데이트</a></li>
+      <li><a href="/info/noticeList?num=1?cat=3">이벤트</a></li>
     </ul>
   </div>
 
