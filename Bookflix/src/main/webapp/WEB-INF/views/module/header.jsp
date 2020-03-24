@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -80,7 +79,7 @@
       <div class="line">
         <div class="header clear">
           <div class="logo ho">
-            <a href="/main/main"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
+            <a href="/"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
           </div>
           <div id="nav" class="ho">
             <ul id="gnb" class="clear">

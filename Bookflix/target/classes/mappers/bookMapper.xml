@@ -4,8 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
-<mapper namespace="com.green.mapper.memberMapper">
-
+<mapper namespace="com.green.mapper.bookMapper">
+<select id="book" resultType="com.green.book.domain.BookDTO">
+ select
+ e_book_num, e_book_title, e_book_writer, e_book_translater, e_book_publisher, e_book_date, 
+ e_book_info, e_book_index, e_book_thumbupcnt, e_book_viewcnt, e_book_img_name,e_book_tag
+ from E_BOOK where e_book_num = #{e_book_num}
+</select>
 
 
 </mapper>

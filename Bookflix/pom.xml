@@ -9,19 +9,17 @@
   <packaging>war</packaging>
   <version>1.0.0-BUILD-SNAPSHOT</version>
 
-
   <properties>
     <java-version>1.8</java-version>
     <org.springframework-version>4.3.16.RELEASE</org.springframework-version>
     <org.aspectj-version>1.6.10</org.aspectj-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <!-- UTF-8 인코딩 -->
-    <!-- <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding> 
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- 타일즈 프레임워크 -->
     <org.apache.tiles-version>3.0.8</org.apache.tiles-version>
   </properties>
-
 
   <dependencies>
     <!-- Spring -->
@@ -44,8 +42,11 @@
       <version>${org.springframework-version}</version>
     </dependency>
     <!-- 스프링 트랜잭션 관리 -->
-    <!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
-      <version>${org.springframework-version}</version> </dependency> -->
+<!--     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency> -->
 
     <!-- AspectJ -->
     <dependency>
@@ -164,7 +165,7 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-
+    
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
@@ -204,11 +205,15 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.9.6</version>
     </dependency>
-
-
+    
+   <!-- 파일 업로드 -->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.4</version>
+    </dependency>
+    
   </dependencies>
-
-
 
   <build>
     <plugins>

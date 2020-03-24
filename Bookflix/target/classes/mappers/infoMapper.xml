@@ -4,8 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
-<mapper namespace="com.green.mapper.memberMapper">
+<mapper namespace="com.green.mapper.infoMapper">
 
+  <select id="list"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+  </select>
 
+  <select id="notice" parameterType="int"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select
+    notice_title, notice_contents, notice_date
+    from
+    NOTICE
+    where
+    notice_num = #{notice_num}
+  </select>
+
+  <select id="count" resultType="int">
+    select count(notice_num) from NOTICE
+  </select>
+
+  <select id="noticePage" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    order by notice_num desc
+    limit #{displayPost}, #{postNum}
+  </select>
+  
 
 </mapper>
