@@ -13,7 +13,15 @@ public class myPageDTO {
   //좋아요 한 도서 목록
   private Integer THUMBUP_NUM;
   private Date THUMBUP_DATE;
+  //잔여 구독일 수
+  private Integer SUBSCRIBE_DATE;
   
+  public Integer getSUBSCRIBE_DATE() {
+    return SUBSCRIBE_DATE;
+  }
+  public void setSUBSCRIBE_DATE(Integer sUBSCRIBE_DATE) {
+    SUBSCRIBE_DATE = sUBSCRIBE_DATE;
+  }
   public Integer getTHUMBUP_NUM() {
     return THUMBUP_NUM;
   }

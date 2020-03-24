@@ -72,7 +72,7 @@ body {
         펭수 <span class="member">(일반회원)</span>
       </h4>
       <br>
-      <div>구독 잔여 일수 : 17일</div>
+      <div>구독 잔여 일수 : ${date}일</div>
       <button type="button" class="btn btn-secondary">구독하기</button>
     </div>
 

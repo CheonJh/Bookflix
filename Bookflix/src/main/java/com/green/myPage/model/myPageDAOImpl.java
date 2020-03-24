@@ -35,4 +35,10 @@ public class myPageDAOImpl implements myPageDAO {
     return sql.selectList(namespace+ ".list3");
   }
 
+  //잔여 구독일 수 
+  @Override
+  public int date() throws Exception {
+    return sql.selectOne(namespace+ ".date");
+  }
+
 }

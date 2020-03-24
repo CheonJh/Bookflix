@@ -40,4 +40,15 @@ public class myPageController {
     
     model.addAttribute("list3", list3);
   }
+  
+    //구독 잔여일
+    @RequestMapping(value = "/Page", method = RequestMethod.GET)
+    public void getPage(Model model) throws Exception {
+      
+      int date;
+      
+      date = service.date();
+      
+      model.addAttribute("date", date);
+    }
 }

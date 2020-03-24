@@ -31,4 +31,11 @@ join E_BOOK as e on t.E_BOOK_NUM = e.E_BOOK_NUM
 join MEMBER as m on t.MEMBER_NUM = m.MEMBER_NUM
 where m.MEMBER_NUM = 2;
 </select>
+
+<!-- 구독 잔여 일수 -->
+<select id="date" resultType="int">
+  select datediff(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as day 
+from SUBSCRIBE where MEMBER_NUM = 2;
+</select>
+
 </mapper>

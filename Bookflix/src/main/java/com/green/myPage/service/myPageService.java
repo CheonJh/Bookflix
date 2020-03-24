@@ -14,4 +14,6 @@ public interface myPageService {
   //좋아요 한 도서 목록
   public List<myPageDTO> list3() throws Exception;
 
+  //잔여 구독일 수
+  public int date() throws Exception;
 }

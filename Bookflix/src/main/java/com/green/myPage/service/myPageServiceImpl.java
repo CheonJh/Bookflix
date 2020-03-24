@@ -34,6 +34,12 @@ public class myPageServiceImpl implements myPageService {
     return dao.list3();
   }
 
+  //잔여 구독일 수
+  @Override
+  public int date() throws Exception {
+    return dao.date();
+  }
+
   
   
 }
