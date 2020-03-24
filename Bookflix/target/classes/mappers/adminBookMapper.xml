@@ -4,8 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
-<mapper namespace="com.green.mapper.memberMapper">
+<mapper namespace="com.green.mapper.adminBookMapper">
 
+  <!-- 게시물 목록 -->
+  <select id="adminBookCount" resultType="int">
+    SELECT count(E_BOOK_NUM)
+    FROM E_BOOK;
+  </select>
 
+  <select id="adminBookList" parameterType="hashMap"
+    resultType="com.green.adminBook.domain.AdminBookDTO">
+    select
+    E_BOOK_NUM, E_BOOK_TITLE, E_BOOK_WRITER,
+    E_BOOK_PUBLISHER, E_BOOK_TAG
+    from E_BOOK
+    order by E_BOOK_NUM desc
+    limit #{displayPost}, #{postNum};
+  </select>
+
+  <insert id="adminBookReg"
+    parameterType="com.green.adminBook.domain.AdminBookDTO">
+    insert into E_BOOK(E_BOOK_TITLE, E_BOOK_WRITER,
+    E_BOOK_TRANSLATER,
+    E_BOOK_PUBLISHER,
+    E_BOOK_DATE, E_BOOK_INFO,
+    E_BOOK_INDEX, E_BOOK_IMG_NAME, E_BOOK_TAG
+    ) values(#{E_BOOK_TITLE},
+    #{E_BOOK_WRITER}, #{E_BOOK_TRANSLATER},
+    #{E_BOOK_PUBLISHER},
+    #{E_BOOK_DATE}, #{E_BOOK_INFO}, #{E_BOOK_INDEX}, #{E_BOOK_IMG_NAME},
+    #{E_BOOK_TAG})
+  </insert>
 
 </mapper>
