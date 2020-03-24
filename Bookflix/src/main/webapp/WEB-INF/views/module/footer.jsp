@@ -26,7 +26,7 @@
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
             <ul class="nav-li">
-              <li><a href="/info/noticeList">공지사항</a></li>
+              <li><a href="/info/noticeList?num=1">공지사항</a></li>
               <li>|</li>
               <li><a href="/info/FAQList">FAQ</a></li>
               <li>|</li>
