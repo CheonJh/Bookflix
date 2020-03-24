@@ -36,35 +36,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	// 타일즈 테스트 기본 헤더푸터
-	@RequestMapping(value="member/test", method=RequestMethod.GET)
-	public String test(Locale locale, Model model) {
-	  
-	  Date date = new Date();
-	  DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-	  
-	  String formattedDate = dateFormat.format(date);
-	  
-	  model.addAttribute("serverTime",formattedDate);
-	  
-	  return "member/test";
-	}
-	
-	 // 타일즈 테스트 좌측 네비
-  @RequestMapping(value="adminBook/testLeft", method=RequestMethod.GET)
-  public String testLeft(Locale locale, Model model) {
-    
-    Date date = new Date();
-    DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-    
-    String formattedDate = dateFormat.format(date);
-    
-    model.addAttribute("serverTime",formattedDate);
-    
-    return "adminBook/testLeft";
-  }
-	
-	
 	
 	
 }

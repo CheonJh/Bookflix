@@ -4,8 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
-<mapper namespace="com.green.mapper.memberMapper">
+<mapper namespace="com.green.mapper.adminInfoMapper">
 
-
+  <!-- 공지사항 총 갯수 -->
+  <select id="adminInfocount" resultType="int">
+    select count(notice_num) from NOTICE
+  </select>
+  
+  <!-- 공지사항 목록 -->
+  <select id="listPage" parameterType="hashMap"
+    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+    select
+    notice_num, notice_category,
+    notice_title,
+    notice_viewcnt, notice_date
+    from NOTICE
+    order by notice_num asc
+    limit
+    #{displayPost}, #{postNum}
+  </select>
+  
+  
+  <!-- 공지사항 작성 -->
+  <insert id="write"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    insert into
+    NOTICE(notice_title,notice_contents,notice_category)
+    values(#{notice_title},#{notice_contents},#{notice_category})
+  </insert>
 
 </mapper>
