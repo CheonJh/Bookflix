@@ -32,7 +32,7 @@
       <li><a href="/adminInfo/admNoticeList">관리자 공지 목록 페이지</a></li>
       <li><a href="/adminBook/adminBookList">관리자 도서 목록 페이지</a></li>
       <li><a href="/myPage/mylib">마이페이지 내서재 페이지</a></li>
-      <li><a href="/book/book">도서 상세 페이지</a></li>
+      <li><a href="/book/book?e_book_num=1">도서 상세 페이지</a></li>
     </ul>
   </div>
 </body>
