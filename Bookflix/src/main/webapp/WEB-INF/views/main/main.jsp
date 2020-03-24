@@ -29,7 +29,7 @@
     <h1>임시 메인 페이지</h1>
 
     <ul>
-      <li><a href="/adminInfo/adminInfoList">관리자 공지 목록 페이지</a></li>
+      <li><a href="/adminInfo/admNoticeList">관리자 공지 목록 페이지</a></li>
       <li><a href="/adminBook/adminBookList">관리자 도서 목록 페이지</a></li>
       <li><a href="/myPage/mylib">마이페이지 내서재 페이지</a></li>
       <li><a href="/book/book">도서 상세 페이지</a></li>
