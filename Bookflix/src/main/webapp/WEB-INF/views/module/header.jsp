@@ -80,7 +80,7 @@
       <div class="line">
         <div class="header clear">
           <div class="logo ho">
-            <a href="/main/main"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
+            <a href="/"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
           </div>
           <div id="nav" class="ho">
             <ul id="gnb" class="clear">
