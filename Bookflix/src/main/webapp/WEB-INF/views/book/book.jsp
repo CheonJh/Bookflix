@@ -52,19 +52,15 @@
           </a>
         </div>
         <div class="col-sm-6 offset-sm-1 wrapinfo">
-          <h4>책 제목</h4>
+          <h4>책 제목${book.e_book_title}</h4>
           <br>
           <div>
-            <ul>
-              <li>저자</li>
-              <li>역자</li>
-              <li>출판사</li>
-              <li>카테고리</li>
-            </ul>
+            <div class="writer">저자 ${book.e_book_writer}</div>
+            <div class="writer">역자 ${book.e_book_translater}</div>
+            <div class="writer">출판사 ${book.e_book_publisher}</div>
             <br>
-            <div class="like">좋아요</div>
+            <div class="like">좋아요${book.e_book_thumbupcnt}</div>
           </div>
-
           <form action="#">
             <button type="button" class="btn btn-primary">e-북
               읽기</button>
@@ -79,49 +75,29 @@
       <div class="summary">
         <h5>책 소개</h5>
         <hr>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Nisi eius corporis doloribus nulla omnis deserunt dolores
-          perspiciatis blanditiis, nihil accusamus ipsum non, animi quos
-          alias, obcaecati voluptatum officia voluptatem libero!</p>
+        <p>
+          ${book.e_book_info}
+        </p>
       </div>
       <br> <br>
       <div class="conlist">
         <h5>목차</h5>
         <hr>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Aut natus doloribus dolores, culpa suscipit quae sequi
-          cupiditate optio eius. Tempora dignissimos corrupti debitis
-          quo autem suscipit architecto facere. Nesciunt, quis.</p>
+        <p>
+          ${book.e_book_index}
+        </p>
       </div>
     </div>
     <div class="recommend">
       <h5>관련도서</h5>
       <hr>
       <ul class="reclist">
-        <li>
-          <a href="#">
-            <img src="http://via.placeholder.com/200X350" alt="#">
-            <div>책 제목</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="http://via.placeholder.com/200X350" alt="#">
-            <div>책 제목</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="http://via.placeholder.com/200X350" alt="#">
-            <div>책 제목</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="http://via.placeholder.com/200X350" alt="#">
-            <div>책 제목</div>
-          </a>
-        </li>
+        <li><a href="#"> 
+        <img src="http://via.placeholder.com/200X350" alt="#">
+            
+        </a>
+        <div>책 제목</div>
+        
       </ul>
     </div>
   </div>

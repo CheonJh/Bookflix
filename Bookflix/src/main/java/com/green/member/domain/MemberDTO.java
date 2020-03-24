@@ -1,6 +1,5 @@
 package com.green.member.domain;
 
-import java.io.Serializable;
 
 /**
  * Alt + Shif + J를 눌러 자동 주석 생성해서 주석 반드시 달것
@@ -9,11 +8,11 @@ import java.io.Serializable;
  * 
  * 회원 객체를 받는 DTO
  */
-public class MemberDTO implements Serializable{
+public class MemberDTO{
   
   // 필드
   private Integer member_num;
-  private String  member_grade;
+  private Integer member_grade;
   private String  member_email;
   private String  member_pw;
   private String  member_name;
@@ -22,9 +21,7 @@ public class MemberDTO implements Serializable{
   private String  member_phone;
   
   // 생성자
-  public MemberDTO() {
-    // TODO Auto-generated constructor stub
-  }
+  public MemberDTO() { }
 
   // get, set
   public Integer getMember_num() {
@@ -35,11 +32,11 @@ public class MemberDTO implements Serializable{
     this.member_num = member_num;
   }
 
-  public String getMember_grade() {
+  public Integer getMember_grade() {
     return member_grade;
   }
 
-  public void setMember_grade(String member_grade) {
+  public void setMember_grade(Integer member_grade) {
     this.member_grade = member_grade;
   }
 
