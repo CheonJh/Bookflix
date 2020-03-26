@@ -14,15 +14,15 @@ public class AdminInfoDTO {
     NOTICE_VIEWCNT       INTEGER NOT NULL
   );*/
   
+  
+  //공지사항 테이블
   private Integer notice_num;
   private String notice_title;
   private String notice_category;
   private String notice_contents;
   private Date notice_date;
   private Integer notice_viewcnt;
-  
-  
-  
+
   public Integer getNotice_num() {
     return notice_num;
   }
