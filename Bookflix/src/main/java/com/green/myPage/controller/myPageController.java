@@ -3,7 +3,6 @@ package com.green.myPage.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ public class myPageController {
 
   @Inject
   myPageService service;
-
   
   @RequestMapping(value = "/mylib", method = RequestMethod.GET)
   public void getList1(Model model, HttpSession session) throws Exception {
