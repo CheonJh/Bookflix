@@ -21,7 +21,7 @@ public class myPageController {
 
   @Inject
   myPageService service;
-  
+
   @RequestMapping(value = "/mylib", method = RequestMethod.GET)
   public void getList1(Model model, HttpSession session) throws Exception {
 

@@ -102,7 +102,9 @@ li{
     </div>
 
     <div class="box3">
-      <button type="button" class="btn btn-primary btn-lg btn-block" id ="unsub">구독 해지</button>
+      <c:if test="${member.member_grade==2}">
+        <button type="button" class="btn btn-primary btn-lg btn-block" id ="unsub">구독 해지</button>
+      </c:if>
     </div>
 
   </div>
