@@ -72,6 +72,7 @@
                           <a href="/myPage/Page">${member.member_nickname}</a>
                         </div>
                       </c:if>
+                      
                       <div class="col">
                         <a href="/member/logout">로그아웃</a>
                       </div>
