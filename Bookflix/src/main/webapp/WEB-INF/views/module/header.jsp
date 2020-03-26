@@ -61,7 +61,7 @@
                     <!-- 세션 있으면 회원 닉네임, 로그아웃 출력 -->
                     <c:if test="${member != null}">
                       <div class="col">
-                        <a href="/myPage/myPage">${member.member_nickname}</a>
+                        <a href="/myPage/Page">${member.member_nickname}</a>
                       </div>
                       <div class="col">
                         <a href="/member/logout">로그아웃</a>

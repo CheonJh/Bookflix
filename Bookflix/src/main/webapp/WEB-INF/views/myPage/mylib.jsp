@@ -62,7 +62,8 @@ img {
       <img src="http://placehold.it/100x100" alt="">
     </div>
 
-    <div class="box2">~의 서재</div>
+    <div class="box2">${member.member_nickname}의 서재</div>
+   <%--  <input type="text" value="${member.member_num}" name="member_num" id="member_num"/> --%>
 
     <div class="box3">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -93,11 +94,11 @@ img {
               </tr>
             </thead>
             <tbody>
-              <c:forEach items="${list1}" var = "list1">
+              <c:forEach items="${list1}" var="list1" varStatus="status">
                <tr>
-                <td>${list1.HADREAD_NUM }</td>
+                <td>${status.count}</td>
                 <td>${list1.e_book_title}</td>
-                <td><fmt:formatDate value ="${list1.HADREAD_DATE}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value ="${list1.hadread_date}" pattern="yyyy-MM-dd"/></td>
                </tr>
              </c:forEach>
             </tbody>
@@ -116,11 +117,11 @@ img {
               </tr>
             </thead>
             <tbody>
-              <c:forEach items="${list2}" var = "list2">
+              <c:forEach items="${list2}" var = "list2" varStatus="status">
                <tr>
-                <td>${list2.FAVORITE_NUM }</td>
+                <td>${status.count }</td>
                 <td>${list2.e_book_title}</td>
-                <td><fmt:formatDate value ="${list2.FAVORITE_DATE}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value ="${list2.favorite_date}" pattern="yyyy-MM-dd"/></td>
                </tr>
              </c:forEach>
             </tbody>
@@ -139,11 +140,11 @@ img {
               </tr>
             </thead>
             <tbody>
-             <c:forEach items="${list3}" var = "list3">
+             <c:forEach items="${list3}" var = "list3" varStatus="status">
                <tr>
-                <td>${list3.THUMBUP_NUM }</td>
+                <td>${status.count }</td>
                 <td>${list3.e_book_title}</td>
-                <td><fmt:formatDate value ="${list3.THUMBUP_DATE}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value ="${list3.thumbup_date}" pattern="yyyy-MM-dd"/></td>
                </tr>
              </c:forEach>
             </tbody>
