@@ -18,9 +18,13 @@ public class myPageDAOImpl implements myPageDAO {
   private static String namespace = "com.green.mapper.myPageMapper";
  
   //읽은 도서 목록
-  @Override
+/*  @Override
   public List<myPageDTO> list1() throws Exception {
     return sql.selectList(namespace+ ".list1");
+  }*/
+  @Override
+  public List<myPageDTO> list1(int member_num) throws Exception {
+    return sql.selectList(namespace+ ".list1", member_num);
   }
   
   //찜한 도서 목록

@@ -6,7 +6,8 @@ import com.green.myPage.domain.myPageDTO;
 
 public interface myPageService {
   //읽은 도서 목록
-  public List<myPageDTO> list1() throws Exception;
+  // public List<myPageDTO> list1() throws Exception;
+  public List<myPageDTO> list1(int member_num) throws Exception;
   
   //찜한 도서 목록
   public List<myPageDTO> list2() throws Exception;

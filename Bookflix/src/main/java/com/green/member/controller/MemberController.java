@@ -19,7 +19,7 @@ import com.green.member.service.MemberService;
  * @author 천재헌
  * @since 2020.03.17
  * 
- *        member 관련 url 컨트롤러
+ * member 관련 url 컨트롤러
  */
 @Controller
 @RequestMapping("/member/*")
@@ -79,16 +79,21 @@ public class MemberController {
 
     HttpSession session = rq.getSession();
 
-    MemberDTO login = service.login(dto);
+    MemberDTO member = service.login(dto);
 
     String stay = "";
-    if (login == null) {
+    
+    // 가져온 멤버 확인
+    if (member == null) {                       // 객체 확인
       session.setAttribute("member", null);
       rttr.addFlashAttribute("msg", false);
-      stay = "redirect:/member/login"; // 다시 로그인 페이지로
-    } else {
-      session.setAttribute("member", login);
-      stay = "redirect:/"; // 메인으로 돌려
+      stay = "redirect:/member/login";
+    } else if (member.getMember_grade() == 0) { // 관리자 확인
+      session.setAttribute("member", member);
+      stay = "redirect:/adminInfo/admNoticeList";
+    } else {                                    // 그 외 회원
+      session.setAttribute("member", member);
+      stay = "redirect:/"; 
     }
 
     return stay; 
@@ -101,6 +106,20 @@ public class MemberController {
     
     session.invalidate(); // 세션 전체 해제
     return "redirect:/";
+  }
+  
+  // 4-1) 회원탈퇴
+  @RequestMapping(value="/signOut1", method=RequestMethod.GET)
+  public String signOut1() throws Exception{
+    
+    return "member/signOut1";
+  }
+  
+  // 4-2) 회원탈퇴
+  @RequestMapping(value="/signOut2", method=RequestMethod.GET)
+  public String signOut2() throws Exception{
+    
+    return "member/signOut2";
   }
   
 }

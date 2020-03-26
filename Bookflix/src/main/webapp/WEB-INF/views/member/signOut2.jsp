@@ -12,7 +12,7 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="회원탈퇴 페이지2" />
 
-<title>Bookflix 회원탈퇴</title>
+<title>Bookflix 회원탈퇴2</title>
 
 
 <style type="text/css">

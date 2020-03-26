@@ -16,9 +16,13 @@ public class myPageServiceImpl implements myPageService {
   private myPageDAO dao;
   
   //읽은 도서 목록
-  @Override
+/*  @Override
   public List<myPageDTO> list1() throws Exception {
     return dao.list1();
+  }*/
+  @Override
+  public List<myPageDTO> list1(int member_num) throws Exception {
+    return dao.list1(member_num);
   }
   
   //찜한 도서 목록

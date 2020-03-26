@@ -62,8 +62,8 @@ img {
       <img src="http://placehold.it/100x100" alt="">
     </div>
 
-    <div class="box2">~의 서재</div>
-
+    <div class="box2">${member.member_nickname}의 서재</div>
+    <input type="text" value="${member.member_num}" name="member_num" id="member_num" />
     <div class="box3">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item"><a class="nav-link active"
@@ -93,9 +93,9 @@ img {
               </tr>
             </thead>
             <tbody>
-              <c:forEach items="${list1}" var = "list1">
+              <c:forEach items="${list1}" var="list1" varStatus="status">
                <tr>
-                <td>${list1.HADREAD_NUM }</td>
+                <td>${status.count}</td>
                 <td>${list1.e_book_title}</td>
                 <td><fmt:formatDate value ="${list1.HADREAD_DATE}" pattern="yyyy-MM-dd"/></td>
                </tr>

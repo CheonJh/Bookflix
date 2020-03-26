@@ -60,9 +60,18 @@
                     
                     <!-- 세션 있으면 회원 닉네임, 로그아웃 출력 -->
                     <c:if test="${member != null}">
-                      <div class="col">
-                        <a href="/myPage/myPage">${member.member_nickname}</a>
-                      </div>
+                      <!-- 관리자 -->
+                      <c:if test="${member.member_grade==0}">
+                        <div class="col">
+                          <a href="/adminBook/adminBookList">${member.member_nickname}</a>
+                        </div>
+                      </c:if>
+                      <!-- 회원 -->
+                      <c:if test="${member.member_grade!=0}">
+                        <div class="col">
+                          <a href="/myPage/Page">${member.member_nickname}</a>
+                        </div>
+                      </c:if>
                       <div class="col">
                         <a href="/member/logout">로그아웃</a>
                       </div>

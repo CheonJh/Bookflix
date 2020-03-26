@@ -6,12 +6,12 @@
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <mapper namespace="com.green.mapper.myPageMapper">
 <!-- 읽은 책 목록 -->
-<select id="list1" resultType="com.green.myPage.domain.myPageDTO">
+<select id="list1" resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
   select r.hadread_num, e.e_book_title, r.HADREAD_DATE
 from HADREAD as r 
 join E_BOOK as e on r.E_BOOK_NUM = e.E_BOOK_NUM
 join MEMBER as m on r.MEMBER_NUM = m.MEMBER_NUM
-where m.MEMBER_NUM = 2;
+where m.MEMBER_NUM = #{member_num};
 </select>
 
 <!-- 찜한 도서 목록 -->
