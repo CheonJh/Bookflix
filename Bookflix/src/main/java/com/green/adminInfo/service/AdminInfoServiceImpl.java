@@ -18,15 +18,15 @@ public class AdminInfoServiceImpl implements AdminInfoService {
   // 공지사항 총 갯수
 
   @Override
-  public int count() throws Exception {
-    return dao.count();
+  public int count(AdminInfoDTO dto) throws Exception {
+    return dao.count(dto);
   }
 
   // 공지사항 목록
 
   @Override
-  public List listPage(int displayPost, int postNum) throws Exception {
-    return dao.listPage(displayPost, postNum);
+  public List<AdminInfoDTO> listPage(int displayPost, int postNum, AdminInfoDTO dto) throws Exception {
+    return dao.listPage(displayPost, postNum, dto);
   }
 
   // 공지사항 작성

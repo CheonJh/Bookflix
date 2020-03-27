@@ -7,10 +7,10 @@ import com.green.adminInfo.domain.AdminInfoDTO;
 public interface AdminInfoDAO {
 
   // 공지사항 총 갯수
-  public int count() throws Exception;
+  public int count(AdminInfoDTO dto) throws Exception;
 
   // 공지사항 목록
-  public List listPage(int displayPost, int postNum) throws Exception;
+  public List<AdminInfoDTO> listPage(int displayPost, int postNum, AdminInfoDTO dto) throws Exception;
 
   // 공지사항 작성
   public void write(AdminInfoDTO dto) throws Exception;

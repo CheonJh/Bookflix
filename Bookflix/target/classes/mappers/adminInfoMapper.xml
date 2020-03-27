@@ -11,6 +11,19 @@
     select
     count(notice_num)
     from NOTICE
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="keyword != null and keyword != '' ">
+        <if test="searchType=='title'">
+          AND notice_title like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='category'">
+          AND notice_category like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='contents'">
+          AND notice_contents like CONCAT('%', #{keyword}, '%')
+        </if>
+      </if>
+    </trim>
   </select>
 
   <!-- 공지사항 목록 -->
@@ -19,7 +32,19 @@
     select notice_num, notice_category, notice_title,
     notice_viewcnt,
     notice_date
-    from NOTICE order by notice_num asc limit
+    from NOTICE 
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchType=='title' and keyword != null and keyword != '' ">
+        AND notice_title like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if test="searchType=='category' and keyword != null and keyword != '' ">
+        AND notice_category like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if test="searchType=='contents' and keyword != null and keyword != '' ">
+        AND notice_contents like CONCAT('%', #{keyword}, '%')
+      </if>
+    </trim>
+    order by notice_num asc limit
     #{displayPost}, #{postNum}
   </select>
 

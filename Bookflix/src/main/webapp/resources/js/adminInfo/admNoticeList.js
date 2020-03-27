@@ -60,11 +60,17 @@
         alert('체크박스를 하나만 선택해주세요.')
       }
     });
-    
-    
-    /* 검색 버튼 클릭시 실행되는 스크립트 */
-    $("#btnSearch").click(function() {
-      alert('※ 검색기능 불가...※');
-    });
-    
+
   });
+ 
+ /* 검색 버튼 클릭시 실행되는 스크립트 */
+ $(document).on('click', '#btnSearch', function(e) {
+   e.preventDefault();
+   var url = "/adminInfo/admNoticeList";
+   url = url + "?searchType=" + $('#searchType').val();
+   url = url + "&keyword=" + $('#keyword').val();
+
+   location.href = url;
+   console.log(url);
+  
+ });

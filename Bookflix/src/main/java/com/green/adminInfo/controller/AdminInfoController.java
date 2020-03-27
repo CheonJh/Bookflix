@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +24,16 @@ public class AdminInfoController {
 
   // 공지사항 목록
   @RequestMapping(value = "/admNoticeList", method = RequestMethod.GET)
-  public void getAdmNoticeList(Model model, @RequestParam(defaultValue = "1") int num) throws Exception {
-
+  public void getAdmNoticeList(Model model, @RequestParam(defaultValue = "1") int num,
+      @RequestParam(required = false, defaultValue = "title") String searchType
+      , @RequestParam(required = false) String keyword,@ModelAttribute("AdminInfoDTO") AdminInfoDTO dto
+  ) throws Exception {
+    
+    dto.setSearchType(searchType);
+    dto.setKeyword(keyword);
+    
     // 게시물 총 갯수
-    int count = service.count();
+    int count = service.count(dto);
 
     // 한 페이지에 출력할 게시물 갯수
     int postNum = 10;
@@ -67,13 +74,20 @@ public class AdminInfoController {
     // 현재 페이지
     model.addAttribute("select", num);
 
-    List list = null;
-    list = service.listPage(displayPost, postNum);
+    List<AdminInfoDTO> list = null;
+    list = service.listPage(displayPost, postNum, dto);
     model.addAttribute("list", list);
     model.addAttribute("pageNum", pageNum);
-  }
+    model.addAttribute("count",count);
+    
+    String kw = dto.getKeyword();
+    String st = dto.getSearchType();
 
- 
+    model.addAttribute("kw",kw);
+    model.addAttribute("st",st);
+    
+    
+  }
 
   // 공지사항 작성
   @RequestMapping(value = "/admNoticeReg", method = RequestMethod.GET)

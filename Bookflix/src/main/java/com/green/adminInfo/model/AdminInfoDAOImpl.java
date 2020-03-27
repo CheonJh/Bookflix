@@ -20,19 +20,24 @@ public class AdminInfoDAOImpl implements AdminInfoDAO {
 
   // 공지사항 총 갯수
   @Override
-  public int count() throws Exception {
-    return sql.selectOne(namespace + ".adminInfocount");
+  public int count(AdminInfoDTO dto) throws Exception {
+    return sql.selectOne(namespace + ".adminInfocount",dto);
   }
 
   // 공지사항 목록
   @Override
-  public List listPage(int displayPost, int postNum) throws Exception {
+  public List<AdminInfoDTO> listPage(int displayPost, int postNum, AdminInfoDTO dto) throws Exception {
 
     HashMap data = new HashMap();
 
+    String keyword = dto.getKeyword();
+    String searchType = dto.getSearchType();
+    
     data.put("displayPost", displayPost);
     data.put("postNum", postNum);
-
+    data.put("keyword", keyword);
+    data.put("searchType", searchType);
+    
     return sql.selectList(namespace + ".listPage", data);
   }
 

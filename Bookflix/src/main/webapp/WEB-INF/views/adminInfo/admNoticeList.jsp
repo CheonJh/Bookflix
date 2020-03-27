@@ -16,7 +16,7 @@
 
 <!-- *************************************************** -->
 <link rel="stylesheet" href="/resources/css/adminInfo/admNoticeList.css" />
-<script src="/resources/js/adminInfo/admNoticeList.js"></script>s
+<script src="/resources/js/adminInfo/admNoticeList.js"></script>
 <!-- *************************************************** -->
 </head>
 
@@ -30,15 +30,16 @@
       <div class="input-group mb-3">
         <select class="custom-select col-md-3"
           aria-label="Example select with button addon"
-          name="searchType">
+          name="searchType" id="searchType">
           <option value="title" selected>제목</option>
           <option value="category">말머리</option>
+          <option value="contents">내용</option>
         </select> <input type="text" class="form-control"
           aria-label="Text input with dropdown button"
-          placeholder="검색할 단어를 입력하세요." name="keyword">
+          placeholder="검색할 단어를 입력하세요." id="keyword" name="keyword">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
-            id="btnSearch">
+            id="btnSearch" name="btnSearch">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
         </div>
@@ -101,31 +102,66 @@
     <div class="row" id="box4">
       <div id="pagination">
         <ul class="pagination">
-          <c:if test="${prev}">
-            <li class="page-item"><a class="page-link"
-              tabindex="-1"
-              href="/adminInfo/admNoticeList?num=${startPageNum - 1}">Previous</a>
-            </li>
-          </c:if>
-
-          <c:forEach begin="${startPageNum}" end="${endPageNum}"
-            var="num">
-            <c:if test="${select != num}">
+          <!-- 검색시 페이지 네이션 -->
+          <c:if test="${kw ne null}">
+            <c:if test="${prev}">
               <li class="page-item"><a class="page-link"
-                href="/adminInfo/admNoticeList?num=${num}">${num}</a></li>
-            </c:if>
-            <c:if test="${select == num}">
-              <li class="page-item active"><a class="page-link"
-                href="/adminInfo/admNoticeList?num=${num}">${num}</a></li>
+                id="page-link" tabindex="-1"
+                href="/adminInfo/admNoticeList?num=${startPageNum - 1}&searchType=${st}&keyword=${kw}">Previous</a>
+              </li>
             </c:if>
 
-          </c:forEach>
+            <c:forEach begin="${startPageNum}" end="${endPageNum}"
+              var="num">
+              <c:if test="${select != num}">
+                <li class="page-item"><a class="page-link"
+                  id="page-link"
+                  href="/adminInfo/admNoticeList?num=${num}&searchType=${st}&keyword=${kw}">${num}</a></li>
+              </c:if>
+              <c:if test="${select == num}">
+                <li class="page-item active"><a class="page-link"
+                  id="page-link"
+                  href="/adminInfo/admNoticeList?num=${num}&searchType=${st}&keyword=${kw}">${num}</a></li>
+              </c:if>
 
-          <c:if test="${next}">
-            <li class="page-item"><a class="page-link"
-              href="/adminInfo/admNoticeList?num=${endPageNum + 1}">Next</a></li>
+            </c:forEach>
+
+            <c:if test="${next}">
+              <li class="page-item"><a class="page-link"
+                id="page-link"
+                href="/adminInfo/admNoticeList?num=${endPageNum + 1}&searchType=${st}&keyword=${kw}">Next</a></li>
+            </c:if>
           </c:if>
+          <!-- 검색하지 않고 평상시 페이지 네이션 -->
+          <c:if test="${kw eq null}">
+            <c:if test="${prev}">
+              <li class="page-item"><a class="page-link"
+                id="page-link" tabindex="-1"
+                href="/adminInfo/admNoticeList?num=${startPageNum - 1}">Previous</a>
+              </li>
+            </c:if>
 
+            <c:forEach begin="${startPageNum}" end="${endPageNum}"
+              var="num">
+              <c:if test="${select != num}">
+                <li class="page-item"><a class="page-link"
+                  id="page-link"
+                  href="/adminInfo/admNoticeList?num=${num}">${num}</a></li>
+              </c:if>
+              <c:if test="${select == num}">
+                <li class="page-item active"><a class="page-link"
+                  id="page-link"
+                  href="/adminInfo/admNoticeList?num=${num}">${num}</a></li>
+              </c:if>
+
+            </c:forEach>
+
+            <c:if test="${next}">
+              <li class="page-item"><a class="page-link"
+                id="page-link"
+                href="/adminInfo/admNoticeList?num=${endPageNum + 1}">Next</a></li>
+            </c:if>
+          </c:if>
         </ul>
       </div>
     </div>
