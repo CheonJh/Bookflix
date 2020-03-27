@@ -14,15 +14,31 @@ public class AdminInfoDTO {
     NOTICE_VIEWCNT       INTEGER NOT NULL
   );*/
   
+  
+  //공지사항 테이블
   private Integer notice_num;
   private String notice_title;
   private String notice_category;
   private String notice_contents;
   private Date notice_date;
   private Integer notice_viewcnt;
-  
-  
-  
+
+  //검색
+  private String searchType;
+  private String keyword;
+
+  public String getSearchType() {
+    return searchType;
+  }
+  public void setSearchType(String searchType) {
+    this.searchType = searchType;
+  }
+  public String getKeyword() {
+    return keyword;
+  }
+  public void setKeyword(String keyword) {
+    this.keyword = keyword;
+  }
   public Integer getNotice_num() {
     return notice_num;
   }
