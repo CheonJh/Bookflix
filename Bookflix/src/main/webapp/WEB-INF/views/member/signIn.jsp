@@ -292,7 +292,7 @@ label {
         console.log(birthJ.test($(this).val()));
         $('#birth_check').text('');
       } else {
-				$('#birth_check').text('- 빼고 숫자 6자 입력')
+				$('#birth_check').text('- 빼고 숫자 8자 입력')
 				$('#birth_check').css('color','red');
       }
 	  });
@@ -356,7 +356,7 @@ label {
       
       <div class="form-group row">
         <label for="member_birth" class="col-sm-4 col-form-label">생년월일</label>
-        <input type="text" class="form-control col-sm-8" placeholder="ex)891004" id="member_birth" name="member_birth">
+        <input type="text" class="form-control col-sm-8" placeholder="ex)19891004" id="member_birth" name="member_birth">
         <div id="birth_check" class="check_font"></div>
       </div>
       

@@ -55,8 +55,20 @@ label {
   var birthJ = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01(?:[0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$/;
+	
   
 	$(document).ready(function () {
+	  
+		// 가져온 생년월일 "-" 제거
+/* 	  var birth = $('#member_birth').val();
+	  var birthArray = birth.split('-'); 
+	  alert(birthArray[0]+birthArray[1]+birthArray[2]); */
+	  
+	  //가져온 폰 "-" 제거
+/* 	  var phone = $('#member_phone').val();
+	  var phoneArray = phone.split('-');
+	  alert(phoneArray[0]+phoneArray[1]+phoneArray[2]); */
+	  
 	  // 처음에는 숨겨놨다가 비밀번호 확인되면 보여줌.
     $('.hide-form').hide();
 	  $('#btn_modify').hide();
@@ -138,6 +150,7 @@ label {
 
     }); // blur
     
+    
     // 정규식
     // pw 정규식 체크
 	  $('#member_pw').blur(function(){
@@ -193,11 +206,12 @@ label {
       }
 	  });
 	  
-    
 	  // 돌아가기 버튼 클릭시 다시 마이페이지로 
 	  $('#btn_back').click(function () {
 	      location.href = "/myPage/Page";
 	  }); // #btn_back.click
+	  
+	  
    
   }); // document ready
 </script>

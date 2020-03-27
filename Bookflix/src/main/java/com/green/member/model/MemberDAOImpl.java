@@ -20,6 +20,39 @@ public class MemberDAOImpl implements MemberDAO {
   // 1-1) 회원가입
   @Override
   public void register(MemberDTO dto) throws Exception {
+    // 생년월일 "-" 추가
+    //
+    // 1989 10 04 // length : 8
+    // 0123 45 67
+    // 1989-10-04 // length : 10
+    // 0123456789
+    String birth = dto.getMember_birth();
+    String birthTmp[] = new String[3];
+      
+    birthTmp[0] = birth.substring(0,4);
+    birthTmp[1] = birth.substring(4,6);
+    birthTmp[2] = birth.substring(6);
+    
+    dto.setMember_birth(birthTmp[0]+"-"+birthTmp[1]+"-"+birthTmp[2]);
+    // 휴대폰번호 "-" 추가
+    // 
+    // 010 9059 6579
+    // 012 3456 789
+    String phone = dto.getMember_phone();
+    String phoneTmp[] = new String[3];
+
+    if (phone.length()==11) {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,7);
+      phoneTmp[2] = phone.substring(7);
+    } else {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,6);
+      phoneTmp[2] = phone.substring(6);
+    }
+
+    dto.setMember_phone(phoneTmp[0]+"-"+phoneTmp[1]+"-"+phoneTmp[2]);
+
     sql.insert(namespace + ".register", dto);
   }
 
@@ -56,6 +89,61 @@ public class MemberDAOImpl implements MemberDAO {
   // 4-1) 회원정보수정
   @Override
   public void modifyMember(MemberDTO dto) throws Exception {
+    // 생년월일 "-" 추가
+    //
+    // 1989 10 04 // length : 8
+    // 0123 45 67
+    // 1989-10-04 // length : 10
+    // 0123456789
+    
+    String birth = dto.getMember_birth();
+    
+    // 수정 안했으면 -가 남은상태라 길이가 10 이므로
+    if (birth.length()==10) {
+      // split를 이용해서 -를 모두 제거하고
+      String birthArr[] = birth.split("-");
+      // 다시 합치고
+      birth = birthArr[0]+birthArr[1]+birthArr[2];
+    }
+      // 다시 똑같이 나눈다.
+      String birthTmp[] = new String[3];
+      
+      birthTmp[0] = birth.substring(0,4);
+      birthTmp[1] = birth.substring(4,6);
+      birthTmp[2] = birth.substring(6);
+    
+    dto.setMember_birth(birthTmp[0]+"-"+birthTmp[1]+"-"+birthTmp[2]);
+    
+    // 휴대폰번호 "-" 추가
+    // 
+    // 010-9059-6579 // length : 13 
+    // 010 9059 6579
+    // 012 3456 789
+    String phone = dto.getMember_phone();
+    
+    // 수정 안했으면 -가 남은상태라 길이가 13 이므로
+    if (phone.length()==13) {
+      // split를 이용해서 -를 모두 제거하고
+      String phoneArr[] = phone.split("-");
+      // 다시 합치고
+      phone = phoneArr[0]+phoneArr[1]+phoneArr[2];
+    }
+    
+    String phoneTmp[] = new String[3];
+
+    if (phone.length()==11) {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,7);
+      phoneTmp[2] = phone.substring(7);
+    } else {
+      // 가운데 자리가 3자리일 때
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,6);
+      phoneTmp[2] = phone.substring(6);
+    }
+
+    dto.setMember_phone(phoneTmp[0]+"-"+phoneTmp[1]+"-"+phoneTmp[2]);
+    
     sql.update(namespace+".modifyMember", dto);
   }
   

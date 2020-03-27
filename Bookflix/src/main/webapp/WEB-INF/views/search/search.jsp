@@ -12,31 +12,8 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="검색 페이지" />
 
-<title>Bookfilx 검색</title>
+<title>BOOKFLIX 검색</title>
 
-<!-- *************************************************** -->
-
-<!-- jQuery 연결 -->
-<script
-  src="<%=request.getContextPath()%>/resources/common/jQuery/jquery-1.12.4.min.js"></script>
-<script
-  src="<%=request.getContextPath()%>/resources/common/jQuery/jquery-migrate-1.4.1.min.js"></script>
-
-<!-- bootstrap 연결 -->
-<link rel="stylesheet"
-  href="<%=request.getContextPath()%>/resources/common/bootstrap/css/bootstrap.min.css">
-<script
-  src="<%=request.getContextPath()%>/resources/common/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- font-awesome 연결 -->
-<link rel="stylesheet"
-  href="<%=request.getContextPath()%>/resources/common/font-awesome/css/font-awesome.min.css">
-
-<!-- 공통 CSS 연결 -->
-<link rel="stylesheet"
-  href="<%=request.getContextPath()%>/resources/css/commonStyle.css">
-
-<!-- *************************************************** -->
 <style type="text/css">
 #box1 {
   margin-top: 3rem;
@@ -64,16 +41,19 @@ img {
     <div class="row">
       <div class="col" id="box1">
         <div class="input-group mb-3">
+          <!--
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary dropdown-toggle"
+             <button class="btn btn-outline-secondary dropdown-toggle"
               type="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">선택</button>
+              aria-expanded="false">선택</button> 
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">제목</a> <a
                 class="dropdown-item" href="#">글쓴이</a> <a
                 class="dropdown-item" href="#">출판사</a>
             </div>
+            
           </div>
+          -->
           <input type="text" class="form-control"
             aria-label="Text input with dropdown button"
             placeholder="검색할 단어를 입력하세요.">
