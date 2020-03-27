@@ -4,8 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
-<mapper namespace="com.green.mapper.memberMapper">
-
+<mapper namespace="com.green.mapper.mainMapper">
+  
+  <!-- 인기도서 -->
+  <select id="favorite" resultType="com.green.main.domain.MainDTO">
+    SELECT e_book_title, e_book_writer, e_book_img_path FROM E_BOOK order by
+    e_book_thumbupcnt desc limit 0,5
+  </select>
+  
+  <!-- 신간도서 -->
+  <select id="newbook" resultType="com.green.main.domain.MainDTO">
+    SELECT e_book_title, e_book_writer, e_book_img_path FROM E_BOOK order by
+    e_book_date desc limit 0,5
+  </select>
 
 
 </mapper>

@@ -1,35 +1,41 @@
 package com.green.main.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.green.bookflix.HomeController;
+import com.green.main.domain.MainDTO;
+import com.green.main.service.MainService;
 
 @Controller
 public class MainController {
+
+  @Inject
+  MainService service;
   
-  private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-  
-  @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String home(Locale locale, Model model) {
-    logger.info("Welcome home! The client locale is {}.", locale);
+  @RequestMapping(value="/", method=RequestMethod.GET)
+  public String getList(Model model) throws Exception {
     
-    Date date = new Date();
-    DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+    // 인기도서
+    List<MainDTO> favorite = null;
+    favorite = service.favorite();
+    // 신간도서
+    List<MainDTO> newbook = null;
+    newbook = service.newbook();
     
-    String formattedDate = dateFormat.format(date);
-    
-    model.addAttribute("serverTime", formattedDate );
-    
+    model.addAttribute("newbook", newbook);
+    model.addAttribute("favorite", favorite);
     return "main/main";
   }
+  
+  
+  
+  
+  
 
 }
