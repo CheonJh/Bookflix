@@ -57,8 +57,8 @@ label {
 	var nameJ = /^[가-힣]{2,10}$/;
 	// 닉네임 정규식 : 한글, 영문, 숫자로 2~12자
 	var nickJ = /^[가-힣a-zA-Z0-9]{2,12}$/;
-	// 생년월일 : 숫자 6자만 
-  var birthJ = /^[0-9]{6}$/;
+	// 생년월일 : 19 or 20으로 시작, 1~12월, 01~31 숫자 8자
+  var birthJ = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01(?:[0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$/;
 	
@@ -303,7 +303,7 @@ label {
         console.log(phoneJ.test($(this).val()));
         $('#phone_check').text('');
       } else {
-				$('#phone_check').text('- 빼고 숫자 6자 입력')
+				$('#phone_check').text('- 빼고 입력')
 				$('#phone_check').css('color','red');
       }
 	  });
@@ -361,8 +361,8 @@ label {
       </div>
       
       <div class="form-group row">
-        <label for="member_phone" class="col-sm-4 col-form-label">휴대폰 번호('-'없이 번호만 입력해주세요.)</label>
-        <input type="text" class="form-control col-sm-8" placeholder="PhoneNumber" id="member_phone" name="member_phone">
+        <label for="member_phone" class="col-sm-4 col-form-label">휴대폰 번호</label>
+        <input type="text" class="form-control col-sm-8" placeholder="('-'없이 번호만 입력해주세요.)" id="member_phone" name="member_phone">
         <div id="phone_check" class="check_font"></div>
       </div>
 

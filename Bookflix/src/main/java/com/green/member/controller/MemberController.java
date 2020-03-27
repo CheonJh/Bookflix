@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,7 +21,7 @@ import com.green.member.service.MemberService;
  * @author 천재헌
  * @since 2020.03.17
  * 
- * member 관련 url 컨트롤러
+ *        member 관련 url 컨트롤러
  */
 @Controller
 @RequestMapping("/member/*")
@@ -66,12 +68,12 @@ public class MemberController {
     return Integer.toString(result);
   }
 
-  // 2-1) 회원가입 GET
+  // 2-1) 로그인 GET
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   public void getLogin() throws Exception {
     logger.info("get login");
   }
-  
+
   // 2-2) 로그인
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   public String login(MemberDTO dto, HttpServletRequest rq, RedirectAttributes rttr) throws Exception {
@@ -82,44 +84,120 @@ public class MemberController {
     MemberDTO member = service.login(dto);
 
     String stay = "";
-    
+
     // 가져온 멤버 확인
-    if (member == null) {                       // 객체 확인
+    if (member == null) { // 객체 확인
       session.setAttribute("member", null);
       rttr.addFlashAttribute("msg", false);
       stay = "redirect:/member/login";
     } else if (member.getMember_grade() == 0) { // 관리자 확인
       session.setAttribute("member", member);
       stay = "redirect:/adminInfo/admNoticeList";
-    } else {                                    // 그 외 회원
+    } else { // 그 외 회원
       session.setAttribute("member", member);
-      stay = "redirect:/"; 
+      stay = "redirect:/";
     }
 
-    return stay; 
+    return stay;
   }
-  
+
   // 3) 로그아웃
-  @RequestMapping(value="/logout", method=RequestMethod.GET)
-  public String logout(HttpSession session) throws Exception{
+  @RequestMapping(value = "/logout", method = RequestMethod.GET)
+  public String logout(HttpSession session) throws Exception {
     logger.info("logout get");
-    
+
     session.invalidate(); // 세션 전체 해제
     return "redirect:/";
   }
-  
-  // 4-1) 회원탈퇴
-  @RequestMapping(value="/signOut1", method=RequestMethod.GET)
-  public String signOut1() throws Exception{
-    
-    return "member/signOut1";
+
+  // 4-1) 회원탈퇴 - 구독 잔여일수
+  @RequestMapping(value = "/signOut1", method = RequestMethod.GET)
+  public void signOut1(Model model, HttpSession session) throws Exception {
+    logger.info("get signOut1");
+
+    MemberDTO dto = (MemberDTO) session.getAttribute("member");
+
+    // 구독회원일 경우에만 구독 잔여일수를 가져와서 넘겨준다.
+    if (dto.getMember_grade() == 2) {
+      int member_num = dto.getMember_num();
+      int date;
+      date = service.signOut1(member_num);
+      model.addAttribute("date", date);
+    }
+
   }
-  
-  // 4-2) 회원탈퇴
-  @RequestMapping(value="/signOut2", method=RequestMethod.GET)
-  public String signOut2() throws Exception{
-    
-    return "member/signOut2";
+
+  // 4-2) 회원탈퇴 - get
+  @RequestMapping(value = "/signOut2", method = RequestMethod.GET)
+  public void getSignOut2() throws Exception {
+    logger.info("get signOut2");
   }
-  
+
+  // 4-3) 회원탈퇴 - post
+  @RequestMapping(value = "/signOut2", method = RequestMethod.POST)
+  public String postSignOut2(HttpSession session) throws Exception {
+    logger.info("post signOut2");
+
+    // 회원 삭제
+    service.signOut2(((MemberDTO) session.getAttribute("member")).getMember_num());
+    // 세션 제거
+    session.invalidate();
+
+    return "redirect:/";
+  }
+
+  // 5-1) 회원정보 수정
+  @RequestMapping(value = "/modifyMember", method = RequestMethod.GET)
+  public void getModify() throws Exception {
+    logger.info("get Modify");
+  }
+
+  // 5-2) 회원정보 수정
+  @RequestMapping(value = "/modifyMember", method = RequestMethod.POST)
+  public String postModify(MemberDTO member, HttpServletRequest rq, HttpSession session) throws Exception {
+    logger.info("post Modify");
+
+    MemberDTO memberSession = (MemberDTO) session.getAttribute("member");
+
+    // member 객체에 세션에서 받아온 회원번호 넣어준다.
+    member.setMember_num(memberSession.getMember_num());
+
+    // 넘겨받은 멤버에 비밀번호가 비어있으면
+    // 인증 받은 비밀번호를 넣어준다.
+    if (member.getMember_pw() == "") {
+      member.setMember_pw(rq.getParameter("member_pwPre"));
+    }
+
+    // 회원 수정
+    service.modifyMember(member);
+
+    // 세션 다시 올림.
+    // 비밀번호
+    memberSession.setMember_pw(member.getMember_pw());
+    // 닉네임
+    memberSession.setMember_nickname(member.getMember_nickname());
+    // 생년월일
+    memberSession.setMember_birth(member.getMember_birth());
+    // 휴대폰번호
+    memberSession.setMember_phone(member.getMember_phone());
+
+    session.setAttribute("member", memberSession);
+    return "redirect:/myPage/Page";
+  }
+
+  // 5-3) 정보 수정 전 비밀번호 체크
+  @RequestMapping(value = "/pwCheck", method = RequestMethod.GET, produces = "application/text; charset=utf8")
+  @ResponseBody
+  public String pwCheck(@RequestParam String member_pw, HttpSession session) throws Exception {
+    // 세션에서 로그인 회원 가져오고
+    MemberDTO member = (MemberDTO) session.getAttribute("member");
+    // 가져온 비밀번호를 넣고
+    member.setMember_pw(member_pw);
+    // 맞는지 확인
+    int result = service.pwCheck(member);
+    return Integer.toString(result);
+  }
+
+  // 
+
 }
