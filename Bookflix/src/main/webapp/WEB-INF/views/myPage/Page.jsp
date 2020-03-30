@@ -11,79 +11,11 @@
 <meta name="author" content="김지나" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-body {
-  background-color: #eee;
-}
-
-.wrap {
-  width: 800px;
-  margin: auto;
-}
-
-.title {
-  padding: 30px;
-}
-
-.ul {
-  background-color: #ddd;
-}
-
-.li {
-  font-size: 20px;
-  padding: 5px 10px;
-}
-
-.member {
-  font-size: 16px;
-}
-
-.titlewrap {
-  position: relative;
-}
-
-.btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-</style>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    
-    
-    //구독하기 버튼 
-    $('#sub').click(function() {
-      
-    //ajax
-    $.ajax({
-      url:"/myPage/doSub",
-      type: "get",
-      success: function() {
-        location.href = "/myPage/Page";
-      },
-      error: function () {
-        console.log("실패");
-      }
-      
-    }); // ajax
-
-  }); // .click
-
-  });
-</script>
+<title>Page</title>
+<!-- css 연결 -->
+<link rel="stylesheet" href="/resources/css/myPage/Page.css" />
+<!-- js 연결 -->
+<script src="/resources/js/myPage/Page.js"></script>
 </head>
 <body>
   <div class="title">
@@ -113,8 +45,13 @@ body {
     <br>
     <hr>
     <br>
+    <div class="contents">
+    <div class = content1>
     <div class="ul">기본 설정</div>
-    <div class="li">내 정보</div>
+    <div class="li">내 정보 관리</div>
+    </div>
+    
+    <div class = content2>
     <div class="ul">서비스 관리</div>
     <div class="li">
       <a href="/myPage/mylib">내 서재 관리</a>
@@ -122,9 +59,14 @@ body {
     <div class="li">
       <a href="/myPage/sub">구독 관리</a>
     </div>
+    </div>
+    
+    <div class = content3>
     <div class="ul">서비스 안내</div>
     <div class="li">고객센터</div>
     <div class="li">회원탈퇴</div>
+    </div>
+  </div>
   </div>
 </body>
 </html>
