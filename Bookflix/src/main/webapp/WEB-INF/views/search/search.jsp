@@ -125,7 +125,7 @@ $(function () {
   <div class="container">
     <div class="row">
       <div class="col">
-        <!-- 검색 -->
+        <!-- 검색 --> 
         <form id="searchForm" action="/search/search" method="post" role="search" class="center">
           <div class="input-group mb-3 input-group-lg">
             <input type="text" class="form-control" name="searchKeyword" placeholder="검색할 단어를 입력하세요." aria-describedby="subBtn" value=${keyword}>
