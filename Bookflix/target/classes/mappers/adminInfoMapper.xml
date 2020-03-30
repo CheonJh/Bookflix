@@ -6,25 +6,50 @@
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <mapper namespace="com.green.mapper.adminInfoMapper">
 
-  <!-- 공지사항 총 갯수 -->
+  <!-- 공지사항 총 갯수 --> 
   <select id="adminInfocount" resultType="int">
-    select count(notice_num) from NOTICE
+    select
+    count(notice_num)
+    from NOTICE
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="keyword != null and keyword != '' ">
+        <if test="searchType=='title'">
+          AND notice_title like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='category'">
+          AND notice_category like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='contents'">
+          AND notice_contents like CONCAT('%', #{keyword}, '%')
+        </if>
+      </if>
+    </trim>
   </select>
-  
+
   <!-- 공지사항 목록 -->
   <select id="listPage" parameterType="hashMap"
     resultType="com.green.adminInfo.domain.AdminInfoDTO">
-    select
-    notice_num, notice_category,
-    notice_title,
-    notice_viewcnt, notice_date
-    from NOTICE
-    order by notice_num asc
-    limit
+    select notice_num, notice_category, notice_title,
+    notice_viewcnt,
+    notice_date
+    from NOTICE 
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchType=='title' and keyword != null and keyword != '' ">
+        AND notice_title like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if test="searchType=='category' and keyword != null and keyword != '' ">
+        AND notice_category like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if test="searchType=='contents' and keyword != null and keyword != '' ">
+        AND notice_contents like CONCAT('%', #{keyword}, '%')
+      </if>
+    </trim>
+    order by notice_num asc limit
     #{displayPost}, #{postNum}
   </select>
-  
-  
+
+
+
   <!-- 공지사항 작성 -->
   <insert id="write"
     parameterType="com.green.adminInfo.domain.AdminInfoDTO">
@@ -33,4 +58,32 @@
     values(#{notice_title},#{notice_contents},#{notice_category})
   </insert>
 
+  <!-- 공지사항 삭제 -->
+  <delete id="deleteNotice"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    delete from
+    NOTICE
+    where notice_num = #{notice_num}
+  </delete>
+
+  <!-- 공지사항 수정(내용 불러오기) -->
+  <select id="view" parameterType="int"
+    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+    select
+    notice_title,notice_contents,notice_category
+    from
+    NOTICE
+    where notice_num = #{notice_num}
+  </select>
+
+  <!-- 공지사항 수정 -->
+  <update id="modify"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    update NOTICE set
+    notice_title = #{notice_title},
+    notice_contents = #{notice_contents},
+    notice_category =
+    #{notice_category}
+    where notice_num = #{notice_num}
+  </update>
 </mapper>

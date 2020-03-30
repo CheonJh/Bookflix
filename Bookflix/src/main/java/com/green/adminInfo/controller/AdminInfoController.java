@@ -6,9 +6,11 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.green.adminInfo.domain.AdminInfoDTO;
 import com.green.adminInfo.service.AdminInfoService;
@@ -22,10 +24,16 @@ public class AdminInfoController {
 
   // 공지사항 목록
   @RequestMapping(value = "/admNoticeList", method = RequestMethod.GET)
-  public void getAdmNoticeList(Model model, @RequestParam(defaultValue="1") int num) throws Exception {
-
+  public void getAdmNoticeList(Model model, @RequestParam(defaultValue = "1") int num,
+      @RequestParam(required = false, defaultValue = "title") String searchType
+      , @RequestParam(required = false) String keyword,@ModelAttribute("AdminInfoDTO") AdminInfoDTO dto
+  ) throws Exception {
+    
+    dto.setSearchType(searchType);
+    dto.setKeyword(keyword);
+    
     // 게시물 총 갯수
-    int count = service.count();
+    int count = service.count(dto);
 
     // 한 페이지에 출력할 게시물 갯수
     int postNum = 10;
@@ -49,7 +57,7 @@ public class AdminInfoController {
     int endPageNum_tmp = (int) (Math.ceil((double) count / (double) pageNum_cnt));
 
     if (endPageNum_tmp < endPageNum) {
-      endPageNum = endPageNum_tmp;  
+      endPageNum = endPageNum_tmp;
     }
 
     boolean prev = startPageNum == 1 ? false : true;
@@ -66,10 +74,19 @@ public class AdminInfoController {
     // 현재 페이지
     model.addAttribute("select", num);
 
-    List list = null;
-    list = service.listPage(displayPost, postNum);
+    List<AdminInfoDTO> list = null;
+    list = service.listPage(displayPost, postNum, dto);
     model.addAttribute("list", list);
     model.addAttribute("pageNum", pageNum);
+    model.addAttribute("count",count);
+    
+    String kw = dto.getKeyword();
+    String st = dto.getSearchType();
+
+    model.addAttribute("kw",kw);
+    model.addAttribute("st",st);
+    
+    
   }
 
   // 공지사항 작성
@@ -85,7 +102,36 @@ public class AdminInfoController {
 
     return "redirect:/adminInfo/admNoticeList";
   }
-  
+
   // 공지사항 삭제
-  
+  @ResponseBody
+  @RequestMapping(value = "/deleteNotice", method = RequestMethod.POST)
+  public void deleteNotice(@RequestParam(value = "chbox[]") List<String> chArr, AdminInfoDTO dto) throws Exception {
+
+    int noticeNum = 0;
+
+    for (String i : chArr) {
+      noticeNum = Integer.parseInt(i);
+      dto.setNotice_num(noticeNum);
+      service.deleteNotice(dto);
+    }
+  }
+
+  // 공지사항 수정(내용 불러오기)
+  @RequestMapping(value = "/admNoticeMod", method = RequestMethod.GET)
+  public void getAdmNoticeMod(@RequestParam("notice_num") int notice_num, Model model) throws Exception {
+
+    AdminInfoDTO dto = service.view(notice_num);
+
+    model.addAttribute("view", dto);
+  }
+
+  // 공지사항 수정
+  @RequestMapping(value = "/admNoticeMod", method = RequestMethod.POST)
+  public String postAdmNoticeMod(AdminInfoDTO dto) throws Exception {
+
+    service.modify(dto);
+
+    return "redirect:/adminInfo/admNoticeList";
+  }
 }

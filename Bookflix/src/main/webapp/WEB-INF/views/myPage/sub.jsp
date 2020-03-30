@@ -42,6 +42,32 @@ li{
   margin-bottom: 10%;
 }
 </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    
+    //구독하기 버튼 
+    $('#unsub').click(function() {
+      
+    //ajax
+    $.ajax({
+      url:"/myPage/unSub",
+      type: "get",
+      success: function() {
+        location.href = "/myPage/Page";
+      },
+      error: function () {
+        console.log("실패");
+      }
+      
+    }); // ajax
+
+  }); // .click
+
+  });
+</script>
+
 </head>
 <body>
   <div class="container">
@@ -64,37 +90,21 @@ li{
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>2019.08</td>
-            <td>10000</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>2019.09</td>
-            <td>1400000</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>2019.09</td>
-            <td>1500000</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>2019.12</td>
-            <td>17000</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>2020.01</td>
-            <td>20000</td>
-          </tr>
+          <c:forEach items="${list4}" var="list4" varStatus="status">
+               <tr>
+                <td>${status.count}</td>
+                <td><fmt:formatDate value ="${list4.subscribe_date}" pattern="yyyy-MM-dd"/></td>
+                <td>${list4.subscribe_fee}</td>
+               </tr>
+             </c:forEach>
         </tbody>
       </table>
     </div>
 
     <div class="box3">
-      <button type="button" class="btn btn-primary btn-lg btn-block">구독 해지</button>
+      <c:if test="${member.member_grade==2}">
+        <button type="button" class="btn btn-primary btn-lg btn-block" id ="unsub">구독 해지</button>
+      </c:if>
     </div>
 
   </div>

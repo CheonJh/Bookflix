@@ -4,7 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
-<mapper namespace="com.green.mapper.memberMapper">
+<mapper namespace="com.green.mapper.searchMapper">
+
+  <!-- 책 검색 --> 
+  <select id="searchBookList" parameterType="String" resultType="com.green.book.domain.BookDTO">
+    SELECT * FROM E_BOOK
+    WHERE E_BOOK_TITLE LIKE '%'#{keyword}'%'
+    or E_BOOK_WRITER LIKE '%'#{keyword}'%'
+    or E_BOOK_INFO LIKE '%'#{keyword}}'%'
+    or E_BOOK_INDEX LIKE '%'#{keyword}'%'
+    or E_BOOK_TAG LIKE '%#'#{keyword}'%'
+    order by E_BOOk_NUM DESC;
+  </select>
 
 
 

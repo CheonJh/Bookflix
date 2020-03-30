@@ -62,72 +62,70 @@ img {
       <img src="http://placehold.it/100x100" alt="">
     </div>
 
-    <div class="box2">~의 서재</div>
-
+    <div class="box2">${member.member_nickname}의 서재</div>
     <div class="box3">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item"><a class="nav-link active"
-          id="read-tab" data-toggle="tab" href="#read" role="tab"
-          aria-controls="read" aria-selected="true">읽은 도서 목록</a></li>
-        <li class="nav-item"><a class="nav-link"
-          id="reservation-tab" data-toggle="tab" href="#reservation"
-          role="tab" aria-controls="reservation" aria-selected="false">찜한
-            도서 목록</a></li>
-        <li class="nav-item"><a class="nav-link" id="like-tab"
-          data-toggle="tab" href="#like" role="tab" aria-controls="like"
-          aria-selected="false">좋아요 한 도서 목록</a></li>
+        <li class="nav-item">
+          <a class="nav-link active" id="read-tab" data-toggle="tab" href="#read" role="tab" aria-controls="read" aria-selected="true">
+            읽은 도서 목록
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="false">
+            찜한 도서 목록
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="like-tab" data-toggle="tab" href="#like" role="tab" aria-controls="like" aria-selected="false">
+            좋아요 한 도서 목록
+          </a>
+        </li>
       </ul>
 
-
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="read" role="tabpanel"
-          aria-labelledby="read">
-           <!-- 읽은 도서 목록 -->
+        <div class="tab-pane fade show active" id="read" role="tabpanel"  aria-labelledby="read">
+          <!-- 읽은 도서 목록 -->
           <table class="table">
             <thead class="thead-dark">
               <tr>
                 <th class="num" scope="col">번호</th>
                 <th scope="col">읽은 도서</th>
                 <th scope="col">날짜</th>
-
               </tr>
             </thead>
             <tbody>
-              <c:forEach items="${list1}" var = "list1">
-               <tr>
-                <td>${list1.HADREAD_NUM }</td>
-                <td>${list1.e_book_title}</td>
-                <td><fmt:formatDate value ="${list1.HADREAD_DATE}" pattern="yyyy-MM-dd"/></td>
-               </tr>
-             </c:forEach>
+              <c:forEach items="${list1}" var="list1" varStatus="status">
+                <tr>
+                  <td>${status.count}</td>
+                  <td>${list1.e_book_title}</td>
+                  <td><fmt:formatDate value ="${list1.hadread_date}" pattern="yyyy-MM-dd"/></td>
+                </tr>
+              </c:forEach>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade" id="reservation" role="tabpanel"
-          aria-labelledby="reservation">
-           <!-- 찜한 도서 목록 -->
+        <div class="tab-pane fade" id="reservation" role="tabpanel" aria-labelledby="reservation">
+          <!-- 찜한 도서 목록 -->
           <table class="table">
             <thead class="thead-dark">
               <tr>
                 <th class="num" scope="col">번호</th>
                 <th scope="col">찜한 도서</th>
                 <th scope="col">날짜</th>
-
               </tr>
             </thead>
             <tbody>
-              <c:forEach items="${list2}" var = "list2">
+              <c:forEach items="${list2}" var = "list2" varStatus="status">
                <tr>
-                <td>${list2.FAVORITE_NUM }</td>
+                <td>${status.count }</td>
                 <td>${list2.e_book_title}</td>
-                <td><fmt:formatDate value ="${list2.FAVORITE_DATE}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value ="${list2.favorite_date}" pattern="yyyy-MM-dd"/></td>
                </tr>
              </c:forEach>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade" id="like" role="tabpanel"
-          aria-labelledby="like">
+        <div class="tab-pane fade" id="like" role="tabpanel" aria-labelledby="like">
           <!-- 좋아요 한 도서 목록 -->
           <table class="table">
             <thead class="thead-dark">
@@ -135,15 +133,14 @@ img {
                 <th class="num" scope="col">번호</th>
                 <th scope="col">좋아요 한 도서</th>
                 <th scope="col">날짜</th>
-
               </tr>
             </thead>
             <tbody>
-             <c:forEach items="${list3}" var = "list3">
+             <c:forEach items="${list3}" var = "list3" varStatus="status">
                <tr>
-                <td>${list3.THUMBUP_NUM }</td>
+                <td>${status.count }</td>
                 <td>${list3.e_book_title}</td>
-                <td><fmt:formatDate value ="${list3.THUMBUP_DATE}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value ="${list3.thumbup_date}" pattern="yyyy-MM-dd"/></td>
                </tr>
              </c:forEach>
             </tbody>
