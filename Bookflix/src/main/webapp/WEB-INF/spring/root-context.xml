@@ -47,6 +47,7 @@
   <context:component-scan base-package="com.green.adminBook.domain"/>
   <context:component-scan base-package="com.green.adminBook.model"/>
   <context:component-scan base-package="com.green.adminBook.service"/>
+  <context:component-scan base-package="com.green.adminBook.util"/>
   <!-- adminInfo -->
   <context:component-scan base-package="com.green.adminInfo.domain"/>
   <context:component-scan base-package="com.green.adminInfo.model"/>
