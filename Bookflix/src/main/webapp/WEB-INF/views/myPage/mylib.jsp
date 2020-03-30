@@ -35,13 +35,13 @@
         <c:if test="${ab != 0}">
         <form method="post" enctype="multipart/form-data">
           <img src="/resources/imgs/member_img/${member.member_img}"
-            alt="12" style="width: 100px; height: 100px">
+            alt="새로고침 해주세요" class="member_img">
         </form>
         </c:if>
         <c:if test="${ab == 0}">
           <form method="post"
             enctype="multipart/form-data">
-            <img src="http://placehold.it/100x100" alt=""> <input
+            <img src="http://placehold.it/100x100" alt="" class="member_img" > <input
               type="file" name="file" /> <input type="submit" value="전송">
           </form>
         </c:if>

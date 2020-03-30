@@ -147,6 +147,7 @@ public class myPageController {
     session.setAttribute("member", dto);
   }
   
+  //파일 업로드
   @RequestMapping(value = "/mylib", method = RequestMethod.POST)
   public String postList1(MemberDTO dto, Model model, MultipartFile file, HttpSession session) throws Exception {
     
