@@ -4,33 +4,109 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
+<!-- NOTICE -->
 <mapper namespace="com.green.mapper.infoMapper">
 
-  <select id="list"
+ <select id="notiList"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
   </select>
-
+  
   <select id="notice" parameterType="int"
     resultType="com.green.info.domain.InfoNoticeDTO">
-    select
-    notice_title, notice_contents, notice_date
-    from
-    NOTICE
+    select * from NOTICE
     where
     notice_num = #{notice_num}
   </select>
-
-  <select id="count" resultType="int">
+  
+  <select id="notiCount" resultType="int">
     select count(notice_num) from NOTICE
   </select>
 
   <select id="noticePage" parameterType="hashMap"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
-    order by notice_num desc
+    order by notice_num desc  
     limit #{displayPost}, #{postNum}
   </select>
   
-
+  <select id="noticePage2" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    where notice_category='공지사항'
+    order by notice_num desc  
+    limit #{displayPost}, #{postNum}
+  </select>
+  
+  <select id="noticePage3" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    where notice_category='업데이트'
+    order by notice_num desc  
+    limit #{displayPost}, #{postNum}
+  </select>
+  
+  <select id="noticePage4" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    where notice_category='이벤트'
+    order by notice_num desc  
+    limit #{displayPost}, #{postNum}
+  </select>
+   
+   <update id="viewCnt" parameterType="int">
+      update NOTICE set 
+      NOTICE_VIEWCNT = NOTICE_VIEWCNT+1
+      where NOTICE_NUM = #{notice_num}
+   </update>
+   
+  <!-- FAQ -->
+  
+  <select id="FaqList"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+  </select>
+  
+  <select id="FAQ" parameterType="int"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where
+    faq_num = #{faq_num}
+  </select>
+  
+  <select id="faqCount" resultType="int">
+    select count(faq_num) from FAQ
+  </select>
+  
+  <select id="FaqPage" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    order by faq_num desc
+    limit #{displayPost}, #{postNum}
+  </select>
+  
+  <select id="FaqPage2" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where faq_category='이용방법'
+    order by faq_num desc
+    limit #{displayPost}, #{postNum}
+  </select>
+  
+  <select id="FaqPage3" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where faq_category='구독'
+    order by faq_num desc
+    limit #{displayPost}, #{postNum}
+  </select>
+  
+  <select id="FaqPage4" parameterType="hashMap"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where faq_category='자주하는 질문'
+    order by faq_num desc
+    limit #{displayPost}, #{postNum}
+  </select>
+  
 </mapper>

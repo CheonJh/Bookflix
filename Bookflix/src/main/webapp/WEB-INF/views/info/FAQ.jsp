@@ -51,20 +51,14 @@ li, a{
   
     <tr>
       <th class="active">제목</th>
-      <th>${notice.notice_title}</th>
+      <th>${FAQ.faq_title}</th>
     </tr>
     <tr>
-      <td class="active">날짜</td>
-      <td>
-      <fmt:formatDate value="${notice.notice_date}" pattern="yyyy-MM-dd"></fmt:formatDate>
-      </td>
-    </tr>
+
   </table>
 
-  <p>Q:${notice.notice_title}</p>
-  <p>${notice.notice_contents}</p>
-  
-   <p>조회수 : ${notice.notice_viewcnt}</p>
+  <p>Q:${FAQ.faq_title}</p>
+  <p>${FAQ.faq_contents}</p>
   
   <hr>
 
