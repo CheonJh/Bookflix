@@ -7,11 +7,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.green.book.domain.BookDTO;
+import com.green.adminBook.domain.AdminBookDTO;
 
 @Repository
 public class SearchDAOImpl implements SearchDAO {
-
+ 
   // 마이바티스
   @Inject
   private SqlSession sql;
@@ -21,7 +21,7 @@ public class SearchDAOImpl implements SearchDAO {
 
   // 1) 책 검색
   @Override
-  public List<BookDTO> searchBookList(String keyword) throws Exception {
+  public List<AdminBookDTO> searchBookList(String keyword) throws Exception {
     return sql.selectList(namespace + ".searchBookList", keyword);
   }
 

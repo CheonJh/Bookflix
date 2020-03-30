@@ -77,7 +77,7 @@
   <!-- 업로드 경로 설정(임시) -->
   <beans:bean class="java.lang.String" id="uploadPath">
     <beans:constructor-arg
-      value="C:\Users\AGC\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
+      value="C:\Users\ih5jh\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
   </beans:bean>
 
   <!-- 일반 파일 업로드 경로 ?? 왜쓰는지 모름 -->

@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.green.book.domain.BookDTO;
+import com.green.adminBook.domain.AdminBookDTO;
 import com.green.search.model.SearchDAO;
 
 
@@ -18,7 +18,7 @@ public class SearchServiceImpl implements SearchService {
   
   // 1) 검색 책 리스트
   @Override
-  public List<BookDTO> searchBookList(String keyword) throws Exception {
+  public List<AdminBookDTO> searchBookList(String keyword) throws Exception {
     return dao.searchBookList(keyword);
   }
 }

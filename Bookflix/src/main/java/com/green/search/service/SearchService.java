@@ -2,11 +2,11 @@ package com.green.search.service;
 
 import java.util.List;
 
-import com.green.book.domain.BookDTO;
+import com.green.adminBook.domain.AdminBookDTO;
 
 public interface SearchService {
   
   // 1) 검색 책 리스트
-  public List<BookDTO> searchBookList(String keyword) throws Exception;
+  public List<AdminBookDTO> searchBookList(String keyword) throws Exception;
 
 }

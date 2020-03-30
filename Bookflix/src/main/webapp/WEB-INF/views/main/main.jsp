@@ -146,7 +146,7 @@ $(document).ready(function () {
         <div class="slide">
           <ul>
             <c:forEach items="${favorite}" var="favorite">
-              <li><a href="#"><img src="/resources/imgs/book-imgs/${favorite.e_book_img_path}.jpg" alt="$favorite.e_book_title"></a></li>
+              <li><a href="#"><img src="/resources/imgs/book-imgs/${favorite.e_book_img_path}" alt=""></a></li>
             </c:forEach>
           </ul>
         </div>
@@ -155,7 +155,7 @@ $(document).ready(function () {
         <div class="slide">
           <ul>
             <c:forEach items="${newbook}" var="newbook">
-              <li><a href="#"><img src="/resources/imgs/book-imgs/${newbook.e_book_img_path}.jpg" alt="$newbook.e_book_title"></a></li>
+              <li><a href="#"><img src="/resources/imgs/book-imgs/${newbook.e_book_img_path}" alt=""></a></li>
             </c:forEach>
           </ul>
         </div>

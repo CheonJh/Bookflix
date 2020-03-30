@@ -7,13 +7,14 @@
 <mapper namespace="com.green.mapper.searchMapper">
 
   <!-- 책 검색 --> 
-  <select id="searchBookList" parameterType="String" resultType="com.green.book.domain.BookDTO">
-    SELECT * FROM E_BOOK
-    WHERE E_BOOK_TITLE LIKE '%'#{keyword}'%'
-    or E_BOOK_WRITER LIKE '%'#{keyword}'%'
-    or E_BOOK_INFO LIKE '%'#{keyword}}'%'
-    or E_BOOK_INDEX LIKE '%'#{keyword}'%'
-    or E_BOOK_TAG LIKE '%#'#{keyword}'%'
+  <select id="searchBookList" parameterType="String" resultType="com.green.adminBook.domain.AdminBookDTO">
+    SELECT e_book_num, e_book_title, e_book_writer, e_book_date, e_book_info, e_book_index, e_book_img_path, e_book_tag
+    FROM E_BOOK
+    WHERE E_BOOK_TITLE LIKE '%' #{keyword} '%'
+    or E_BOOK_WRITER LIKE '%' #{keyword} '%'
+    or E_BOOK_INFO LIKE '%' #{keyword} '%'
+    or E_BOOK_INDEX LIKE '%' #{keyword} '%' 
+    or E_BOOK_TAG LIKE '%' #{keyword} '%'
     order by E_BOOk_NUM DESC;
   </select>
 
