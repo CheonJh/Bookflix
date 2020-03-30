@@ -17,8 +17,10 @@
 <style type="text/css">
 #notignb {
   width: 100%;
-  height: 200px;
+  height: 50px;
   margin: 0 auto;
+  text-align: center;
+  padding-top: 10px;
 }
 
 #notignb ul {
@@ -28,7 +30,8 @@
 
 #notignb ul li {
   display: inline;
-  font: bold 25px;
+  font: bold 35px;
+  margin: 10px;
 }
 
 

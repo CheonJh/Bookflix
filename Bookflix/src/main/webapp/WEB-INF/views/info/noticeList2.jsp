@@ -15,6 +15,25 @@
 <title>TestPageForm</title>
 
 <style type="text/css">
+#notignb {
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#notignb ul {
+ padding-top: 15px;
+ 
+}
+
+#notignb ul li {
+  display: inline;
+  font: bold 35px;
+  margin: 10px;
+}
+
 li {
   list-style: none;
 }
