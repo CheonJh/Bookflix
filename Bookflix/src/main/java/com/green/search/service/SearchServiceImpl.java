@@ -16,9 +16,21 @@ public class SearchServiceImpl implements SearchService {
   @Inject
   private SearchDAO dao;
   
-  // 1) 검색 책 리스트
+  // 1) 전체 책 리스트
+  @Override
+  public List<AdminBookDTO> BookList() throws Exception {
+    return dao.booklist();
+  }
+  
+  // 2) 검색 책 리스트
   @Override
   public List<AdminBookDTO> searchBookList(String keyword) throws Exception {
     return dao.searchBookList(keyword);
+  }
+  
+  // 3) 검색한 책 개수
+  @Override
+  public int searchBookCount(String keyword) throws Exception {
+    return dao.searchBookCount(keyword);
   }
 }
