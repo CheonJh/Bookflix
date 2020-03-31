@@ -141,7 +141,7 @@
               <button type="submit" id="subBtn" class="btn btn-outline-secondary">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </div>
+            </div> 
           </div>
         </form>
       </div>   
