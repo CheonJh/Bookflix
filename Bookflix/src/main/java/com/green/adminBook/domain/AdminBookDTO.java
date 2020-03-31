@@ -1,7 +1,5 @@
 package com.green.adminBook.domain;
 
-import java.util.Date;
-
 public class AdminBookDTO {
 
   private Integer e_book_num;
