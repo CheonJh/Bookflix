@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+
+body {
+  background-color: #fff;
+}
+
+.wrap {
+  width: 800px;
+  margin: auto;
+}
+
+.title {
+  padding: 30px;
+}
+
+.ul {
+  background-color: #ddd;
+}
+
+.li {
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+.member {
+  font-size: 16px;
+}
+
+.titlewrap {
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* 마이페이지 제목 */
+.title > h3 {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+/* contents */
+.contents .li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size:20px; 
+}
+
+.contents .ul {
+  background-color: #f3f3f3;
+  color: #979797;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-indent: 10px;
+}
+
+/* 밑줄넣기 */
+.content2 > .li:nth-child(2) {
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.content3 >.li:nth-child(2) {
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.content3 > .li:nth-child(3) {
+  padding-bottom: 200px;
+}

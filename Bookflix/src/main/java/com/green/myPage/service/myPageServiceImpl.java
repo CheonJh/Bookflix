@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.green.member.domain.MemberDTO;
 import com.green.myPage.domain.myPageDTO;
 import com.green.myPage.model.myPageDAO;
 
@@ -62,4 +63,10 @@ public class myPageServiceImpl implements myPageService {
   public void sub3(int member_num) throws Exception {
     dao.sub3(member_num);
   }
+  
+  //파일 업로드
+ @Override
+ public void file(MemberDTO dto) throws Exception {
+   dao.file(dto);
+ }
 }
