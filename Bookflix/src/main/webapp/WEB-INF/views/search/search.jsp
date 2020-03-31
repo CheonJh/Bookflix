@@ -155,7 +155,7 @@
     <div class="row bookList" id="basicBookList">
       <c:forEach items="${bookList}" var="bookList" varStatus="status">
         <div class="col-sm-6 col-md-3 bookList-dv" >
-          <a href="/book/book?e_book_num=${bookList.e_book_num}">
+          <a href="/book/view?e_book_num=${bookList.e_book_num}">
             <div class="thumbnailImg">
               <img src="/resources/imgs/book-imgs/${bookList.e_book_img_path}" />
               <h4>${bookList.e_book_title}</h4>
