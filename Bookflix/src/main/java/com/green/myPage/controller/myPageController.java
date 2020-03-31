@@ -26,7 +26,7 @@ public class myPageController {
   @Inject
   myPageService service;
   
-  @Resource(name="uploadPath")
+  @Resource(name="uploadPath2")
   private String uploadPath;
   
   @RequestMapping(value = "/mylib", method = RequestMethod.GET)
