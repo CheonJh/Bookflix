@@ -19,7 +19,8 @@
           AND E_BOOK_WRITER like CONCAT('%', #{keyword}, '%')
         </if>
         <if test="searchType=='e_book_publisher'">
-          AND E_BOOK_PUBLISHER like CONCAT('%', #{keyword}, '%')
+          AND E_BOOK_PUBLISHER like CONCAT('%', #{keyword},
+          '%')
         </if>
         <if test="searchType=='e_book_tag'">
           AND E_BOOK_TAG like CONCAT('%', #{keyword}, '%')
@@ -75,34 +76,40 @@
 
   <!-- <selcet id="test" resultType="com.green.adminBook.domain.AdminBookDTO"> 
     select E_BOOK_IMG_PATH, E_BOOK_THUMBNAIL </selcet> -->
-  <select id="adminBookView" resultType="com.green.adminBook.domain.AdminBookDTO">
+  <select id="adminBookView"
+    resultType="com.green.adminBook.domain.AdminBookDTO">
     select
     E_BOOK_TITLE, E_BOOK_WRITER, E_BOOK_TRANSLATER,
     E_BOOK_PUBLISHER, E_BOOK_INFO, E_BOOK_INDEX,
-    E_BOOK_DATE, E_BOOK_TAG, E_BOOK_IMG_PATH, E_BOOK_THUMBNAIL
+    E_BOOK_DATE, E_BOOK_TAG,
+    E_BOOK_IMG_PATH, E_BOOK_THUMBNAIL
     from E_BOOK
-    where E_BOOK_NUM = #{e_book_num}
+    where E_BOOK_NUM =
+    #{e_book_num}
   </select>
-  
-  <update id="adminBookModify" parameterType="com.green.adminBook.domain.AdminBookDTO">
-    update E_BOOK set 
+
+  <update id="adminBookModify"
+    parameterType="com.green.adminBook.domain.AdminBookDTO">
+    update E_BOOK set
     E_BOOK_TITLE = #{e_book_title},
-		E_BOOK_WRITER = #{e_book_writer},
-		E_BOOK_TRANSLATER = #{e_book_translater},
+    E_BOOK_WRITER = #{e_book_writer},
+    E_BOOK_TRANSLATER = #{e_book_translater},
     E_BOOK_PUBLISHER = #{e_book_publisher},
     E_BOOK_INFO = #{e_book_info},
     E_BOOK_INDEX = #{e_book_index},
     E_BOOK_DATE = #{e_book_writer},
     E_BOOK_TAG = #{e_book_tag},
     E_BOOK_IMG_PATH = #{e_book_img_path},
-    E_BOOK_THUMBNAIL = #{e_book_thumbnail}
-		where E_BOOK_NUM = #{e_book_num}
+    E_BOOK_THUMBNAIL =
+    #{e_book_thumbnail}
+    where E_BOOK_NUM = #{e_book_num}
   </update>
-  
-   <delete id="adminBookDelete" parameterType="com.green.adminBook.domain.AdminBookDTO">
+
+  <delete id="adminBookDelete"
+    parameterType="com.green.adminBook.domain.AdminBookDTO">
     delete
     from E_BOOK
     where E_BOOK_NUM
-    = #{e_book_num} 
+    = #{e_book_num}
   </delete>
 </mapper>
