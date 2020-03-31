@@ -6,31 +6,170 @@
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <mapper namespace="com.green.mapper.adminInfoMapper">
 
-  <!-- 공지사항 총 갯수 -->
-  <select id="adminInfocount" resultType="int">
-    select count(notice_num) from NOTICE
-  </select>
-  
-  <!-- 공지사항 목록 -->
-  <select id="listPage" parameterType="hashMap"
-    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+  <!-- 공지사항 총 갯수 --> 
+  <select id="adminnoticecount" resultType="int">
     select
-    notice_num, notice_category,
-    notice_title,
-    notice_viewcnt, notice_date
+    count(notice_num)
     from NOTICE
-    order by notice_num asc
-    limit
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="keyword != null and keyword != '' ">
+        <if test="searchType=='title'">
+          AND notice_title like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='category'">
+          AND notice_category like CONCAT('%', #{keyword},
+          '%')
+        </if>
+        <if test="searchType=='contents'">
+          AND notice_contents like CONCAT('%', #{keyword},
+          '%')
+        </if>
+      </if>
+    </trim>
+  </select>
+
+  <!-- 공지사항 목록 -->
+  <select id="noticelistPage" parameterType="hashMap"
+    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+    select notice_num, notice_category, notice_title,
+    notice_viewcnt,
+    notice_date
+    from NOTICE
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if
+        test="searchType=='title' and keyword != null and keyword != '' ">
+        AND notice_title like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if
+        test="searchType=='category' and keyword != null and keyword != '' ">
+        AND notice_category like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if
+        test="searchType=='contents' and keyword != null and keyword != '' ">
+        AND notice_contents like CONCAT('%', #{keyword}, '%')
+      </if>
+    </trim>
+    order by notice_num desc limit
     #{displayPost}, #{postNum}
   </select>
-  
-  
+
+
+
   <!-- 공지사항 작성 -->
-  <insert id="write"
+  <insert id="writeNotice"
     parameterType="com.green.adminInfo.domain.AdminInfoDTO">
     insert into
     NOTICE(notice_title,notice_contents,notice_category)
     values(#{notice_title},#{notice_contents},#{notice_category})
   </insert>
 
+  <!-- 공지사항 삭제 -->
+  <delete id="deleteNotice"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    delete from
+    NOTICE
+    where notice_num = #{notice_num}
+  </delete>
+
+  <!-- 공지사항 수정(내용 불러오기) -->
+  <select id="viewNotice" parameterType="int"
+    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+    select
+    notice_title,notice_contents,notice_category
+    from
+    NOTICE
+    where notice_num = #{notice_num}
+  </select>
+
+  <!-- 공지사항 수정 -->
+  <update id="modifyNotice"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    update NOTICE set
+    notice_title = #{notice_title},
+    notice_contents = #{notice_contents},
+    notice_category =
+    #{notice_category}
+    where notice_num = #{notice_num}
+  </update>
+
+  <!-- FAQ 총 갯수 -->
+  <select id="adminfaqcount" resultType="int">
+    select
+    count(faq_num)
+    from FAQ
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="keyword != null and keyword != '' ">
+        <if test="searchType=='title'">
+          AND faq_title like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='category'">
+          AND faq_category like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType=='contents'">
+          AND faq_contents like CONCAT('%', #{keyword}, '%')
+        </if>
+      </if>
+    </trim>
+  </select>
+  
+  <!-- FAQ 목록 -->
+  <select id="faqlistPage" parameterType="hashMap"
+    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+    select faq_num, faq_category, faq_title
+    from FAQ
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if
+        test="searchType=='title' and keyword != null and keyword != '' ">
+        AND faq_title like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if
+        test="searchType=='category' and keyword != null and keyword != '' ">
+        AND faq_category like CONCAT('%', #{keyword}, '%')
+      </if>
+      <if
+        test="searchType=='contents' and keyword != null and keyword != '' ">
+        AND faq_contents like CONCAT('%', #{keyword}, '%')
+      </if>
+    </trim>
+    order by faq_num desc limit
+    #{displayPost}, #{postNum}
+  </select>
+  
+  <!-- FAQ 작성 -->
+  <insert id="writeFAQ"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    insert into
+    FAQ(faq_title,faq_contents,faq_category)
+    values(#{faq_title},#{faq_contents},#{faq_category})
+  </insert>
+  
+  
+  <!-- FAQ 삭제 -->
+  <delete id="deleteFAQ"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    delete from
+    FAQ
+    where faq_num = #{faq_num}
+  </delete>
+  
+   <!-- FAQ 수정(내용 불러오기) -->
+  <select id="viewFAQ" parameterType="int"
+    resultType="com.green.adminInfo.domain.AdminInfoDTO">
+    select
+    faq_title,faq_contents,faq_category
+    from
+    FAQ
+    where faq_num = #{faq_num}
+  </select>
+
+  <!-- FAQ 수정 -->
+  <update id="modifyFAQ"
+    parameterType="com.green.adminInfo.domain.AdminInfoDTO">
+    update FAQ set
+    faq_title = #{faq_title},
+    faq_contents = #{faq_contents},
+    faq_category =
+    #{faq_category}
+    where faq_num = #{faq_num}
+  </update>
 </mapper>

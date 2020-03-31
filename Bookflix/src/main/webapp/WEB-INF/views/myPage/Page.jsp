@@ -48,10 +48,9 @@
     <div class="contents">
     <div class = content1>
     <div class="ul">기본 설정</div>
-    <div class="li">내 정보 관리</div>
+    <div class="li">
+      <a href="/member/modifyMember">내 정보</a>
     </div>
-    
-    <div class = content2>
     <div class="ul">서비스 관리</div>
     <div class="li">
       <a href="/myPage/mylib">내 서재 관리</a>
@@ -63,8 +62,12 @@
     
     <div class = content3>
     <div class="ul">서비스 안내</div>
-    <div class="li">고객센터</div>
-    <div class="li">회원탈퇴</div>
+    <div class="li">
+      <a href="/info/noticeList?num=1">고객센터</a>
+    </div>
+    <div class="li">
+      <a href="/member/signOut1">회원탈퇴</a>
+    </div>
     </div>
   </div>
   </div>

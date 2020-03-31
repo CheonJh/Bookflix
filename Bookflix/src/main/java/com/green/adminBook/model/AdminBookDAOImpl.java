@@ -1,6 +1,5 @@
 package com.green.adminBook.model;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.green.adminBook.domain.AdminBookDTO;
+import com.green.util.Search;
 
 @Repository
 public class AdminBookDAOImpl implements AdminBookDAO {
@@ -19,25 +19,40 @@ public class AdminBookDAOImpl implements AdminBookDAO {
   private static String namespace="com.green.mapper.adminBookMapper";
 
   @Override
-  public int adminBookCount() throws Exception {
-    return sql.selectOne(namespace+".adminBookCount");
+  public int adminBookCount(Search search) throws Exception {
+    return sql.selectOne(namespace+".adminBookCount", search);
   }
 
 
   @Override
-  public List adminBookList(int displayPost, int postNum) throws Exception {
-    HashMap postData = new HashMap();
+  public List adminBookList(Search search) throws Exception {
     
-    postData.put("displayPost", displayPost);
-    postData.put("postNum", postNum);
-    
-    return sql.selectList(namespace+".adminBookList", postData);
+    return sql.selectList(namespace+".adminBookList", search);
   }
 
 
   @Override
   public void adminBookReg(AdminBookDTO DTO) throws Exception {
     sql.insert(namespace+".adminBookReg", DTO);
+  }
+
+
+  @Override
+  public AdminBookDTO adminBookView(int e_book_num) throws Exception {
+    return sql.selectOne(namespace+".adminBookView", e_book_num);
+  }
+
+
+  @Override
+  public void adminBookModify(AdminBookDTO DTO) throws Exception {
+    // TODO Auto-generated method stub
+    sql.selectOne(namespace+".adminBookModify", DTO);
+  }
+
+
+  @Override
+  public void adminBookDelete(AdminBookDTO DTO) throws Exception {
+    sql.delete(namespace+".adminBookDelete", DTO);
   }
 
 

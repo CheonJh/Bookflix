@@ -45,9 +45,6 @@ li, a{
 </head>
 <body>
 <form method="post">
-  <div class="logo">
-    <img src="images/sampleLogo.png" alt="">
-  </div>
   
   <div class="container">
   <table class="table table-bordered tbFAQ">
@@ -64,10 +61,10 @@ li, a{
     </tr>
   </table>
 
-  <li>Q:내용1
-    
-    <p>${notice.notice_contents}</p>
-  </li>
+  <p>Q:${notice.notice_title}</p>
+  <p>${notice.notice_contents}</p>
+  
+   <p>조회수 : ${notice.notice_viewcnt}</p>
   
   <hr>
 

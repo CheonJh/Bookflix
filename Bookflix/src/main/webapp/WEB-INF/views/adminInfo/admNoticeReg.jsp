@@ -15,28 +15,15 @@
 <title>admNoticeReg</title>
 
 <!-- *************************************************** -->
-<style type="text/css">
+<link rel="stylesheet" href="/resources/css/adminInfo/admNoticeReg.css" />
+<script src="/resources/js/adminInfo/admNoticeReg.js"></script>
 
-.container {
-  width: 1000px;
-}
-
-#validationTextarea {
-  height: 500px;
-}
-
-#title {
-  text-align: center;
-  margin: 3rem 0;
-}
-
-</style>
 <!-- *************************************************** -->
 </head>
 <body>
   <div class="container">
     <h1 class="text-primary" id="title">공지사항</h1>
-    <form method="post">
+    <form method="post" onsubmit="return check()">
       <!-- 제목 -->
       <div class="form-group row">
         <label for="tilte" class="col-sm-2 col-form-label">제목</label>
@@ -58,8 +45,9 @@
       <div class="form-group row">
         <label for="validationTextarea" class="col-sm-2 col-form-label">말머리</label>
         <div class="col-sm-2">
-          <select class="custom-select" name="notice_category">
-            <option selected>선택하세요.</option>
+          <select class="custom-select" name="notice_category"
+            id="cateSt">
+            <option selected value="0">선택하세요.</option>
             <option value="공지사항">공지사항</option>
             <option value="이벤트">이벤트</option>
             <option value="업데이트">업데이트</option>
@@ -69,7 +57,7 @@
       <!-- 등록버튼 -->
       <div class="form-group row">
         <div class="col-sm-2 offset-5">
-          <button type="submit" class="btn btn-primary">등록</button>
+          <button type="sumbit" class="btn btn-primary">등록</button>
         </div>
       </div>
     </form>

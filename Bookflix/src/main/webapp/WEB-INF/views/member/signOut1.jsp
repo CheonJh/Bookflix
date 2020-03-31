@@ -38,6 +38,26 @@ body {
   width: 49%;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function () {
+
+  // 다음 버튼 클릭시 체크박스에 체크 됐는지 확인하고 넘기기
+  $('#btn_next').click(function () {
+    if ($('input:checkbox[id="chk_agree"]').is(":checked")==true){
+      location.href = "/member/signOut2";
+    } else {
+      alert("유의사항을 체크해주세요.");
+      //return false;
+    }
+  }); // #btn_next.click
+  
+  // 돌아가기 버튼 클릭시 다시 마이페이지로 
+  $('#btn_back').click(function () {
+      location.href = "/myPage/Page";
+  }); // #btn_back.click
+  
+});
+</script>
 </head>
 <body>
   <h3>회원 탈퇴</h3>
@@ -46,13 +66,13 @@ body {
     <div class="usage">
     
       <p>
-        ${member.member_nickname}님
+        <strong>${member.member_name}</strong>님
         <c:if test="${member.member_grade==2}">
          은 구독회원입니다. 
         </c:if>
       </p>
       <c:if test="${member.member_grade==2}">
-        <p>남은 구독기간  :일</p>
+        <p>남은 구독기간 ${date} : 일</p>
       </c:if>
     </div>
     <br>
@@ -75,12 +95,12 @@ body {
 
     <form>
       <div class="accept">
-        <p>유의사항을 숙지 하였으며 탈퇴에 동의합니다. <input type="checkbox"></p>
+        <p>유의사항을 숙지 하였으며 탈퇴에 동의합니다. <input id="chk_agree" type="checkbox"></p>
       </div>
       <br>
       <div class="form-group">
-        <a href="/" class="btn btn-primary">돌아가기</a>
-        <a href="/member/signOut2" class="btn btn-danger">다음</a>
+        <button type="button" id="btn_back" class="btn btn-primary">돌아가기</button>
+        <button type="button" id="btn_next" class="btn btn-danger">다음</button>
       </div>
     </form>
 
