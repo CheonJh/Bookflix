@@ -22,17 +22,13 @@ public class BookController {
 
   @Inject
   private BookService bookService;
-  
-  
-  private boolean thumbCheck;
-  private boolean favoriteCheck;
-  
-  
 
   // 책정보 불러오기
   @RequestMapping(value = "/view", method = RequestMethod.GET)
   public void getView(@RequestParam("e_book_num") int e_book_num, ThumbDTO thumbParam, 
       FavoriteDTO favoriteParam, Model model, HttpSession session) throws Exception {
+    boolean thumbCheck;
+    boolean favoriteCheck;
     // 책정보 가져오기
     BookDTO bookDTO = bookService.view(e_book_num);
 
@@ -103,6 +99,8 @@ public class BookController {
   public void postThumbup(@RequestParam("e_book_num") int e_book_num, ThumbDTO thumbParam, HttpSession session)
       throws Exception {
 
+    boolean thumbCheck = false;
+    
     // 세션에서 회원정보 불러오기
     Object member = session.getAttribute("member");
     System.out.println("멤버" + member);
@@ -132,6 +130,7 @@ public class BookController {
   public void postFavorite(@RequestParam("e_book_num") int e_book_num, FavoriteDTO favoriteParam, HttpSession session)
       throws Exception {
 
+    boolean favoriteCheck = false;
     // 세션에서 회원정보 불러오기
     MemberDTO member = (MemberDTO) session.getAttribute("member");
 
