@@ -37,7 +37,7 @@
 
   <!-- 구독 잔여 일수 -->
   <select id="date" resultType="int" parameterType="int">
-    select datediff(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as day
+    select DATEDIFF(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as day
     from SUBSCRIBE where member_num = #{member_num};
   </select>
 

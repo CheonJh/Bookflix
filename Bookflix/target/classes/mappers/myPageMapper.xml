@@ -37,12 +37,7 @@
 
   <!-- 구독 잔여 일수 -->
   <select id="date" resultType="int" parameterType="int">
-<<<<<<< HEAD
-    select datediff(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as day
-=======
-    select datediff(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as
-    day
->>>>>>> refs/remotes/origin/kooyoungjin
+    select DATEDIFF(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as day
     from SUBSCRIBE where member_num = #{member_num};
   </select>
 
@@ -63,12 +58,7 @@
   <!-- 구독하기(구독 레코드 추가) -->
   <insert id="sub2" parameterType="int">
     insert into SUBSCRIBE values(
-<<<<<<< HEAD
     (select max(s.SUBSCRIBE_NUM)+1 from SUBSCRIBE s),
-=======
-    (select max(s.SUBSCRIBE_NUM)+1 from SUBSCRIBE
-    s),
->>>>>>> refs/remotes/origin/kooyoungjin
     #{member_num}, now(), 10000);
   </insert>
 
