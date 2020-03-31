@@ -5,12 +5,73 @@
 
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <mapper namespace="com.green.mapper.bookMapper">
-<select id="book" resultType="com.green.book.domain.BookDTO">
- select
- e_book_num, e_book_title, e_book_writer, e_book_translater, e_book_publisher, e_book_date, 
- e_book_info, e_book_index, e_book_thumbupcnt, e_book_viewcnt, e_book_img_name,e_book_tag
- from E_BOOK where e_book_num = #{e_book_num}
-</select>
+  <!-- 책 상세 페이지 -->
+  <select id="view" resultType="com.green.book.domain.BookDTO"
+    parameterType="Integer">
+    select *
+    from E_BOOK where e_book_num = #{e_book_num}
+  </select>
+  
+  <!-- 좋아요 테이블 가져오기 -->
+  <select id="thumbDTO" resultType="com.green.book.domain.ThumbDTO"
+    parameterType="com.green.book.domain.ThumbDTO">
+    select *
+    from THUMBUP where member_num = #{member_num} and e_book_num = #{e_book_num}
+  </select>
 
+  <!-- 좋아요 증가 -->
+  <update id="thumbup" parameterType="int">
+    update E_BOOK
+    set
+    e_book_thumbupcnt = e_book_thumbupcnt+1
+    where e_book_num =
+    #{e_book_num};
+  </update>
+
+  <!-- THUMBUP 테이블 멤버, 책 번호 추가 -->
+  <insert id="thumbinsert"
+    parameterType="com.green.book.domain.ThumbDTO">
+    insert ignore into 
+    THUMBUP(thumbup_num, member_num, e_book_num, thumbup_date) 
+    values ((select max(t.thumbup_num)+1 
+    from THUMBUP t), #{member_num}, #{e_book_num}, CURDATE())
+  </insert>
+
+  <!-- 좋아요 감소 -->
+  <update id="thumbdown" parameterType="int">
+    update E_BOOK
+    set
+    e_book_thumbupcnt = e_book_thumbupcnt-1
+    where e_book_num =
+    #{e_book_num};
+  </update>
+
+  <!-- THUMBUP 테이블 멤버, 책 번호 삭제 -->
+  <delete id="thumbdelete" parameterType="com.green.book.domain.ThumbDTO">
+    delete from THUMBUP
+    where member_num = #{member_num} and e_book_num = #{e_book_num}
+  </delete>
+
+<!-- 찜하기 테이블 가져오기 -->
+  <select id="favoriteDTO" resultType="com.green.book.domain.FavoriteDTO"
+    parameterType="com.green.book.domain.FavoriteDTO">
+    select *
+    from FAVORITE where member_num = #{member_num} and e_book_num = #{e_book_num}
+  </select>
+  
+<!-- FAVORITE 테이블 멤버, 책 번호 추가 -->
+  <insert id="favoriteInsert"
+    parameterType="com.green.book.domain.FavoriteDTO">
+    insert ignore into 
+    FAVORITE(favorite_num, member_num, e_book_num, favorite_date) 
+    values ((select max(t.favorite_num)+1 
+    from THUMBUP t), #{member_num}, #{e_book_num}, CURDATE())
+  </insert>
+
+  <!-- FAVORITE 테이블 멤버, 책 번호 삭제 -->
+  <delete id="favoriteDelete" parameterType="com.green.book.domain.FavoriteDTO">
+    delete from FAVORITE
+    where member_num = #{member_num} and e_book_num = #{e_book_num}
+  </delete>
 
 </mapper>
