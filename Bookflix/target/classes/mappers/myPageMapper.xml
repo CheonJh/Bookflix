@@ -67,4 +67,9 @@
     update MEMBER set MEMBER_GRADE = 1 where MEMBER_NUM = #{member_num};
   </update>
 
+  <!-- 파일업로드 -->
+  <update id="fileupload" parameterType="com.green.member.domain.MemberDTO" >
+    update MEMBER set member_img=#{member_img} where MEMBER_NUM = #{member_num};
+  </update>
+  
 </mapper>
