@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.container {
+  width: 1000px;
+}
+
+#validationTextarea {
+  height: 500px;
+}
+
+#title {
+  text-align: center;
+  margin: 3rem 0;
+}
