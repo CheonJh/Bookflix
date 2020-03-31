@@ -62,8 +62,8 @@ li, a{
   
   <hr>
 
-  <button type="button" class="btn btn-light">이전페이지</button>
-  <button type="button" class="btn btn-secondary">목록페이지</button>
+  <button type="button" class="btn btn-light"><a href="javascript:history.back()">이전페이지</a></button>
+  <button type="button" class="btn btn-secondary"><a href="/info/FAQList?num=1">목록페이지</a></button>
 
   </div>
   </form>

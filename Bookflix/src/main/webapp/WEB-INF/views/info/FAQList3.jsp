@@ -35,17 +35,13 @@
 }
 
 
-li {
-  list-style: none;
-  
-}
-
 .active {
   background-color: lightgrey;
 }
 
-.container {
+.ntcontainer {
   margin: 40px auto;
+  width: 80%;
 }
 
 .tbFAQ td, .tbFAQ th {
@@ -81,6 +77,10 @@ a, a:hover {
   color: black;
   text-decoration: none;
 }
+
+.nt-page{
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -94,7 +94,7 @@ a, a:hover {
     </ul>
   </div>
 
-  <div class="container">
+  <div class="ntcontainer">
     <table class="table table-bordered tbFAQ">
       <thead>
         <tr class="active">
@@ -113,7 +113,7 @@ a, a:hover {
       </c:forEach>
     </table>
     </div>
-  <div>
+  <div class="nt-page">
   <c:if test="${prev}">
     <span>[<a href="/info/FAQList3?num=${startPageNum -1}">이전</a>]</span>
   </c:if>

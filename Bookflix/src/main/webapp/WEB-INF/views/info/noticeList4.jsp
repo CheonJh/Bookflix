@@ -15,11 +15,12 @@
 <title>TestPageForm</title>
 
 <style type="text/css">
-
 #notignb {
   width: 100%;
   height: 50px;
   margin: 0 auto;
+  text-align: center;
+  padding-top: 10px;
 }
 
 #notignb ul {
@@ -29,19 +30,18 @@
 
 #notignb ul li {
   display: inline;
-  font: bold 25px;
-}
-
-li {
-  list-style: none;
+  font: bold 35px;
+  margin: 10px;
 }
 
 .active {
   background-color: lightgrey;
 }
 
-.container {
+.ntcontainer {
   margin: 40px auto;
+  width: 80%;
+  
 }
 
 .tbFAQ td, .tbFAQ th {
@@ -69,7 +69,7 @@ li {
   width: 200px;
 }
 
-a, a:hover {
+#notignb ul li a a:hover {
   color: black;
   text-decoration: none;
 }
@@ -77,6 +77,10 @@ a, a:hover {
 .page-link {
   color: black;
   text-decoration: none;
+}
+
+.nt-page{
+  text-align: center;
 }
 </style>
 
@@ -90,7 +94,7 @@ a, a:hover {
       <li><a href="/info/noticeList4?num=1">이벤트</a></li>
     </ul>
   </div>
-  <div class="container">
+  <div class="ntcontainer">
     <table class="table table-bordered tbFAQ">
       <thead>
         <tr class="active">
@@ -115,7 +119,7 @@ a, a:hover {
     </table>
   </div>
 
-  <div>
+  <div class="nt-page">
     <c:if test="${prev}">
       <span>[<a href="/info/noticeList4?num=${startPageNum -1}">이전</a>]
       </span>

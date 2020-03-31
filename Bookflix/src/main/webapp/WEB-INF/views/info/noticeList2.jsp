@@ -34,16 +34,14 @@
   margin: 10px;
 }
 
-li {
-  list-style: none;
-}
-
 .active {
   background-color: lightgrey;
 }
 
-.container {
+.ntcontainer {
   margin: 40px auto;
+  width: 80%;
+  
 }
 
 .tbFAQ td, .tbFAQ th {
@@ -71,7 +69,7 @@ li {
   width: 200px;
 }
 
-a, a:hover {
+#notignb ul li a a:hover {
   color: black;
   text-decoration: none;
 }
@@ -79,6 +77,10 @@ a, a:hover {
 .page-link {
   color: black;
   text-decoration: none;
+}
+
+.nt-page{
+  text-align: center;
 }
 </style>
 
@@ -92,7 +94,7 @@ a, a:hover {
       <li><a href="/info/noticeList4?num=1">이벤트</a></li>
     </ul>
   </div>
-  <div class="container">
+  <div class="ntcontainer">
     <table class="table table-bordered tbFAQ">
       <thead>
         <tr class="active">
@@ -117,7 +119,7 @@ a, a:hover {
     </table>
   </div>
 
-  <div>
+  <div class="nt-page">
     <c:if test="${prev}">
       <span>[<a href="/info/noticeList2?num=${startPageNum -1}">이전</a>]
       </span>
