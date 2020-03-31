@@ -28,27 +28,39 @@
 h1 {
 	text-align: center;
 }
+
 #top {
 	margin-top: 80px;
 }
+
 .xel {
 	margin-bottom: 25px;
 }
+
 #bottom {
 	margin-bottom: 32px;
 }
+
 .container {
 	width: 1000px;
 }
+
 .select_img img {
-	background-size: cover;
-	margin: 70px 0;
+	width : 440px;
+	height : 450px;
+	margin: 35px 0;
 }
+
 .select_img {
 	text-align: center;
 	height: 520px;
 	background-color: grey;
 	justify-content: center;
+}
+
+#bottom {
+	justify-content: center;
+	margin-top: 24px;
 }
 </style>
 
@@ -68,28 +80,32 @@ h1 {
 				<div class="input-group-prepend">
 					<span class="input-group-text">제목</span>
 				</div>
-				<input type="text" class="form-control" name="e_book_title" value="${view.e_book_title}">
+				<input type="text" class="form-control" name="e_book_title"
+					value="${view.e_book_title}">
 			</div>
 
 			<div class="input-group xel">
 				<div class="input-group-prepend">
 					<span class="input-group-text">저자</span>
 				</div>
-				<input type="text" class="form-control" name="e_book_writer" value="${view.e_book_writer }">
+				<input type="text" class="form-control" name="e_book_writer"
+					value="${view.e_book_writer }">
 			</div>
 
 			<div class="input-group xel">
 				<div class="input-group-prepend">
 					<span class="input-group-text">역자</span>
 				</div>
-				<input type="text" class="form-control" name="e_book_translater" value="${view.e_book_translater}">
+				<input type="text" class="form-control" name="e_book_translater"
+					value="${view.e_book_translater}">
 			</div>
 
 			<div class="input-group xel">
 				<div class="input-group-prepend">
 					<span class="input-group-text">출판사</span>
 				</div>
-				<input type="text" class="form-control" name="e_book_publisher" value="${view.e_book_publisher }">
+				<input type="text" class="form-control" name="e_book_publisher"
+					value="${view.e_book_publisher }">
 			</div>
 
 			<div class="input-group xel">
@@ -112,7 +128,8 @@ h1 {
 					<span class="input-group-text">출판일</span>
 				</div>
 				<input type="text" id="datePicker" placeholder="날짜 선택"
-					class="form-control col-md-3" name="e_book_date" value="${view.e_book_date}">
+					class="form-control col-md-3" name="e_book_date"
+					value="${view.e_book_date}">
 			</div>
 
 			<script>
@@ -131,16 +148,17 @@ h1 {
 				<div class="input-group-prepend">
 					<span class="input-group-text">태그</span>
 				</div>
-				<input type="text" class="form-control" name="e_book_tag" value="${view.e_book_tag }">
+				<input type="text" class="form-control" name="e_book_tag"
+					value="${view.e_book_tag }">
 			</div>
-			
-			
+
+
 
 			<div class="inputArea input-group mb-3">
 				<div class="input-group-prepend">
 					<label class="input-group-text" for="e_book_img_path">이미지</label>
 				</div>
-				<input type="file" id="e_book_img_path" name="file"  />
+				<input type="file" id="e_book_img_path" name="file" />
 				<script>
           $("#e_book_img_path").change(
               function() {
@@ -148,7 +166,9 @@ h1 {
                   var reader = new FileReader;
                   reader.onload = function(data) {
                     $(".select_img img").attr("src", data.target.result).width(
-                        500);
+                        440);
+                    $(".select_img img").attr("src", data.target.result).height(
+                        450)
                   }
                   reader.readAsDataURL(this.files[0]);
                 }
@@ -156,16 +176,19 @@ h1 {
         </script>
 				<%-- <%=request.getRealPath("/")%>--%>
 			</div>
-			
+
 			<!-- 파일 삭제를 위한 인풋 태그! -->
-			<input type="text" name="oldFile" value="${view.e_book_img_path}">
-			<input type="text" name="oldThumbnail" value="${view.e_book_thumbnail}">
-			
-			
-			<div class="row select_img"> 
-				<img src="/book-imgs/${view.e_book_img_path}"/>
+			<input type="hidden" name="oldFile" value="${view.e_book_img_path}">
+			<input type="hidden" name="oldThumbnail"
+				value="${view.e_book_thumbnail}">
+
+
+			<div class="row select_img">
+				<img class="img-thumbnail" src="/book-imgs/${view.e_book_img_path}" />
 			</div>
-			<input type="submit" value="전송">
+			<div class="row" id="bottom">
+				<button type="submit" class="btn btn-primary">전송</button>
+			</div>
 		</form>
 
 	</div>

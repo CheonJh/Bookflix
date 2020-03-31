@@ -35,15 +35,11 @@ li {
 #box1 {
 	margin-bottom: 1rem;
 }
-
-#box4 {
+.pagination{
 	justify-content: center;
 }
 </style>
 <script>
-	$("input[name=check]:checked").closest("td").children(".imgPath")
-	$("input[name=check]:checked").closest("td").children(".imgThumb")
-
 	$(document).ready(function () {
     $("#checkbox").click(function () {
       // 클릭되었으면
@@ -96,7 +92,18 @@ li {
    });
   } 
  });
- 	 
+ 
+   // 검색 스크립트
+   $(document).on('click', '#btnSearch', function(e) {
+     e.preventDefault();
+ /*  var url = "${pageContext.request.contextPath}/adminBook/adminBookList"; */
+ 		var url = "${getAdminBookList}";
+ 		url = url + "?searchType=" + $('#searchType').val();
+     url = url + "&keyword=" + $('#keyword').val();
+     location.href = url;
+     console.log(url);
+   }); 
+  });
  	//페이지네이션
  	//이전 버튼 글릭
    function fn_prev(page, range, rangeSize, searchType, keyword) {
@@ -130,18 +137,6 @@ li {
      url = url + "&keyword=" + keyword;
      location.href = url;
    }
-
-   // 검색 스크립트
-   $(document).on('click', '#btnSearch', function(e) {
-     e.preventDefault();
- /*  var url = "${pageContext.request.contextPath}/adminBook/adminBookList"; */
- 		var url = "${getAdminBookList}";
- 		url = url + "?searchType=" + $('#searchType').val();
-     url = url + "&keyword=" + $('#keyword').val();
-     location.href = url;
-     console.log(url);
-   }); 
-  });
 </script>
 </head>
 <body>
@@ -213,18 +208,15 @@ li {
 			<ul class="pagination">
 				<c:if test="${pagination.prev}">
 					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}',
-						'${search.searchType }', '${search.keyword }');">Previous</a></li>
+						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}','${search.searchType }', '${search.keyword }');">Previous</a></li>
 				</c:if>
 				<c:forEach begin="${pagination.startPage}"
 					end="${pagination.endPage}" var="idx">
 					<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-					<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }');">
-							${idx} </a></li>
+					<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }');"> ${idx} </a></li>
 				</c:forEach>
 				<c:if test="${pagination.next}">
-					<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}',
-						 '${search.searchType }', '${search.keyword }');">Next</a></li>
+					<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}',${search.searchType }', '${search.keyword }');">Next</a></li>
 				</c:if>
 			</ul>
 		</div>

@@ -56,6 +56,10 @@ h1 {
 	background-color: grey;
 	justify-content: center;
 }
+#bottom{
+	justify-content : center;
+	margin-top : 24px;
+}
 </style>
 
 <script>
@@ -168,7 +172,9 @@ h1 {
 			<div class="row select_img">
 				<img src="" />
 			</div>
-			<input type="submit" value="전송">
+			<div class="row" id="bottom">
+				<button type="submit" class="btn btn-primary">전송</button>
+			</div>
 		</form>
 
 	</div>
