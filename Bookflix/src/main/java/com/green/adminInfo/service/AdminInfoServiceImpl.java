@@ -18,21 +18,21 @@ public class AdminInfoServiceImpl implements AdminInfoService {
   // 공지사항 총 갯수
 
   @Override
-  public int count(AdminInfoDTO dto) throws Exception {
-    return dao.count(dto);
+  public int countNotice(AdminInfoDTO dto) throws Exception {
+    return dao.countNotice(dto);
   }
 
   // 공지사항 목록
 
   @Override
-  public List<AdminInfoDTO> listPage(int displayPost, int postNum, AdminInfoDTO dto) throws Exception {
-    return dao.listPage(displayPost, postNum, dto);
+  public List<AdminInfoDTO> noticelistPage(int displayPost, int postNum, AdminInfoDTO dto) throws Exception {
+    return dao.noticelistPage(displayPost, postNum, dto);
   }
 
   // 공지사항 작성
   @Override
-  public void write(AdminInfoDTO dto) throws Exception {
-    dao.write(dto);
+  public void writeNotice(AdminInfoDTO dto) throws Exception {
+    dao.writeNotice(dto);
   }
 
   // 공지사항 삭제
@@ -43,14 +43,49 @@ public class AdminInfoServiceImpl implements AdminInfoService {
 
   // 공지사항 수정(내용 불러오기)
   @Override
-  public AdminInfoDTO view(int notice_num) throws Exception {
-    return dao.view(notice_num);
+  public AdminInfoDTO viewNotice(int notice_num) throws Exception {
+    return dao.viewNotice(notice_num);
   }
 
   // 공지사항 수정
   @Override
-  public void modify(AdminInfoDTO dto) throws Exception {
-    dao.modify(dto);
+  public void modifyNotice(AdminInfoDTO dto) throws Exception {
+    dao.modifyNotice(dto);
   }
 
+  // FAQ 총 갯수
+  @Override
+  public int countFAQ(AdminInfoDTO dto) throws Exception {
+    return dao.countFAQ(dto);
+  }
+
+  // FAQ 목록
+  @Override
+  public List<AdminInfoDTO> faqlistPage(int displayPost, int postNum, AdminInfoDTO dto) throws Exception {
+    return dao.faqlistPage(displayPost, postNum, dto);
+  }
+
+  // FAQ 작성
+  @Override
+  public void writeFAQ(AdminInfoDTO dto) throws Exception {
+    dao.writeFAQ(dto);
+  }
+
+  // FAQ 삭제
+  @Override
+  public void deleteFAQ(AdminInfoDTO dto) throws Exception {
+    dao.deleteFAQ(dto);
+  }
+  
+// FAQ 수정(내용 불러오기)
+ @Override
+ public AdminInfoDTO viewFAQ(int faq_num) throws Exception {
+   return dao.viewFAQ(faq_num);
+ }
+
+ // FAQ 수정
+ @Override
+ public void modifyFAQ(AdminInfoDTO dto) throws Exception {
+   dao.modifyFAQ(dto);
+ }
 }

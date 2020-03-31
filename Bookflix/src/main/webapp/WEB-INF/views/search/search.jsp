@@ -14,11 +14,14 @@
 
 <title>BOOKFLIX 검색</title>
 <script type="text/javascript">
-$(function () {
-  var keyword='';
-});
-<!--  
+ 
   $(function() {
+    /* 검색 후 전체 목록 숨기기 */
+    $("#subBtn").click(function() {
+      $("#basicBookList").hide();
+    });
+    
+    
     var keyword = '';
     var cnt = 1;
 
@@ -36,7 +39,7 @@ $(function () {
     $("#moreinfo").on("click",function() {
       keyword = $("#keyword").val();
       $.ajax({
-        url : "/search/searchAjax/search?keyword="+keyword,
+        url : "/search/searchAjax?keyword="+keyword,
         type : "post",
         dataType : "json",
         success : function(data) {
@@ -87,7 +90,7 @@ $(function () {
     });//AJAX END
   });//moreinfo click END
 });//function END
--->
+
 </script>
 
 <style type="text/css">
@@ -119,21 +122,26 @@ $(function () {
   height: 250px;
   margin: 0 auto;
 }
+
+.bookList-dv:hover {
+  border: solid 2px orange;
+}
+
 </style>
 </head>
 <body>
   <div class="container">
     <div class="row">
       <div class="col">
-        <!-- 검색 -->
+        <!-- 검색 --> 
         <form id="searchForm" action="/search/search" method="post" role="search" class="center">
           <div class="input-group mb-3 input-group-lg">
-            <input type="text" class="form-control" name="searchKeyword" placeholder="검색할 단어를 입력하세요." aria-describedby="subBtn" value=${keyword}>
+            <input type="text" class="form-control" name="searchKeyword" placeholder="검색할 단어를 입력하세요." aria-describedby="subBtn" value="${keyword}">
             <div class="input-group-append">
               <button type="submit" id="subBtn" class="btn btn-outline-secondary">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </div>
+            </div> 
           </div>
         </form>
       </div>   
@@ -143,18 +151,33 @@ $(function () {
     <!-- e_book_img_path, e_book_num, e_book_title, e_book_writer -->
     <%-- <input type="hidden" name="keyword" value="${keyword}" id="keyword" /> --%>
     
-    <c:if test="${bookList !=null}">
-      <h4>'${keyword}' 검색</h4>
-    </c:if>
-    
-    <div class="row">
+    <!-- 기본 전체 목록 -->
+    <div class="row bookList" id="basicBookList">
       <c:forEach items="${bookList}" var="bookList" varStatus="status">
-        <div class="col-sm-6 col-md-3">
-          <a href="/book/book?e_book_num=${bookList.e_book_num}">
+        <div class="col-sm-6 col-md-3 bookList-dv" >
+          <a href="/book/view?e_book_num=${bookList.e_book_num}">
             <div class="thumbnailImg">
               <img src="/resources/imgs/book-imgs/${bookList.e_book_img_path}" />
               <h4>${bookList.e_book_title}</h4>
               <p>${bookList.e_book_writer}</p>
+            </div>
+          </a>
+        </div>
+      </c:forEach>
+    </div>
+    
+    <!-- 검색 목록-->
+    <c:if test="${searchList !=null}">
+      <h4>'${keyword}' 검색</h4>
+    </c:if>
+    <div class="row bookList" id="searchBookList">>
+      <c:forEach items="${searchList}" var="searchList" varStatus="status">
+        <div class="col-sm-6 col-md-3 bookList-dv">
+          <a href="/book/book?e_book_num=${searchList.e_book_num}">
+            <div class="thumbnailImg">
+              <img src="/resources/imgs/book-imgs/${searchList.e_book_img_path}" />
+              <h4>${searchList.e_book_title}</h4>
+              <p>${searchList.e_book_writer}</p>
             </div>
           </a>
         </div>

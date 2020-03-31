@@ -19,11 +19,22 @@ public class MemberDTO{
   private String  member_nickname;
   private String  member_birth;
   private String  member_phone;
+  private String  member_img;
   
+ 
+
   // 생성자
   public MemberDTO() { }
 
   // get, set
+  public String getMember_img() {
+    return member_img;
+  }
+
+  public void setMember_img(String member_img) {
+    this.member_img = member_img;
+  }
+  
   public Integer getMember_num() {
     return member_num;
   }

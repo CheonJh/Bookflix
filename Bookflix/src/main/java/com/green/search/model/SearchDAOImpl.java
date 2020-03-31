@@ -18,11 +18,23 @@ public class SearchDAOImpl implements SearchDAO {
 
   // 매퍼
   private static String namespace = "com.green.mapper.searchMapper";
-
-  // 1) 책 검색
+  
+  // 1) 전체 책
+  @Override
+  public List<AdminBookDTO> booklist() throws Exception {
+    return sql.selectList(namespace+".bookList");
+  }
+  
+  // 2) 책 검색
   @Override
   public List<AdminBookDTO> searchBookList(String keyword) throws Exception {
     return sql.selectList(namespace + ".searchBookList", keyword);
+  }
+  
+  // 3) 검색한 책 개수
+  @Override
+  public int searchBookCount(String keyword) throws Exception {
+    return sql.selectOne(namespace+".searchBookCount", keyword);
   }
 
 }
