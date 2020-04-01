@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,59 +14,81 @@
 
 <title>TestPageForm</title>
 
-  <style type="text/css">
-
-.table{
+<style type="text/css">
+.table {
   top: 100px;
-  
 }
 
-.active{
+.active {
   background-color: lightgray;
   width: 200px;
 }
 
-.tbFAQ td, .tbFAQ th{
+.tb-ttl {
+  background-color: #e8e9f9;
+}
+
+.tbFAQ td, .tbFAQ th {
   margin: 0;
   padding: 0;
- height: 30px;
- line-height: 30px;
- text-align: center;
- max-width: 600px;
-
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  max-width: 600px;
 }
 
-li, a{
+li, a {
   list-style: none;
 }
+.btn-back {
+  background-color: #77ace1;
+}
 
-.btn-secondary{
+.btn-back:hover{
+background-color: lightblue; 
+border: 1px solid lightblue;
+}
+
+.btn-page {
   float: right;
-}</style>
+}
+
+.btn-page:hover{
+background-color: skyblue; 
+border: 1px solid skyblue;
+}
+
+a:hover{
+text-decoration: none;
+}
+</style>
 </head>
 <body>
-<form method="post">
-  
-  <div class="container">
-  <table class="table table-bordered tbFAQ">
-  
-    <tr>
-      <th class="active">제목</th>
-      <th>${FAQ.faq_title}</th>
-    </tr>
-    <tr>
+  <form method="post">
 
-  </table>
+    <div class="container">
+      <table class="table table-bordered tbFAQ">
 
-  <p>Q:${FAQ.faq_title}</p>
-  <p>${FAQ.faq_contents}</p>
-  
-  <hr>
+        <tr>
+          <th class="tb-ttl">제목</th>
+          <th>${FAQ.faq_title}</th>
+        </tr>
+        <tr>
+      </table>
 
-  <button type="button" class="btn btn-light"><a href="javascript:history.back()">이전페이지</a></button>
-  <button type="button" class="btn btn-secondary"><a href="/info/FAQList?num=1">목록페이지</a></button>
+      <p>Q:${FAQ.faq_title}</p>
+      <p>${FAQ.faq_contents}</p>
 
-  </div>
+      <hr>
+
+      <button type="button" class="btn btn-back">
+        <a href="javascript:history.back()">이전페이지</a>
+      </button>
+      <button type="button" class="btn btn-page">
+        <a href="/info/FAQList?num=1">목록페이지</a>
+      </button>
+
+    </div>
   </form>
 </body>
 </html>
