@@ -79,7 +79,8 @@ li {
   $.ajax({
     url : "/adminBook/adminBookDelete",
     type : "post",
-    data : { check : checkArr,
+    data : { 
+      check : checkArr,
       check2 : checkArr2,
     	check3 : checkArr3
     },

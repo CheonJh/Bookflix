@@ -59,12 +59,11 @@ public class AdminBookController {
   }
 
   @RequestMapping(value = "/adminBookReg", method = RequestMethod.POST)
-  public String postAdminBookReg(AdminBookDTO DTO, MultipartFile file) throws Exception {
+  public String postAdminBookReg(AdminBookDTO DTO, @RequestParam MultipartFile file) throws Exception {
 
     String imgUploadPath = uploadPath + File.separator;
     String fileName = null;
-   
-    if (file != null) {
+    if (file != null && file.getSize() > 0) {
       fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes());
     } else {
       fileName = "none.jpg";
@@ -87,27 +86,29 @@ public class AdminBookController {
   @RequestMapping(value = "/adminBookMod", method = RequestMethod.POST)
   public String postAdminBookMod(AdminBookDTO DTO, @RequestParam("oldFile") String path,
       @RequestParam("oldThumbnail") String thumbpath, MultipartFile file) throws Exception {
+    
+    
    //파일 삭제 코드
    File oldFile = new File(uploadPath+File.separator+path);
    File oldThumbnail = new File(uploadPath+File.separator+thumbpath);
 
-   if(oldFile.exists()) {
-     if(path != "none.jpg") {
-       oldFile.delete();
-     }
-   }   
-   if(oldThumbnail.exists()) {
-     oldThumbnail.delete();
-   }
-
-   
    String imgUploadPath = uploadPath + File.separator ;
    String fileName = null;
 
-   if (file != null) {
+   if (file != null && file.getSize() > 0) {
      fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes());
+     if(oldFile.exists()) {
+       if(!("none.jpg".equals(path))) {
+         oldFile.delete();
+       }
+     }   
+     if(oldThumbnail.exists()) {
+       if(!("thumbnail\\thumbnail_none.jpg".equals(thumbpath))) {
+         oldThumbnail.delete();
+       }
+     }
    } else {
-     fileName = "none.jpg";
+     fileName = path;
    }
 
    DTO.setE_book_img_path(fileName);
@@ -142,7 +143,7 @@ public class AdminBookController {
       //꺼낸값 변수에 변환해 저장
       File oldFile = new File(uploadPath+File.separator+img);
       if(oldFile.exists()) {
-        if(img != "none.jpg") {
+        if(!("none.jpg".equals(img))) {
           oldFile.delete();
         }
       }   
@@ -153,7 +154,9 @@ public class AdminBookController {
       //꺼낸값 변수에 변환해 저장
       File oldThumbnail = new File(uploadPath+File.separator+thumb);
       if(oldThumbnail.exists()) {
-        oldThumbnail.delete();
+        if(!("thumbnail\\thumbnail_none.jpg".equals(thumb))) {
+          oldThumbnail.delete();
+        }
       }
      }
   }
