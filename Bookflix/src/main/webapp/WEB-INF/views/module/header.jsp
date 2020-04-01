@@ -14,7 +14,6 @@
 <title>header</title>
 
 <style>
-@import url(commonFont.css);
 
 body * {
   margin: 0;
