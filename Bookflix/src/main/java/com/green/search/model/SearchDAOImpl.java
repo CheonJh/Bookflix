@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -26,15 +27,11 @@ public class SearchDAOImpl implements SearchDAO {
   }
   
   // 2) 책 검색
+  // RowBounds : 마이바티스 자동으로 offset, limit 처리
   @Override
-  public List<AdminBookDTO> searchBookList(String keyword) throws Exception {
-    return sql.selectList(namespace + ".searchBookList", keyword);
+  public List<AdminBookDTO> searchBookList(String keyword, int stratRow, int rowSize) throws Exception {
+    return sql.selectList(namespace + ".searchBookList", keyword, new RowBounds(stratRow, rowSize));
   }
   
-  // 3) 검색한 책 개수
-  @Override
-  public int searchBookCount(String keyword) throws Exception {
-    return sql.selectOne(namespace+".searchBookCount", keyword);
-  }
 
 }

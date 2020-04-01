@@ -21,16 +21,7 @@
     or E_BOOK_INDEX LIKE '%' #{keyword} '%' 
     or E_BOOK_TAG LIKE '%' #{keyword} '%'
     order by E_BOOk_NUM DESC;
-    <!-- limit , -->
   </select>
-  
-  <!-- 가져온 책 수 -->
-  <select id="searchBookCount">
-    SELECT count(*) FROM E_BOOK where E_BOOK_TAG LIKE '%' #{keyword} '%';
-  </select>
-  
-  
-
 
 
 </mapper>
