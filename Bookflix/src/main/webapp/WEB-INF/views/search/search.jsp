@@ -36,7 +36,7 @@
       } else {
         return results[1] || 0;
       }
-    }
+    } 
     
     // 더보기 버튼 - 클릭
     $("#moreInfo").on("click",function() {
