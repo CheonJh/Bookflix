@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+
+.title {
+  padding: 30px;
+  
+}
+
+.title > h3 {
+  padding-left:525px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.wrap {
+  width: 500px;
+  margin: auto;
+}
+
+.fontcolor {
+  color: dodgerblue;
+}
+
+.accept {
+  text-align: center;
+}
+
+.submit {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  text-align: right;
+}
+
+.btn-secondary,
+#btn_modify {
+  margin-left: 5px;
+}
+
+#btna {
+  margin-left: 70px;
+}
+
+.col-sm-4 {
+  font-weight: bold;
+}
+
+.btn {
+  margin-bottom: 100px;
+}

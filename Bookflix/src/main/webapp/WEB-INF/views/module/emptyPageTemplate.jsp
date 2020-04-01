@@ -10,6 +10,9 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="메뉴가 없는 빈 페이지 템플릿" />
 
+<!-- 파비콘 삽입 -->
+<link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
 <title>BOOKFLIX</title>
 
 <!-- *************************************************** -->
