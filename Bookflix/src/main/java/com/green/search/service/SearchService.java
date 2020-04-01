@@ -10,10 +10,7 @@ public interface SearchService {
   public List<AdminBookDTO> BookList() throws Exception;
   
   // 2) 검색 책 리스트
-  public List<AdminBookDTO> searchBookList(String keyword) throws Exception;
-  
-  // 3) 검색한 책의 개수
-  public int searchBookCount(String keyword) throws Exception;
+  public List<AdminBookDTO> searchBookList(String keyword, int stratRow, int rowSize) throws Exception;
   
 
 }

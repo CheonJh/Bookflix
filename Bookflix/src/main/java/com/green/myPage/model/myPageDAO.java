@@ -2,6 +2,7 @@ package com.green.myPage.model;
 
 import java.util.List;
 
+import com.green.member.domain.MemberDTO;
 import com.green.myPage.domain.myPageDTO;
 
 public interface myPageDAO {
@@ -28,4 +29,7 @@ public interface myPageDAO {
   
   // 구독해지 - sub3
   public void sub3(int member_num) throws Exception;
+  
+  // 파일 업로드
+  public void file(MemberDTO dto) throws Exception;
 }

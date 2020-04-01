@@ -6,8 +6,11 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,65 +53,22 @@ public class AdminBookController {
 
   }
 
-/*  @RequestMapping(value = "/adminBookList", method = RequestMethod.GET)
-  public void getAdminBookList(Model model, @RequestParam(defaultValue = "1") int num) throws Exception {
-    // 디폴트 값을 줘야만 움직임?
-    int count = service.adminBookCount(); // 총 게시물 숫자
-
-    int postNum = 10; // sql에서 지정한 한 페이지에 표시될 게시물 숫자
-
-    int pageNum = (int) Math.ceil((double) count / postNum); // 총 페이징 갯수
-
-    int displayPost = (num - 1) * postNum; // sql에서 지정하는 페이지 게시물 번호
-
-    int pageNum_cnt = 10; // 표시될 페이징 갯수
-
-    int endPageNum = (int) Math.ceil((double) num / (double) pageNum_cnt) * pageNum_cnt; // 표시되는 번호중 마지막 번호
-
-    int startPageNum = endPageNum - (pageNum_cnt - 1); // 한 페이징에서 표시되는 번호중 첫번쨰
-
-    int endPageNum_tmp = (int) Math.ceil((double) count / (double) pageNum_cnt);
-
-    if (endPageNum > endPageNum_tmp) {
-      endPageNum = endPageNum_tmp;
-    }
-
-    boolean prev = startPageNum == 1 ? false : true;
-    // 삼항 연산자 페이지네이션 시작페이지가 1과 같다면 false반환
-    boolean next = endPageNum * pageNum_cnt >= count ? false : true;
-    // 공식을 모르겠다
-    // 페이지네이션 마지막 페이지 * 표시되는 페이징 값이 총 게시물수와 크거나 같다면 false 반환
-
-    List list = null;
-
-    list = service.adminBookList(displayPost, postNum);
-    model.addAttribute("list", list);
-    model.addAttribute("pageNum", pageNum);
-
-    model.addAttribute("startPageNum", startPageNum);
-    model.addAttribute("endPageNum", endPageNum);
-    model.addAttribute("prev", prev);
-    model.addAttribute("next", next);
-
-    model.addAttribute("select", num);
-  }*/
-
   @RequestMapping(value = "/adminBookReg", method = RequestMethod.GET)
   public void getAdminBookReg() throws Exception {
 
   }
 
   @RequestMapping(value = "/adminBookReg", method = RequestMethod.POST)
-  public String postAdminBookReg(AdminBookDTO DTO, MultipartFile file) throws Exception {
+  public String postAdminBookReg(AdminBookDTO DTO, @RequestParam MultipartFile file) throws Exception {
 
     String imgUploadPath = uploadPath + File.separator;
     String fileName = null;
-
-    if (file != null) {
+    if (file != null && file.getSize() > 0) {
       fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes());
     } else {
-      fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+      fileName = "none.jpg";
     }
+    
 
     DTO.setE_book_img_path(fileName);
     DTO.setE_book_thumbnail("thumbnail" + File.separator + "thumbnail_" + fileName);
@@ -126,25 +86,29 @@ public class AdminBookController {
   @RequestMapping(value = "/adminBookMod", method = RequestMethod.POST)
   public String postAdminBookMod(AdminBookDTO DTO, @RequestParam("oldFile") String path,
       @RequestParam("oldThumbnail") String thumbpath, MultipartFile file) throws Exception {
+    
+    
    //파일 삭제 코드
    File oldFile = new File(uploadPath+File.separator+path);
    File oldThumbnail = new File(uploadPath+File.separator+thumbpath);
 
-   if(oldFile.exists()) {
-     oldFile.delete();
-   }   
-   if(oldThumbnail.exists()) {
-     oldThumbnail.delete();
-   }
-
-   
    String imgUploadPath = uploadPath + File.separator ;
    String fileName = null;
 
-   if (file != null) {
+   if (file != null && file.getSize() > 0) {
      fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes());
+     if(oldFile.exists()) {
+       if(!("none.jpg".equals(path))) {
+         oldFile.delete();
+       }
+     }   
+     if(oldThumbnail.exists()) {
+       if(!("thumbnail\\thumbnail_none.jpg".equals(thumbpath))) {
+         oldThumbnail.delete();
+       }
+     }
    } else {
-     fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+     fileName = path;
    }
 
    DTO.setE_book_img_path(fileName);
@@ -174,21 +138,25 @@ public class AdminBookController {
       service.adminBookDelete(DTO);
      }
     for(String i : checkArr2) {
-      //check arr내부 값을 i로 차례대로 꺼냄
+      //check arr2내부 값을 i로 차례대로 꺼냄
       img= i;
       //꺼낸값 변수에 변환해 저장
       File oldFile = new File(uploadPath+File.separator+img);
       if(oldFile.exists()) {
-        oldFile.delete();
+        if(!("none.jpg".equals(img))) {
+          oldFile.delete();
+        }
       }   
      }
     for(String i : checkArr3) {
-      //check arr내부 값을 i로 차례대로 꺼냄
+      //check arr3내부 값을 i로 차례대로 꺼냄
       thumb = i;
       //꺼낸값 변수에 변환해 저장
       File oldThumbnail = new File(uploadPath+File.separator+thumb);
       if(oldThumbnail.exists()) {
-        oldThumbnail.delete();
+        if(!("thumbnail\\thumbnail_none.jpg".equals(thumb))) {
+          oldThumbnail.delete();
+        }
       }
      }
   }

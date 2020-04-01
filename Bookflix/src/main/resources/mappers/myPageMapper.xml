@@ -6,18 +6,16 @@
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <mapper namespace="com.green.mapper.myPageMapper">
   <!-- 읽은 책 목록 -->
-  <select id="list1"
-    resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
-    select r.hadread_num, e.e_book_title, r.HADREAD_DATE
+  <select id="list1" resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
+    select r.hadread_num, e.e_book_title, r.hadread_date
     from HADREAD as r
-    join E_BOOK as e on r.E_BOOK_NUM = e.E_BOOK_NUM
-    join MEMBER as m on r.MEMBER_NUM = m.MEMBER_NUM
-    where m.MEMBER_NUM = #{member_num};
+    join E_BOOK as e on r.e_book_num = e.e_book_num
+    join MEMBER as m on r.member_num = m.member_num
+    where m.member_num = #{member_num};
   </select>
 
   <!-- 찜한 도서 목록 -->
-  <select id="list2"
-    resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
+  <select id="list2" resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
     select f.favorite_num, e.e_book_title, f.favorite_date
     from FAVORITE as f
     join E_BOOK as e on f.e_book_num = e.e_book_num
@@ -26,8 +24,7 @@
   </select>
 
   <!-- 좋아요 한 도서 목록 -->
-  <select id="list3"
-    resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
+  <select id="list3" resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
     select t.thumbup_num, e.e_book_title, t.thumbup_date
     from THUMBUP as t
     join E_BOOK as e on t.e_book_num = e.e_book_num
@@ -42,8 +39,7 @@
   </select>
 
   <!-- 구독 내역 -->
-  <select id="list4"
-    resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
+  <select id="list4" resultType="com.green.myPage.domain.myPageDTO" parameterType="int">
     select s.subscribe_num, s.subscribe_date, s.subscribe_fee
     from SUBSCRIBE as s
     join MEMBER as m on s.member_num = m.member_num
@@ -67,4 +63,9 @@
     update MEMBER set MEMBER_GRADE = 1 where MEMBER_NUM = #{member_num};
   </update>
 
+  <!-- 파일업로드 -->
+  <update id="fileupload" parameterType="com.green.member.domain.MemberDTO" >
+    update MEMBER set member_img=#{member_img} where MEMBER_NUM = #{member_num};
+  </update>
+  
 </mapper>

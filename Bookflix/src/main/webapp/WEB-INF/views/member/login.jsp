@@ -12,47 +12,11 @@
 <meta name="description" content="로그인 페이지" />
 
 <title>Bookflix 로그인</title>
- 
-<style type="text/css">
-h1 {
-  text-align: center;
-}
+<link rel="stylesheet" href="/resources/css/member/login.css" />
 
-a {
-  text-decoration: none;
-}
-
-body {
-  background-color: #ddd;
-}
-
-button {
-  width: 100%;
-}
-
-html, body {
-  height: 100%;
-}
-
-.container {
-  width: 400px;
-  height: 100%;
-}
-
-.container>.row {
-  height: 100%;
-}
-
-.form-group * {
-  margin: 16px 0;
-}
-
-.loginLogo {
-  
-}
-</style>
 </head>
 <body>
+
   <div class="container">
 
     <div class="row align-items-center">
@@ -68,19 +32,19 @@ html, body {
           </div>
         </form>
         
-        <div class="link">
-          <a href="/member/signIn">회원가입</a>
-          <a href="/member/findID">아이디 찾기</a>
-          <a href="/member/findPW">비밀번호 찾기</a>
+        <div class="link clear" >
+        <div class="log1"><a class="ab1" href="/member/signIn">회원가입</a></div>
+        <div class="log2"><a class="ab2" href="/member/findID">아이디 찾기</a></div>
+        <div class="log3"><a class="ab3" href="/member/findPW">비밀번호 찾기</a></div>
         </div>
         
         <c:if test="${msg == false }">
-          <p style="color:#f00;">로그인 실패</p>
-          <p style="color:#f00;"> 아이디 또는 패스워드를 다시 입력해주세요 :)</p>
+          <p>로그인 실패! 아이디 또는 패스워드를 다시 입력해주세요 :)</p>
         </c:if>
       </div>
     </div>
 
   </div>
+
 </body>
 </html>
