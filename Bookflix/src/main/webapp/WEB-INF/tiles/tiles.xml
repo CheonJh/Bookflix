@@ -52,6 +52,7 @@
   <definition name="info/*" extends="base">
     <put-attribute name="content" value="/WEB-INF/views/info/{1}.jsp" />
   </definition>
+
   
   <!-- 관리자페이지의 바디에 들어갈거 -->
    <definition name="adminBook/*" extends="admin">
@@ -67,6 +68,9 @@
   </definition>
   <definition name="myPage/*" extends="empty">
     <put-attribute name="content" value="/WEB-INF/views/myPage/{1}.jsp" />
+  </definition>
+    <definition name="error/*" extends="empty">
+    <put-attribute name="content" value="/WEB-INF/views/error/{1}.jsp" />
   </definition>
 
 </tiles-definitions>

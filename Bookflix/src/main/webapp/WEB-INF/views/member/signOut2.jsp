@@ -13,54 +13,14 @@
 <meta name="description" content="회원탈퇴 페이지2" />
 
 <title>Bookflix 회원탈퇴2</title>
-
-
-<style type="text/css">
-h3 {
-  text-align: center;
-  font-weight: bold;
-}
-
-.wrap {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.form-check {
-  padding: 10px 0;
-  font-weight: bold;
-}
-
-.text {
-  width: 100%;
-  margin: 10px 0;
-}
-
-.form-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-group button {
-  width: 49%;
-}
-</style>
-
-<script type="text/javascript">
-$(document).ready(function () {
-  
-  // 돌아가기 버튼 클릭시 다시 마이페이지로 
-  $('#btn_back').click(function () {
-      location.href = "/myPage/Page";
-  }); // #btn_back.click
-  
-});
-</script>
+<link rel="stylesheet" href="/resources/css/member/signOut2.css" />
+<script src="/resources/js/member/signOut2.js"></script>
 </head>
 <body>
-  <br>
-  <h3>회원 탈퇴</h3>
-  <br>
+ <div class="title">
+    <h3>회원탈퇴</h3>
+    <hr>
+  </div>
   <div class="wrap">
     <form action="/member/signOut2" method="post">
     

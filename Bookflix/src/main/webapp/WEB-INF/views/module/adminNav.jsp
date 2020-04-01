@@ -36,7 +36,7 @@ img {
     <div><img src="/resources/imgs/common/logo.png" alt=""></div>
     <a class="nav-link active" href="/adminBook/adminBookList">E-book 관리</a>
     <a class="nav-link" href="/adminInfo/admNoticeList">공지사항 관리</a>
-    <a class="nav-link" href="#">FAQ 관리</a>
+    <a class="nav-link" href="/adminInfo/admFAQList">FAQ 관리</a>
     <a class="nav-link aa" href="/">메인페이지로 </a>
   </nav>
 </body>

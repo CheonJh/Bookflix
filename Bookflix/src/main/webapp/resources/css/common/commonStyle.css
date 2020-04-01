@@ -11,5 +11,17 @@ body { background-color: #fff; color: #222328; }
 body * { box-sizing: border-box;}
 .cf:after { content: ''; display: block; clear: both; }
 
+.btn{
+  background-color: #458dd6;
+  color: #fff;
+  border-color: #77ace1;
+} 
+
+.btn:hover {
+  background-color: #24629f;
+  font-weight: bold;
+  border-color: #24629f;
+}
+  
 
 /* @import url(commonFont.css); */

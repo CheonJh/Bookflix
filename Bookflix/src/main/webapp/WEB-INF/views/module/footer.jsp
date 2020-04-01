@@ -27,7 +27,7 @@
             <ul class="nav-li">
               <li><a href="/info/noticeList?num=1">공지사항</a></li>
               <li>|</li>
-              <li><a href="/info/FAQList">FAQ</a></li>
+              <li><a href="/info/FAQList?num=1">FAQ</a></li>
               <li>|</li>
               <li><a href="#">이용약관</a></li>
               <li>|</li>

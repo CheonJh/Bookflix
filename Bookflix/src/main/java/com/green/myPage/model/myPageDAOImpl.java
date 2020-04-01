@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.green.member.domain.MemberDTO;
 import com.green.myPage.domain.myPageDTO;
 
 @Repository
@@ -63,5 +64,11 @@ public class myPageDAOImpl implements myPageDAO {
   @Override
   public void sub3(int member_num) throws Exception {
     sql.update(namespace + ".sub3", member_num);
+  }
+
+  // 파일 업로드
+  @Override
+  public void file(MemberDTO dto) throws Exception {
+    sql.update(namespace+ ".fileupload", dto);
   }
 }
