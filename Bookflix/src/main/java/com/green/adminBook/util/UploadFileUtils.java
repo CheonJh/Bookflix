@@ -27,14 +27,17 @@ public class UploadFileUtils {
     FileCopyUtils.copy(fileData, target);
     //썸네일 만드는 과정
     String thumbFileName = "thumbnail_" + newFileName;
-    File image = new File(imgPath + File.separator + newFileName);
 
+
+    File image = new File(imgPath + File.separator + newFileName);
     File thumbnail = new File(imgPath + File.separator + "thumbnail" + File.separator + thumbFileName);
 
     if (image.exists()) {
       thumbnail.getParentFile().mkdirs();
       Thumbnails.of(image).size(THUMB_WIDTH, THUMB_HEIGHT).toFile(thumbnail);
-    }
+      }
+    
+   
     return newFileName;
   }
   

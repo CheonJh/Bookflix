@@ -6,9 +6,14 @@
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <mapper namespace="com.green.mapper.searchMapper">
 
-  <!-- 책 검색 --> 
+  <!-- 1) 전체 책 리스트 -->
+  <select id="bookList" resultType="com.green.adminBook.domain.AdminBookDTO">
+    SELECT * FROM E_BOOK order by E_BOOK_NUM DESC;
+  </select>
+
+  <!-- 2) 책 검색 --> 
   <select id="searchBookList" parameterType="String" resultType="com.green.adminBook.domain.AdminBookDTO">
-    SELECT e_book_num, e_book_title, e_book_writer, e_book_date, e_book_info, e_book_index, e_book_img_path, e_book_tag
+    SELECT *
     FROM E_BOOK
     WHERE E_BOOK_TITLE LIKE '%' #{keyword} '%'
     or E_BOOK_WRITER LIKE '%' #{keyword} '%'
@@ -17,7 +22,6 @@
     or E_BOOK_TAG LIKE '%' #{keyword} '%'
     order by E_BOOk_NUM DESC;
   </select>
-
 
 
 </mapper>

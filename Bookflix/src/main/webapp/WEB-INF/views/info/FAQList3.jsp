@@ -14,87 +14,26 @@
 
 <title>TestPageForm</title>
 
-<style type="text/css">
-#notignb {
-  width: 100%;
-  height: 200px;
-  margin: 0 auto;
-}
+<!-- *************************************************** -->
+<link rel="stylesheet" href="/resources/css/info/FAQList.css" />
+<!-- *************************************************** -->
 
-#notignb ul {
- padding-top: 15px;
- 
-}
-
-#notignb ul li {
-  display: inline;
-  font: bold 25px;
-}
-
-
-li {
-  list-style: none;
-  
-}
-
-.active {
-  background-color: lightgrey;
-}
-
-.container {
-  margin: 40px auto;
-}
-
-.tbFAQ td, .tbFAQ th {
-  margin: 0;
-  padding: 0;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  max-width: 600px;
-}
-
-.tb-nb{
-  width: 100px;
-}
-
-.tb-ct {
-  width: 100px;
-}
-.tb-vc {
-  width: 100px;
-}
-
-.tb-ap {
-  width: 200px;
-}
-
-a, a:hover {
-  color: black;
-  text-decoration: none;
-}
-
-.page-link {
-  color: black;
-  text-decoration: none;
-}
-</style>
 </head>
 <body>
  
   <div id="notignb">
-    <ul class="clearfix">
-      <li><a href="/info/FAQList?num=1">전체보기</a></li>
-      <li><a href="/info/FAQList2?num=1">이용방법</a></li>
-      <li><a href="/info/FAQList3?num=1">구독</a></li>
-      <li><a href="/info/FAQList4?num=1">자주하는 질문</a></li>
+    <ul class="notinav-con">
+      <li class="notinav-item"><a href="/info/FAQList?num=1">전체보기</a></li>
+      <li class="notinav-item"><a href="/info/FAQList2?num=1">이용방법</a></li>
+      <li class="notinav-item"><a href="/info/FAQList3?num=1">구독</a></li>
+      <li class="notinav-item"><a href="/info/FAQList4?num=1">자주하는 질문</a></li>
     </ul>
   </div>
 
-  <div class="container">
+  <div class="ntcontainer">
     <table class="table table-bordered tbFAQ">
       <thead>
-        <tr class="active">
+        <tr class="tb-ttl">
           <th class="tb-nb">번호</th>
           <th class="tb-ct">항목</th>
           <th class="tb-cl">내용</th>
@@ -110,26 +49,32 @@ a, a:hover {
       </c:forEach>
     </table>
     </div>
-  <div>
-  <c:if test="${prev}">
-    <span>[<a href="/info/FAQList3?num=${startPageNum -1}">이전</a>]</span>
-  </c:if>
-  
-  <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
-    <span>
-      <c:if test="${select != num}">
-        <a href="/info/FAQList3?num=${num}">${num}</a>
-       </c:if>
-       
-       <c:if test="${select == num}">
-          <b>${num}</b>
-       </c:if>
-    </span>
-  </c:forEach>
-  
-  <c:if test="${next}">
-    <span>[<a href="/info/FAQList3?num=${endPageNum +1}">다음</a>]</span>
-  </c:if>
+    
+  <div class="row" id="box4">
+    <div id="nt-pagenaiton">
+      <ul class="pagination">
+        <c:if test="${prev}">
+          <li class="page-item"><a class="page-link" id="page-link"
+            href="/info/FAQList3?num=${startPageNum -1}">이전</a></li>
+        </c:if>
+
+        <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+          <c:if test="${select != num}">
+            <li class="page-item"><a class="page-link"
+              id="page-link" href="/info/FAQList3?num=${num}">${num}</a></li>
+          </c:if>
+          <c:if test="${select == num}">
+            <li class="page-item active"><a class="page-link"
+                  id="page-link">${num}</a></li>
+          </c:if>
+
+        </c:forEach>
+        <c:if test="${next}">
+          <li class="page-item"><a class="page-link" id="page-link"
+            href="/info/FAQList3?num=${endPageNum +1}">다음</a></li>
+        </c:if>
+      </ul>
+    </div>
   </div>
 </body>
 </html>

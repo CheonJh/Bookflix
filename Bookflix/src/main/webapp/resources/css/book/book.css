@@ -23,7 +23,7 @@ li {
   position: relative;
 }
 
-.wrapinfo form {
+.wrapinfo > .form-group {
   position: absolute;
   bottom: 0;
 }

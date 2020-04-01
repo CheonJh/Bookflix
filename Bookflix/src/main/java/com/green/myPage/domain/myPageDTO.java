@@ -15,11 +15,10 @@ public class myPageDTO {
   private Date thumbup_date;
   //잔여 구독일 수
   private Date subscribe_date;
-  
   //구독 내역 보기
   private Integer subscribe_num;
   private Integer subscribe_fee;
-  
+
   public Integer getHadread_num() {
     return hadread_num;
   }

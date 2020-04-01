@@ -104,7 +104,7 @@ header {
   <header>
   
     <div class="logo">
-      <a href="#"><img src="resources/imgs/common/logo.png" alt="logo"></a>
+      <a href="/"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
     </div>
     <div id="gnb">
       <div class="container-fluid">
@@ -112,10 +112,10 @@ header {
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
             <ul class="nav">
-              <li><a href="#">검색</a></li>
+              <li><a href="/search/search">검색</a></li>
               <li><a href="#">신간</a></li>
               <li><a href="#">인기</a></li>
-              <li><a href="#">고객센터</a></li>
+              <li><a href="/info/notiList">고객센터</a></li>
             </ul>
           </div>
           <div class="col-sm-3">
