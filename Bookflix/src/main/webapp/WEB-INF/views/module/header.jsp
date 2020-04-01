@@ -14,7 +14,6 @@
 <title>header</title>
 
 <style>
-@import url(font.css);
 
 body * {
   margin: 0;
@@ -115,7 +114,7 @@ header {
               <li><a href="/search/search">검색</a></li>
               <li><a href="#">신간</a></li>
               <li><a href="#">인기</a></li>
-              <li><a href="/info/notiList">고객센터</a></li>
+              <li><a href="/info/noticeList?num=1">고객센터</a></li>
             </ul>
           </div>
           <div class="col-sm-3">
