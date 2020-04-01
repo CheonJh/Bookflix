@@ -14,56 +14,10 @@
 
 <title>TestPageForm</title>
 
-<style type="text/css">
-.table {
-  top: 100px;
-}
+<!-- *************************************************** -->
+<link rel="stylesheet" href="/resources/css/info/InfoList.css" />
+<!-- *************************************************** -->
 
-.active {
-  background-color: lightgray;
-  width: 200px;
-}
-
-.tb-ttl {
-  background-color: #e8e9f9;
-}
-
-.tbFAQ td, .tbFAQ th {
-  margin: 0;
-  padding: 0;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  max-width: 600px;
-}
-
-li, a {
-  list-style: none;
-}
-
-.btn-back {
-  background-color: #77ace1;
-}
-
-.btn-back:hover{
-background-color: lightblue; 
-border: 1px solid lightblue;
-}
-
-.btn-page {
-  float: right;
-}
-
-.btn-page:hover{
-background-color: skyblue; 
-border: 1px solid skyblue;
-}
-
-a:hover{
-text-decoration: none;
-}
-
-</style>
 </head>
 <body>
   <form method="post">
