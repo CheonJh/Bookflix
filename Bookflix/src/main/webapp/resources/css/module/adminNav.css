@@ -1,0 +1,22 @@
+@charset "UTF-8";
+img {
+  margin-top: 20px;
+  margin-bottom: 70px;
+  width: 200px;
+}
+
+#nav {
+  /*  border: 1px solid #000; */
+  width: 200px;
+  height: 100vh;
+  position: relative;
+}
+
+.nav-link {
+  margin-bottom: 0px;
+}
+
+p {
+  font-size: 17px;
+  font-weight: bold;
+}

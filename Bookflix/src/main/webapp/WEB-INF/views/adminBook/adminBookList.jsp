@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -15,29 +15,11 @@
 <title>TestPageForm</title>
 
 <!-- *************************************************** -->
-
+<link rel="stylesheet"
+  href="/resources/css/adminBook/adminBookList.css?" />
 <!-- *************************************************** -->
 
 <style>
-* {
-	margin: 0;
-	padding: 0;
-}
-
-li {
-	list-style: none;
-}
-
-.container {
-	width: 1000px;
-}
-
-#box1 {
-	margin-bottom: 1rem;
-}
-.pagination{
-	justify-content: center;
-}
 </style>
 <script>
 	$(document).ready(function () {
@@ -141,86 +123,103 @@ li {
 </script>
 </head>
 <body>
-	<div class="container">
-		<h2 style="text-align: center;" class="text-primary" id="title">E-book
-			관리</h2>
-		<div class="row col-md-6" id="box1">
-			<div class="input-group">
-				<select class="custom-select col-md-3" id="searchType"
-					aria-label="Example select with button addon">
-					<option selected value="e_book_title">제목</option>
-					<option value="e_book_writer">작가</option>
-					<option value="e_book_publisher">출판사</option>
-					<option value="e_book_tag">태그</option>
-				</select> <input type="text" class="form-control" id="keyword"
-					aria-label="Text input with dropdown button">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" type="button"
-						id="btnSearch">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="row" id="box2">
-			<table class="table table-striped col-">
-				<thead>
-					<tr>
-						<th>
-							<input type="checkbox" id="checkbox">
-						</th>
-						<th>번호</th>
-						<th>제목</th>
-						<th>저자</th>
-						<th>출판사</th>
-						<th>태그</th>
-					</tr>
-				</thead>
-				<c:forEach items="${list}" var="list">
-					<tr>
-						<td>
-						<input type="checkbox" name="check" data-eno="${list.e_book_num}" value="${list.e_book_num}">
-						<input type="hidden" class="imgPath" data-img="${list.e_book_img_path}" value="${list.e_book_img_path}">
-						<input type="hidden" class="imgThumb" data-thumb="${list.e_book_thumbnail}" value="${list.e_book_thumbnail}">
-						</td>
-						<td>${list.e_book_num}</td>
-						<td><a
-							href="/adminBook/adminBookMod?e_book_num=${list.e_book_num}">${list.e_book_title}</a></td>
-						<td>${list.e_book_writer}</td>
-						<td>${list.e_book_publisher}</td>
-						<td>${list.e_book_tag}</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-		<div class="row btn-toolbar" id="box3">
-			<div class="btn-group mr-2">
-				<button class="btn btn-primary" id="delete_btn" >삭제</button>
-			</div>
-			<div class="btn-group mr-2">
-				<button class="btn btn-primary" id="modify_btn">수정</button>
-			</div>
-			<div class="btn-group mr-2 offset-md-8 col">
-				<a href="/adminBook/adminBookReg"><button
-						class="btn btn-primary col-sm-12">등록</button></a>
-			</div>
-		</div>
-		<div id="paginationBox">
-			<ul class="pagination">
-				<c:if test="${pagination.prev}">
-					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}','${search.searchType }', '${search.keyword }');">Previous</a></li>
-				</c:if>
-				<c:forEach begin="${pagination.startPage}"
-					end="${pagination.endPage}" var="idx">
-					<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-					<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }');"> ${idx} </a></li>
-				</c:forEach>
-				<c:if test="${pagination.next}">
-					<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}',${search.searchType }', '${search.keyword }');">Next</a></li>
-				</c:if>
-			</ul>
-		</div>
-	</div>
+
+  <div class="title">
+    <h3>E-book 관리</h3>
+    <hr>
+  </div>
+
+  <div class="container">
+
+    <div class="col-md-6" id="box1">
+      <div class="input-group">
+        <select class="custom-select col-md-3" id="searchType"
+          aria-label="Example select with button addon">
+          <option selected value="e_book_title">제목</option>
+          <option value="e_book_writer">작가</option>
+          <option value="e_book_publisher">출판사</option>
+          <option value="e_book_tag">태그</option>
+        </select> <input type="text" class="form-control" id="keyword"
+          aria-label="Text input with dropdown button"
+          placeholder="검색할 단어를 입력하세요.">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button"
+            id="btnSearch">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="box2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 1%;"><input type="checkbox"
+              id="checkbox"></th>
+            <th class="bu">번호</th>
+            <th>제목</th>
+            <th>저자</th>
+            <th>출판사</th>
+            <th>태그</th>
+          </tr>
+        </thead>
+        </tbody>
+        <c:forEach items="${list}" var="list">
+          <tr>
+            <td><input type="checkbox" name="check"
+              data-eno="${list.e_book_num}" value="${list.e_book_num}">
+              <input type="hidden" class="imgPath"
+              data-img="${list.e_book_img_path}"
+              value="${list.e_book_img_path}"> <input
+              type="hidden" class="imgThumb"
+              data-thumb="${list.e_book_thumbnail}"
+              value="${list.e_book_thumbnail}"></td>
+            <td>${list.e_book_num}</td>
+            <td class="nt"><a
+              href="/adminBook/adminBookMod?e_book_num=${list.e_book_num}">${list.e_book_title}</a></td>
+            <td>${list.e_book_writer}</td>
+            <td>${list.e_book_publisher}</td>
+            <td>${list.e_book_tag}</td>
+          </tr>
+        </c:forEach>
+        </tbody>
+      </table>
+    </div>
+    <div class="row btn-toolbar" id="box3">
+      <div class="btn-group mr-2">
+        <button class="btn btn-outline-primary" id="delete_btn">삭제</button>
+      </div>
+      <div class="btn-group mr-2">
+        <button class="btn btn-primary" id="modify_btn">수정</button>
+      </div>
+      <div class="btn-group mr-2 offset-md-8 col">
+        <button class="btn btn-primary col-sm-12"
+          onclick="location.href='adminBookReg'">등록</button>
+      </div>
+    </div>
+    <div class="row" id="box4">
+      <div id="paginationBox">
+        <ul class="pagination">
+          <c:if test="${pagination.prev}">
+            <li class="page-item"><a class="page-link" href="#"
+              onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}','${search.searchType }', '${search.keyword }');">Previous</a></li>
+          </c:if>
+          <c:forEach begin="${pagination.startPage}"
+            end="${pagination.endPage}" var="idx">
+            <li
+              class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+              <a class="page-link" href="#"
+              onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }');">
+                ${idx} </a>
+            </li>
+          </c:forEach>
+          <c:if test="${pagination.next}">
+            <li class="page-item"><a class="page-link" href="#"
+              onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}',${search.searchType }', '${search.keyword }');">Next</a></li>
+          </c:if>
+        </ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
