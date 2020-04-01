@@ -13,13 +13,17 @@
 
 <title>Page</title>
 <!-- css 연결 -->
-<link rel="stylesheet" href="/resources/css/myPage/Page.css" />
+<link rel="stylesheet" href="/resources/css/myPage/Page.css?" />
 <!-- js 연결 -->
 <script src="/resources/js/myPage/Page.js"></script>
+<style>
+
+</style>
 </head>
 <body>
   <div class="title">
     <h3>마이페이지</h3>
+    <a href="/" id="af"><i class="fa fa-home" aria-hidden="true" ></i></a>
     <hr>
   </div>
   <div class="wrap">
@@ -51,6 +55,7 @@
     <div class="li">
       <a href="/member/modifyMember">내 정보</a>
     </div>
+    <div class = content2>
     <div class="ul">서비스 관리</div>
     <div class="li">
       <a href="/myPage/mylib">내 서재 관리</a>
@@ -69,6 +74,7 @@
       <a href="/member/signOut1">회원탈퇴</a>
     </div>
     </div>
+  </div>
   </div>
   </div>
 </body>

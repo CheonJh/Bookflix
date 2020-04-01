@@ -12,6 +12,7 @@ body {
 
 .title {
   padding: 30px;
+  position: relative;
 }
 
 .ul {
@@ -72,3 +73,17 @@ body {
 .content3 > .li:nth-child(3) {
   padding-bottom: 200px;
 }
+
+#af {
+   position: absolute;
+   top: 30px;
+   right: 210px;
+  }
+#af > i.fa.fa-home {
+ display:block;
+ font-size: 30px;
+ }
+ 
+ .title a {
+ text-decoration: none;
+ }
