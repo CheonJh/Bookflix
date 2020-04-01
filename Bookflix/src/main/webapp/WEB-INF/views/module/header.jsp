@@ -13,96 +13,137 @@
 
 <title>header</title>
 
+<style>
+@import url(font.css);
+
+body * {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+
+header {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 로고 part */
+.logo {
+  width: 100%;
+  height: 100%;
+}
+
+.logo a img {
+  width:500px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* 내비게이션 part */
+#gnb {
+  width: 100%; height: 100%;
+  background-color: #eee;
+}
+
+#gnb .nav {
+  width: 100%; height: 35px;
+}
+
+#gnb .nav li {
+  float: left;
+  width: 25%;
+}
+
+#gnb .nav li a {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* 로그인 part */
+.signin {
+  width: 100%; height: 100%;
+}
+
+.signin li {
+  float: left;
+  width: 50%;
+}
+
+.signin li a {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+</style>
+
+
 <!-- css -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/header.css">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/header.css"> --%>
 
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="line">
-        <div class="topbar clear">
-          <div class="sns">
-            <div>
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <a href=""><i class="fa fa-facebook-official"></i></a>
-                  </div>
-                  <div class="col">
-                    <a href=""><i class="fa fa-instagram"></i></a>
-                  </div>
-                  <div class="col">
-                    <a href=""><i class="fa fa-twitter-square"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+  <header>
+  
+    <div class="logo">
+      <a href="#"><img src="resources/imgs/common/logo.png" alt="logo"></a>
+    </div>
+    <div id="gnb">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <ul class="nav">
+              <li><a href="#">검색</a></li>
+              <li><a href="#">신간</a></li>
+              <li><a href="#">인기</a></li>
+              <li><a href="#">고객센터</a></li>
+            </ul>
           </div>
-          <div class="login">
-            <div class="container">
-              <div class="row">
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col">
-                  <div class="container logbtn">
-                    <div class="row">
-                    
-                    <!-- 세션 찾아서 멤버 없으면 로그인, 회원가입 출력 -->
-                    <c:if test="${member == null}">
-                      <div class="col">
-                        <a href="/member/login">로그인</a>
-                      </div>
-                      <div class="col">
-                        <a href="/member/signIn">회원가입</a>
-                      </div>
-                    </c:if>
-                    
-                    <!-- 세션 있으면 회원 닉네임, 로그아웃 출력 -->
-                    <c:if test="${member != null}">
-                      <!-- 관리자 -->
-                      <c:if test="${member.member_grade==0}">
-                        <div class="col">
-                          <a href="/adminBook/adminBookList">${member.member_nickname}</a>
-                        </div>
-                      </c:if>
-                      <!-- 회원 -->
-                      <c:if test="${member.member_grade!=0}">
-                        <div class="col">
-                          <a href="/myPage/Page">${member.member_nickname}</a>
-                        </div>
-                      </c:if>
-                      
-                      <div class="col">
-                        <a href="/member/logout">로그아웃</a>
-                      </div>
-                    </c:if>
-                    
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="line">
-        <div class="header clear">
-          <div class="logo ho">
-            <a href="/"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
-          </div>
-          <div id="nav" class="ho">
-            <ul id="gnb" class="clear">
-              <li><a href="/search/search">검 색</a></li>
-              <li><a href="#">신 간</a></li>
-              <li><a href="#">인 기</a></li>
-              <li><a href="/info/notice">고객센터</a></li>
+          <div class="col-sm-3">
+            <ul class="signin">
+              <!-- 세션 찾아서 멤버 없으면 로그인, 회원가입 출력 -->
+              <c:if test="${member == null}">
+                <li><a href="/member/login">로그인</a></li>
+                <li><a href="/member/signIn">회원가입</a></li>
+              </c:if>
+              <!-- 세션 있으면 회원 닉네임, 로그아웃 출력 -->
+              <c:if test="${member != null}">
+                <!-- 관리자 -->
+                <c:if test="${member.member_grade==0}">
+                  <li><a href="/adminBook/adminBookList">${member.member_nickname}</a></li>
+                </c:if>
+                <!-- 회원 -->
+                <c:if test="${member.member_grade!=0}">
+                  <li><a href="/myPage/Page">${member.member_nickname}</a></li>
+                </c:if>
+                <li><a href="/member/logout">로그아웃</a></li>
+              </c:if>
+
             </ul>
           </div>
         </div>
       </div>
-    </header>
-  </div>
-
+    </div>
+  </header>
+  
 </body>
 </html>

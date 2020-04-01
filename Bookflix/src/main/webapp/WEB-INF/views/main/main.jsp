@@ -161,6 +161,58 @@ li { list-style: none;} */
   });
 </script> -->
 
+<!-- 인기 신간 탭-->
+<style>
+.space { height: 20px; width: 100%;}
+.favor-new-container {
+  margin-top: 20px;
+  width: 600px; height: 100%;
+}
+#myTab {
+  width: 600px;
+}
+.container {
+  width: 600px; height:100%;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+}
+.container .tab-content {
+  border: 1px solid #ddd;
+  border-top: none;
+  padding: 20px;
+  width: 600px;
+  height: 790px;
+}
+
+.container .tab-content > div {
+  width: 100%; height: 100%;
+}
+
+.tab-content .favor-wrap .imgbox img {
+  display: block;
+  width: 170px;
+  height: 240px;
+}
+
+.tab-content .favor-wrap div {
+  float: left;
+}
+
+.book-info {
+  width: 380px;
+  padding: 20px;
+}
+
+.book-info .book-title {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.book-info .author, .publisher {
+  font-size: 1.1em;
+}
+</style>
 
 </head>
 <body>
@@ -185,6 +237,62 @@ li { list-style: none;} */
     </ul>
 
   </div>
+  
+  <!-- 인기, 신규도서 탭 -->
+   <div class="space"></div>
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <!-- 탭 버튼 -->
+      <li class="nav-item show active">
+        <a class="nav-link " id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+          aria-selected="false">인기도서</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+          aria-selected="false">신규도서</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade in show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <!-- 인기도서 탭 내부 내용 -->
+    <c:forEach items="${favorite}" var="favorite">
+      <div class="favor-wrap">
+          <div class="imgbox">
+            <a href="#"><img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
+          </div>
+          <div class="book-info">
+            <p class="book-title">${favorite.e_book_title}</p>
+            <p class="author">저자 : ${favorite.e_book_writer}</p>
+            <p class="publisher">출판사 : ${favorite.e_book_publisher}</p>
+            <p class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusantium perspiciatis voluptas ab nihil ullam, quisquam omnis optio excepturi sint at distinctio sequi iure cumque, placeat earum vitae beatae dolorum.</p>
+          </div>
+        </div>
+       
+    </c:forEach>
+      
+     
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  <!-- 신규도서 탭 내부 내용 -->
+    <c:forEach items="${newbook}" var="newbook">
+      <div class="favor-wrap">
+          <div class="imgbox">
+            <a href="#"><img src="resources/imgs/book-imgs/${newbook.e_book_img_path }" alt="" /></a>
+          </div>
+          <div class="book-info">
+            <p class="book-title">${newbook.e_book_title}</p>
+            <p class="author">저자 : ${newbook.e_book_writer}</p>
+            <p class="publisher">출판사 : ${newbook.e_book_publisher}</p>
+            <p class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusantium perspiciatis voluptas ab nihil ullam, quisquam omnis optio excepturi sint at distinctio sequi iure cumque, placeat earum vitae beatae dolorum.</p>
+          </div>
+        </div>
+       
+    </c:forEach>
+  
+      </div>
+    </div>
+  </div>
+  <div class="space"></div>
 
 
 </body>
