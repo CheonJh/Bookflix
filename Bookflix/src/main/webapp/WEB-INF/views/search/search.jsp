@@ -93,7 +93,7 @@
   height: 350px;
   margin: 15px auto;
 }
-
+   
 .bookContent img{
   border-radius: 50%;
   display : block;
