@@ -9,6 +9,7 @@
   <!-- 회원가입 -->
   <insert id="register">
     insert into MEMBER
+    (MEMBER_NUM, MEMBER_GRADE, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_BIRTH, MEMBER_PHONE)
     values(
     (select max(m.MEMBER_NUM)+1 from MEMBER m),
     1,

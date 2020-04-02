@@ -18,14 +18,14 @@ public class SearchServiceImpl implements SearchService {
   
   // 1) 전체 책 리스트
   @Override
-  public List<AdminBookDTO> BookList() throws Exception {
-    return dao.booklist();
+  public List<AdminBookDTO> BookList(int startRow, int rowSize) throws Exception {
+    return dao.booklist(startRow, rowSize);
   }
   
   // 2) 검색 책 리스트
   @Override
-  public List<AdminBookDTO> searchBookList(String keyword, int stratRow, int rowSize) throws Exception {
-    return dao.searchBookList(keyword, stratRow, rowSize);
+  public List<AdminBookDTO> searchBookList(String keyword, int startRow, int rowSize) throws Exception {
+    return dao.searchBookList(keyword, startRow, rowSize);
   }
   
 }

@@ -14,20 +14,19 @@
 
 <title>BOOKFLIX 검색</title>
 <script type="text/javascript">
- 
   $(function() {
-    /* 더보기 버튼 비활성화 */
+    /* 키워드 존재 유무로 기본 도서 목록과 검색 도서 목록을 분류 */
+    var keyword = $('#keyword').val();
     
-    /* 검색 후 전체 목록 숨기기 */
-    $("#subBtn").click(function() {
+    if (keyword == '') {
+      $("#searchList-div").hide();
+    } else {
+      $("#bookList-div").hide();
       $("#basicBookList").empty();
-      //$("#moreInfo").css('display','none');
-      
-    });
+    }
     
     
-    var keyword = "";
-
+    
     //파라미터값에 있는 걸 잘라서 값으로 반환 해주는 함수 $.urlParam('keyword') 원하는 파람 쓰면 그 파람의 값넘어옴
     $.urlParam = function(name) {
       var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -38,8 +37,51 @@
       }
     } 
     
-    // 더보기 버튼 - 클릭
-    $("#moreInfo").on("click",function() {
+    // 전체 목록 더보기 버튼 - 클릭
+    $("#bookList-more").on("click",function() {
+      
+      $.ajax({
+        url : "${pageContext.request.contextPath}/search/search3",
+        type : "post",
+        dataType : "json",
+        success : function(data) {
+          // ajax 통신 확인
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ SUCCESS  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+          console.log(data);
+          
+          if (data != '') {
+            
+            var all = "";
+            $.each(data, function(key, value) {
+              all = all + "<div class='col-sm-6 col-md-3 bookList-dv'>"
+              + "<a href='/book/view?e_book_num=" + value.e_book_num + "'>"
+              + "<div class='bookContent'>"
+              + "<img src='/resources/imgs/book-imgs/"+value.e_book_img_path + "'/>"
+              + "<h4>" + value.e_book_title + "</h4>"
+              + "<p>" + value.e_book_writer + "</p>" 
+              + "</div></a>"
+              +"</div>";
+            }); //each  
+          
+            // 붙혀
+            $("#basicBookList").append(all);
+          
+          } else {
+            alert("없다");
+            $("#bookList-more").hide();
+          }
+          
+        
+      }, error : function () {
+        console.log("실패");
+      }
+    });// ajax - search
+  });// moreinfo - click
+    
+  
+    // 검색 목록 더보기 버튼 - 클릭
+    
+    $("#searchList-more").on("click",function() {
       
       keyword = $("#keyword").val();
       
@@ -49,29 +91,28 @@
         dataType : "json",
         success : function(data) {
           // ajax 통신 확인
-          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  SUCCESS  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ SEARCH SUCCESS  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
           console.log(data);
           
-          // console.log(JSON.stringify(data));
+          if (data != '') {
           
-           var all = ">>>";
-         /* $.each(data, function(key, value) {
-            all = all + "<div class='col-sm-6 col-md-3 bookList-dv'>";
-            + "<a href='/book/view?e_book_num=" + value.e_book_num + "'>"
-            + "<div class='bookContent'>"
-            + "<img src='/resources/imgs/book-imgs/"+value.e_book_img_path + "'/>"
-            + "<h4>" + value.e_book_title + "</h4>"
-            + "<p>" + value.e_book_writer + "</p>"
-            + "</div></a></div>";
+            var all = "";
+            $.each(data, function(key, value) {
+              all = all + "<div class='col-sm-6 col-md-3 bookList-dv'>"
+              + "<a href='/book/view?e_book_num=" + value.e_book_num + "'>"
+              + "<div class='bookContent'>"
+              + "<img src='/resources/imgs/book-imgs/"+value.e_book_img_path + "'/>"
+              + "<h4>" + value.e_book_title + "</h4>"
+              + "<p>" + value.e_book_writer + "</p>" 
+              + "</div></a>"
+              +"</div>";
+            }); //each  
             
-            // all = all;
-            // all = all + "</div>";
-  
-          }); //each  */
-        
-        // 붙혀
-        $("#searchBookList").append(all);
-        
+            // 붙혀
+            $("#searchBookList").append(all);
+          } else {
+            alert('없다');
+          }
       }, error : function () {
         console.log("실패");
       }
@@ -110,10 +151,11 @@
   border-right-color: #D02090;
 }
 
-/* 더보기 버튼 비활성화 */
-/* #moreInfo{
-  display: none;
-} */
+/* 더보기 버튼 */
+.btn-search {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
 
 </style>
 </head>
@@ -121,6 +163,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
+      
         <!-- 검색 --> 
         <form id="searchForm" action="/search/search" method="post" role="search" class="center">
           <div class="input-group mb-3 input-group-lg">
@@ -132,8 +175,11 @@
             </div> 
           </div>
         </form>
+        
       </div>   
     </div>
+    
+    
     <!-- 책 List View -->
     <!-- 책 이미지, 책번호, 책 제목, 책 저자 출력 -->
     <!-- e_book_img_path, e_book_num, e_book_title, e_book_writer -->
@@ -141,6 +187,7 @@
     
     <!-- 기본 전체 목록 -->
     <div class="row bookList" id="basicBookList">
+    
       <c:forEach items="${bookList}" var="bookList" varStatus="status">
         <div class="col-sm-6 col-md-3 bookList-dv" >
           <a href="/book/view?e_book_num=${bookList.e_book_num}">
@@ -152,6 +199,7 @@
           </a>
         </div>
       </c:forEach>
+      
     </div>
     
     <!-- 검색 목록-->
@@ -160,6 +208,7 @@
     </c:if>
     
     <div class="row bookList" id="searchBookList">
+    
       <c:forEach items="${searchList}" var="searchList" varStatus="status">
         <div class="col-sm-6 col-md-3 bookList-dv">
           <a href="/book/view?e_book_num=${searchList.e_book_num}">
@@ -171,14 +220,18 @@
           </a>
         </div>
       </c:forEach>
+      
     </div>
     
-    <!-- 더보기 버튼  -->
-    <div class="row">
-      <input type="button" value="더보기" id="moreInfo" class="btn btn-info btn-lg btn-block"/>
+    <!-- 전체 책 리스트 더보기 버튼  -->
+    <div class="row btn-search" id="bookList-div">
+      <input type="button" value="기본 더보기" id="bookList-more" class="btn btn-block btn-lg"/>
     </div>
-    
-    <!-- OR 스크롤 끝에 내려오면 자동 AJAX -->
+
+    <!-- 검색 책 리스트 더보기 버튼  -->
+    <div class="row btn-search" id="searchList-div">
+      <input type="button" value="검색 더보기" id="searchList-more" class="btn btn-block btn-lg"/>
+    </div>
     
   </div>
 </body>
