@@ -31,7 +31,7 @@ public class BookController {
   @RequestMapping(value = "/view", method = RequestMethod.GET)
   // @ResponseBody
   public void getView(@RequestParam("e_book_num") int e_book_num, ThumbDTO thumbParam, HttpSession session,
-      FavoriteDTO favoriteParam, Model model, @ModelAttribute("member") MemberDTO member) throws Exception {
+      FavoriteDTO favoriteParam, Model model, @ModelAttribute("member2") MemberDTO member) throws Exception {
 
     // 책정보 가져오기
     BookDTO bookDTO = bookService.view(e_book_num);
@@ -103,7 +103,7 @@ public class BookController {
   @RequestMapping(value = "/thumbUp", method = RequestMethod.POST)
   @ResponseBody
   public void postThumbup(@RequestParam("e_book_num") int e_book_num, ThumbDTO thumbParam, HttpSession session,
-      @ModelAttribute("member") MemberDTO member, Model model) throws Exception {
+      @ModelAttribute("member2") MemberDTO member, Model model) throws Exception {
 
     // 세션에서 회원정보 불러오기
     member = (MemberDTO) session.getAttribute("member");
@@ -120,14 +120,14 @@ public class BookController {
       bookService.thumbUp(e_book_num);
       bookService.thumbInsert(thumbParam);
       thumbCheck = true;
-      model.addAttribute(thumbCheck);
+      model.addAttribute("thumbCheck",thumbCheck);
       System.out.println("증가" + thumbCheck );
     } else {
       // 도서테이블 좋아요 감소
       bookService.thumbDown(e_book_num);
       bookService.thumbDelete(thumbParam);
       thumbCheck = false;
-      model.addAttribute(thumbCheck);
+      model.addAttribute("thumbCheck",thumbCheck);
       System.out.println("감소" + thumbCheck );
     }
   }
