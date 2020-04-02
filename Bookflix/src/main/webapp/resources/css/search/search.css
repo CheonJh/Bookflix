@@ -57,6 +57,6 @@
   border-right-color: #D02090;
 }
 
-.bookList h4{
-  display: none;
+.bookList a{
+  text-decoration: none;
 }

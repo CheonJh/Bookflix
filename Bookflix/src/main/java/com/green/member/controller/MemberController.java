@@ -1,21 +1,27 @@
 package com.green.member.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.green.member.domain.Email;
 import com.green.member.domain.MemberDTO;
 import com.green.member.service.MemberService;
+import com.green.util.EmailSender;
  
 /**
  * @author 천재헌
@@ -197,7 +203,66 @@ public class MemberController {
     int result = service.pwCheck(member);
     return Integer.toString(result);
   }
+  //비번찾기
+  @RequestMapping(value = "/findPW", method = RequestMethod.GET)
+  public void getFindPW() throws Exception {
 
-  // 
+  }
+  
+  @Autowired
+  private EmailSender emailSender;
+  @Autowired
+  private Email email;
+  @RequestMapping(value = "/findPW", method = RequestMethod.POST)
+  @ResponseBody
+  public int postFindPW(@RequestParam(value="findArr[]") List<String> find, MemberDTO dto) throws Exception {
 
+    int result;
+    String member_email = find.get(0).toString();
+    String member_name = find.get(1).toString();
+    String member_phone = find.get(2).toString();
+
+      
+    dto.setMember_email(member_email);
+    dto.setMember_name(member_name);
+    dto.setMember_phone(member_phone);
+    
+    String pw = service.findPW(dto);
+    if(pw!=null) {
+      email.setContent("비밀번호는 "+pw+" 입니다.");
+      email.setReceiver(member_email);
+      email.setSubject(member_name+"님 비밀번호 찾기 메일입니다.");
+      emailSender.SendEmail(email);
+      result = 1;
+      return result;
+    }else {
+      result = 0;
+      return result;
+    }
+  }
+  //ID 찾기
+  @RequestMapping(value = "/findID", method = RequestMethod.GET)
+  public void getFindID() throws Exception {
+    
+  }  
+  @RequestMapping(value = "/findID", method = RequestMethod.POST)
+  @ResponseBody
+  public String postFindID(@RequestParam(value="findArr[]") List<String> find, MemberDTO dto) throws Exception {
+
+    String member_name = find.get(0).toString();
+    String member_phone = find.get(1).toString();
+    
+    String result;
+      
+    dto.setMember_name(member_name);
+    dto.setMember_phone(member_phone);
+    String member_email = service.findID(dto);
+    System.out.println(member_email);
+    
+    result = member_email;
+    return result;
+
+
+  }
+  
 }
