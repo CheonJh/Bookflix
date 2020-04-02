@@ -77,13 +77,13 @@
   <!-- 업로드 경로 설정(규철) -->
   <beans:bean class="java.lang.String" id="uploadPath">
     <beans:constructor-arg
-      value="C:\Users\KJN\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
+      value="C:\Users\INGUE\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
   </beans:bean>
   
   <!-- 업로드 경로 설정(지나) -->
   <beans:bean class="java.lang.String" id="uploadPath2">
     <beans:constructor-arg
-      value="C:\Users\KJN\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\member_img" />
+      value="C:\Users\INGUE\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\member_img" />
   </beans:bean>
 
   <!-- 일반 파일 업로드 경로 ?? 왜쓰는지 모름 -->

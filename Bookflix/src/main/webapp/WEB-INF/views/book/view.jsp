@@ -90,8 +90,8 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 offset-sm-1 thumbnail">
-          <a href="#"> <img src="http://via.placeholder.com/200X350"
-            alt="#">
+          <a href="#">
+          <img src="/book-imgs/${view.e_book_img_path }" alt="책 이미지">
           </a>
         </div>
         <div class="col-sm-6 offset-sm-1 wrapinfo">
@@ -123,11 +123,11 @@
                   </button>
              
             <c:choose>
-              <c:when test="${member ne null}">
+              <c:when test="${member2 ne null}">
                 <button type="button" class="btn btn-primary">찜하기</button>
               </c:when>
               
-              <c:when test="${member ne null}">
+              <c:when test="${member2 ne null}">
                 <button type="button" class="btn btn-primary">찜하기</button>
               </c:when>
             </c:choose>
