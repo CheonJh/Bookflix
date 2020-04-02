@@ -152,4 +152,15 @@ public class MemberDAOImpl implements MemberDAO {
   public int pwCheck(MemberDTO dto) throws Exception {
     return sql.selectOne(namespace+".pwCheck", dto);
   }
+
+  @Override
+  public String findPW(MemberDTO dto) throws Exception {
+    return sql.selectOne(namespace+".findPW", dto);
+  }
+
+  @Override
+  public String findID(MemberDTO dto) throws Exception {
+
+    return sql.selectOne(namespace+".findID", dto);
+  }
 }

@@ -5,8 +5,8 @@
   xmlns:beans="http://www.springframework.org/schema/beans"
   xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
   <!-- DispatcherServlet Context: defines this servlet's request-processing 
     infrastructure -->
@@ -97,6 +97,27 @@
   <beans:bean id="CertifyInterceptor"
     class="com.green.interceptor.CertifyInterceptor" />
 
+<!--이메일 객체(계쩡) -->
+    <beans:bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <beans:property name="host" value="smtp.gmail.com" />
+        <beans:property name="port" value="587" />
+        <beans:property name="defaultEncoding" value="utf-8"/>
+        <beans:property name="username" value="spring.dev.test@gmail.com" />
+        <beans:property name="password" value="!spring1234@" /> 
+         
+        <beans:property name="javaMailProperties">
+            <beans:props>
+                <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+                <beans:prop key="mail.smtp.auth">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+    
+    <beans:bean id="email" class="com.green.member.domain.Email">
+    </beans:bean>
+    <beans:bean id="emailSender" class="com.green.util.EmailSender">
+    </beans:bean>
+ 
   <interceptors>
     <!-- 로그인 인터셉터 -->
     <interceptor>

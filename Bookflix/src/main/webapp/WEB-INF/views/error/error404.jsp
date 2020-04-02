@@ -12,7 +12,7 @@
 <meta name="author" content="안규철" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
+<title>Error404</title>
 
 <!-- Google font -->
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,700" rel="stylesheet">-->
