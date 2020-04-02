@@ -13,9 +13,6 @@
 
   <!-- Enables the Spring MVC @Controller programming model -->
   <annotation-driven />
-  <!-- AJAX - JSON 406ERROR -->
-  <!-- <mvc:annotation-driven /> -->
-
 
   <!-- Handles HTTP GET requests for /resources/** by efficiently serving 
     up static resources in the ${webappRoot}/resources directory -->
@@ -25,7 +22,7 @@
   <!-- Resolves views selected for rendering by @Controllers to .jsp resources 
     in the /WEB-INF/views directory -->
   <!-- 기본 InternalResourceViewResolver -->
-  <!-- <beans:bean class="org.springframeworjn.web.servlet.view.InternalResourceViewResolver"> 
+  <!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
     <beans:property name="prefix" value="/WEB-INF/views/" /> <beans:property 
     name="suffix" value=".jsp" /> </beans:bean> -->
 
@@ -118,7 +115,6 @@
       <mapping path="/adminBook/*" />
       <!-- adminInfo -->
       <mapping path="/adminInfo/*" />
-      <!-- book -->
 
       <beans:ref bean="LoginInterceptor" />
     </interceptor>
@@ -131,7 +127,26 @@
     </interceptor>
   </interceptors>
 
-  
+  <!--이메일 객체(계쩡) -->
+    <beans:bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <beans:property name="host" value="smtp.gmail.com" />
+        <beans:property name="port" value="587" />
+        <beans:property name="defaultEncoding" value="utf-8"/>
+        <beans:property name="username" value="spring.dev.test@gmail.com" />
+        <beans:property name="password" value="!spring1234@" /> 
+         
+        <beans:property name="javaMailProperties">
+            <beans:props>
+                <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+                <beans:prop key="mail.smtp.auth">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+    
+    <beans:bean id="email" class="com.green.member.domain.Email">
+    </beans:bean>
+    <beans:bean id="emailSender" class="com.green.util.EmailSender">
+    </beans:bean>
 
 
 </beans:beans>

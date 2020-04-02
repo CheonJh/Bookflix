@@ -62,5 +62,45 @@ public class MemberServiceImpl implements MemberService {
   public int pwCheck(MemberDTO dto) throws Exception {
     return dao.pwCheck(dto);
   }
+  //비번찾기
+  @Override
+  public String findPW(MemberDTO dto) throws Exception {
+
+    String phone = dto.getMember_phone();
+    String phoneTmp[] = new String[3];
+
+    if (phone.length()==11) {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,7);
+      phoneTmp[2] = phone.substring(7);
+    } else {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,6);
+      phoneTmp[2] = phone.substring(6);
+    }
+    dto.setMember_phone(phoneTmp[0]+"-"+phoneTmp[1]+"-"+phoneTmp[2]);
+    
+    return dao.findPW(dto);
+  }
+
+  @Override
+  public String findID(MemberDTO dto) throws Exception {
+    
+    String phone = dto.getMember_phone();
+    String phoneTmp[] = new String[3];
+
+    if (phone.length()==11) {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,7);
+      phoneTmp[2] = phone.substring(7);
+    } else {
+      phoneTmp[0] = phone.substring(0,3);
+      phoneTmp[1] = phone.substring(3,6);
+      phoneTmp[2] = phone.substring(6);
+    }
+    dto.setMember_phone(phoneTmp[0]+"-"+phoneTmp[1]+"-"+phoneTmp[2]);
+    
+    return dao.findID(dto);
+  }
 
 }
