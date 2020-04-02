@@ -25,34 +25,46 @@
 	$( function () {
     var e_book_num = ${view.e_book_num};
     var thumbupcnt = ${view.e_book_thumbupcnt};
-		var i;
+    
+    var thumbCheck = '<c:out value="${thumbCheck}"/>';
+		var i;		
+		
+		// 좋아요 버튼초기화
+		if(thumbCheck == true){
+		  $('.thumbUp').addClass("btn-danger selected");
+		  $('.thumbUp').removeClass("btn-primary");
+		  console.log("not click");
+		}
+		
+		else {
+      $('.thumbUp').addClass("btn-primary");
+      $('.thumbUp').removeClass("btn-danger selected");
+      console.log("not click");
+		}
 		
     // 좋아요 +1 호출
-     $('#thumbUp').click( function (){
-       thumbUp(1);
-       clicked(event);
-       .attr("id", "#thumbDown");
-     });
-     $('#thumbDown').click( function (){
-       thumbUp(-1);
-       clicked(event);
-       .attr( "id", "#thumbDown" );
-     })
+     $('.thumbUp').click( function (){
+       if($(this).hasClass('selected')){
+         thumbUp(-1);
+         $(this).addClass("btn-primary");
+         $(this).removeClass("btn-danger selected");
+       }
+       
+       else{
+         thumbUp(1);
+         $(this).addClass("btn-danger selected");
+         $(this).removeClass("btn-primary");
+       }
+     }); 
   
-    function clicked(event){
-      console.log("clicked");
-      event.stopPropagation();
-    }
-    
  		// 좋아요 +1
     function thumbUp(i) {
       $.ajax({
-        url : "/book/thumbUp?e_book_num=" + e_book_num,
+        url : "/book/thumbUp?e_book_num="+e_book_num,
         type : "POST",
         success : function() {
           thumbupcnt = thumbupcnt + i;
           $("#result").text(thumbupcnt);
-          console.log("clicked");
         },
         error : function() {
           console.log("실패");
@@ -73,6 +85,7 @@
 </script>
 </head>
 <body>
+
   <div class="wrap">
     <div class="container">
       <div class="row">
@@ -87,7 +100,12 @@
           <div>
             <div class="writer">저자 ${view.e_book_writer}</div>
             <div class="writer">역자 ${view.e_book_translater}</div>
-            <div class="writer">출판사 ${view.e_book_publisher}</div>
+            <div class="writer">출판사 ${view.e_book_publisher}
+            
+            <%= request.getAttribute("boolean")
+            %>
+            
+            </div>
             <br>
           </div>
 
@@ -96,38 +114,14 @@
             <button type="button" class="btn btn-primary">e-북
               읽기</button>
 
-            <c:choose>
-              <c:when test="${member eq null}">
-                  <button type="button" class="btn btn-primary" 
-                  onclick="location.href='/member/login' ">
+                  <button type="button" class="btn btn-primary thumbUp selected" >
+                 <!--  onclick="location.href='/member/login' "> -->
                     좋아요 
                     <span id="result">
                         ${view.e_book_thumbupcnt} 
                     </span>
                   </button>
-              </c:when>
-              
-              <c:otherwise>
-                 <c:choose>
-                  <c:when test="${thumbCheck == true}">
-                    <button id="thumbUp" class="btn btn-primary" onclick="thumbUp(1);">
-                      좋아요 <span id="result"> ${view.e_book_thumbupcnt}
-                      </span>
-                    </button>
-                  </c:when>
-                  
-                  <c:otherwise>
-                    <button id="thumbDown" class="btn btn-danger" onclick="thumbUp(-1);">
-                      좋아요 <span id="result"> ${view.e_book_thumbupcnt}
-                      </span>
-                    </button>
-                  </c:otherwise>
-                  </c:choose> 
-              </c:otherwise>
-            </c:choose>
-              
-              
-
+             
             <c:choose>
               <c:when test="${member ne null}">
                 <button type="button" class="btn btn-primary">찜하기</button>

@@ -21,8 +21,8 @@ import com.green.member.domain.MemberDTO;
 @RequestMapping("/book/*")
 public class BookController {
 
-  boolean thumbCheck;
-  boolean favoriteCheck;
+  public boolean thumbCheck;
+  public boolean favoriteCheck;
 
   @Inject
   private BookService bookService;
@@ -62,35 +62,37 @@ public class BookController {
       if (thumbDTO != null) {
         thumbCheck = true;
         System.out.println("좋아요 낫 널");
-        model.addAttribute(thumbCheck);
+        model.addAttribute("thumbCheck",thumbCheck);
+        System.out.println(thumbCheck);
       }
 
       // 좋아요가 없을때
       else {
         thumbCheck = false;
         System.out.println("좋아요 널");
-        model.addAttribute(thumbCheck);
+        model.addAttribute("thumbCheck",thumbCheck);
+        System.out.println(thumbCheck);
       }
 
       // 찜하기가 이미 있을때
       if (favoriteDTO != null) {
         favoriteCheck = true;
         System.out.println("찜하기 낫 널");
-        model.addAttribute(favoriteCheck);
+        model.addAttribute("favoriteCheck",favoriteCheck);
       }
 
       // 찜하기가 없을때
       else {
         favoriteCheck = false;
         System.out.println("찜하기 널");
-        model.addAttribute(favoriteCheck);
+        model.addAttribute("favoriteCheck",favoriteCheck);
       }
     } else {
       System.out.println("멤버 널");
       thumbCheck = false;
       favoriteCheck = false;
-      model.addAttribute(thumbCheck);
-      model.addAttribute(favoriteCheck);
+      model.addAttribute("thumbCheck",thumbCheck);
+      model.addAttribute("favoriteCheck",favoriteCheck);
     }
     System.out.println("멤버" + member);
 
@@ -119,12 +121,14 @@ public class BookController {
       bookService.thumbInsert(thumbParam);
       thumbCheck = true;
       model.addAttribute(thumbCheck);
+      System.out.println("증가" + thumbCheck );
     } else {
       // 도서테이블 좋아요 감소
       bookService.thumbDown(e_book_num);
       bookService.thumbDelete(thumbParam);
       thumbCheck = false;
       model.addAttribute(thumbCheck);
+      System.out.println("감소" + thumbCheck );
     }
   }
 
