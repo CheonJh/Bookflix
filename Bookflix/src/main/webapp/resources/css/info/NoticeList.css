@@ -3,32 +3,25 @@
 .notinav-con {
   display: flex;
   flex-direction: row;
-  width: 40%;
-  margin-left: 10%; padding : 0;
-  background-color: #77ace1;
-  list-style-type: none;
-  padding: 0;
+  width: 50%;
+  margin-left: 22%; 
+  padding-top: 10px;
 }
 
-.notinav-item {
-  padding: 15px;
+.notinav-item1, .notinav-item2, .notinav-item3, .notinav-item4 {
+  padding: 5px;
   cursor: pointer;
   width: 25%;
   text-align: center;
 }
 
-.notinav-item:hover {
-  background-color: skyblue;
+.notinav-item1, .notinav-item2, .notinav-item3 {
+  border-right: 2px solid;
 }
 
-.notinav-item a {
+.ab1, .ab2, .ab3, .ab4 {
   text-align: center;
-  text-decoration: none;
-  color: white;
-}
-
-.active {
-  background-color: lightgrey;
+  font-size: 18px;
 }
 
 .ntcontainer {
@@ -70,14 +63,14 @@
   text-decoration: none;
 }
 
-#box4{
-  margin: 0.5rem 0; 
+#box4 {
+  margin: 0.5rem 0;
 }
 
 #nt-pagenaiton {
   margin: 0 auto;
 }
 
-a:hover{
-text-decoration: none;
+a:hover {
+  text-decoration: none;
 }
