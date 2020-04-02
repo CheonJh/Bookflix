@@ -15,7 +15,7 @@
   <annotation-driven />
   <!-- AJAX - JSON 406ERROR -->
   <!-- <mvc:annotation-driven /> -->
-  
+
 
   <!-- Handles HTTP GET requests for /resources/** by efficiently serving 
     up static resources in the ${webappRoot}/resources directory -->
@@ -25,7 +25,7 @@
   <!-- Resolves views selected for rendering by @Controllers to .jsp resources 
     in the /WEB-INF/views directory -->
   <!-- 기본 InternalResourceViewResolver -->
-  <!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+  <!-- <beans:bean class="org.springframeworjn.web.servlet.view.InternalResourceViewResolver"> 
     <beans:property name="prefix" value="/WEB-INF/views/" /> <beans:property 
     name="suffix" value=".jsp" /> </beans:bean> -->
 
@@ -80,13 +80,13 @@
   <!-- 업로드 경로 설정(규철) -->
   <beans:bean class="java.lang.String" id="uploadPath">
     <beans:constructor-arg
-      value="C:\Users\KJN\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
+      value="C:\Users\ih5jh\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
   </beans:bean>
   
   <!-- 업로드 경로 설정(지나) -->
   <beans:bean class="java.lang.String" id="uploadPath2">
     <beans:constructor-arg
-      value="C:\Users\KJN\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\member_img" />
+      value="C:\Users\ih5jh\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\member_img" />
   </beans:bean>
 
   <!-- 일반 파일 업로드 경로 ?? 왜쓰는지 모름 -->

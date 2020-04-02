@@ -1,8 +1,6 @@
 package com.green.search.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -37,11 +35,11 @@ public class SearchController {
   SearchService service;
   
   // 전체 책 더보기 - offset, limit
-  public static final int ROWSIZE = 4; // test: 4, 나중에 더미데이터 늘리고 16개씩으로 변환
+  public static final int ROWSIZE = 12; // test: 4, 나중에 더미데이터 늘리고 16개씩으로 변환
   public static int startRow = 0; // 시작 로우 값
   
   // 검색 책 더보기 - offset, limit
-  public static final int SEARCHROWSIZE = 4; // test: 4, 나중에 더미데이터 늘리고 16개씩으로 변환
+  public static final int SEARCHROWSIZE = 8; // test: 4, 나중에 더미데이터 늘리고 16개씩으로 변환
   public static int searchStartRow = 0; // 시작 로우 값
 
   // 1-1) 검색페이지 - 기본 전체 책 리스트 
