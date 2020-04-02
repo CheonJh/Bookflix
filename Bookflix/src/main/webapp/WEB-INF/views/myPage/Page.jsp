@@ -53,7 +53,7 @@
     <div class = content1>
     <div class="ul">기본 설정</div>
     <div class="li">
-      <a href="/member/modifyMember">내 정보</a>
+      <a href="/member/modifyMember">내 정보 관리</a>
     </div>
     <div class = content2>
     <div class="ul">서비스 관리</div>
