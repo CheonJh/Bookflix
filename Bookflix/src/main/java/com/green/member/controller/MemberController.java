@@ -262,7 +262,6 @@ public class MemberController {
     result = member_email;
     return result;
 
-
   }
   
 }
