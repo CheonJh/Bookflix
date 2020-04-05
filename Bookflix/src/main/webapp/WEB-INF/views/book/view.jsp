@@ -27,19 +27,29 @@
     var thumbupcnt = ${view.e_book_thumbupcnt};
     
     var thumbCheck = '<c:out value="${thumbCheck}"/>';
+    var favoriteCheck = '<c:out value="${favoriteCheck}"/>';
 		var i;		
 		
-		// 좋아요 버튼초기화
+		// 좋아요 버튼 초기화
 		if(thumbCheck == true){
 		  $('.thumbUp').addClass("btn-danger selected");
 		  $('.thumbUp').removeClass("btn-primary");
-		  console.log("not click");
 		}
 		
 		else {
       $('.thumbUp').addClass("btn-primary");
       $('.thumbUp').removeClass("btn-danger selected");
-      console.log("not click");
+		}
+		
+		// 찜하기 버튼 초기화
+		if(favoriteCheck == true){
+		  $('.favorite').addClass("btn-danger selected");
+		  $('.favorite').removeClass("btn-primary");
+		}
+		
+		else {
+      $('.favorite').addClass("btn-primary");
+      $('.favorite').removeClass("btn-danger selected");
 		}
 		
     // 좋아요 +1 호출
@@ -56,8 +66,19 @@
          $(this).removeClass("btn-primary");
        }
      }); 
+    
+    // 찜하기 클릭 이벤트
+     $('.favorite').click(function(){
+       var ye = confirm("찜하시겠습니까?");
+       if(ye){
+         favorite();
+       }
+       else{
+         
+       }
+     });
   
- 		// 좋아요 +1
+ 		// 좋아요 ajax
     function thumbUp(i) {
       $.ajax({
         url : "/book/thumbUp?e_book_num="+e_book_num,
@@ -72,6 +93,22 @@
       });
     }
     
+ 		// 찜하기 ajax
+    function favorite() {
+      $.ajax({
+        url : "/book/favorite?e_book_num="+e_book_num,
+        type : "POST",        
+        success : function(result) {          
+          if(result == 1){
+            alert("찜한 도서 목록에 등록되었습니다.")
+          }else{
+           	alert("이미 찜한 도서입니다.")
+          }
+        },
+        error : function() {
+        },
+      });
+    }
     /* function login(){
       if(conform("로그인 페이지로 이동하시겠습니까?") == true){
         
@@ -95,45 +132,39 @@
           </a>
         </div>
         <div class="col-sm-6 offset-sm-1 wrapinfo">
-          <h4>${view.e_book_title}</h4>
-          <br>
           <div>
+            <h4>${view.e_book_title}</h4>
+            <br>
             <div class="writer">저자 ${view.e_book_writer}</div>
             <div class="writer">역자 ${view.e_book_translater}</div>
-            <div class="writer">출판사 ${view.e_book_publisher}
-            
-            <%= request.getAttribute("boolean")
-            %>
-            
-            </div>
+            <div class="writer">출판사 ${view.e_book_publisher}</div>
             <br>
           </div>
 
-
+          
+          
           <div class="form-group">
-            <button type="button" class="btn btn-primary">e-북
-              읽기</button>
+            <button type="button" class="btn btn-primary">
+            e-북 읽기</button>
 
-                  <button type="button" class="btn btn-primary thumbUp selected" >
-                 <!--  onclick="location.href='/member/login' "> -->
-                    좋아요 
-                    <span id="result">
-                        ${view.e_book_thumbupcnt} 
-                    </span>
-                  </button>
+            <button type="button" class="btn btn-primary thumbUp selected" 
+              <c:if test="${member eq null}">
+                onclick="location.href='/member/login' "
+              </c:if>
+            >
+                  좋아요 
+                <span id="result">
+                  ${view.e_book_thumbupcnt} 
+                </span>
+            </button>
              
-            <c:choose>
-              <c:when test="${member2 ne null}">
-                <button type="button" class="btn btn-primary">찜하기</button>
-              </c:when>
-              
-              <c:when test="${member2 ne null}">
-                <button type="button" class="btn btn-primary">찜하기</button>
-              </c:when>
-            </c:choose>
-            
+            <button type="button" class="btn btn-primary favorite"
+            <c:if test="${member eq null}">
+                onclick="location.href='/member/login' "
+              </c:if>
+            >
+            찜하기</button>
           </div>
-
         </div>
       </div>
     </div>

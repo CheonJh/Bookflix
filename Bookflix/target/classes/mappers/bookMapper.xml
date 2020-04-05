@@ -20,7 +20,7 @@
   </select>
 
   <!-- 좋아요 증가 -->
-  <update id="thumbup" parameterType="int">
+  <update id="thumbUp" parameterType="int">
     update E_BOOK
     set
     e_book_thumbupcnt = e_book_thumbupcnt+1
@@ -29,7 +29,7 @@
   </update>
 
   <!-- THUMBUP 테이블 멤버, 책 번호 추가 -->
-  <insert id="thumbinsert"
+  <insert id="thumbInsert"
     parameterType="com.green.book.domain.ThumbDTO">
     insert ignore into 
     THUMBUP(thumbup_num, member_num, e_book_num, thumbup_date) 
@@ -38,7 +38,7 @@
   </insert>
 
   <!-- 좋아요 감소 -->
-  <update id="thumbdown" parameterType="int">
+  <update id="thumbDown" parameterType="int">
     update E_BOOK
     set
     e_book_thumbupcnt = e_book_thumbupcnt-1
@@ -47,7 +47,7 @@
   </update>
 
   <!-- THUMBUP 테이블 멤버, 책 번호 삭제 -->
-  <delete id="thumbdelete" parameterType="com.green.book.domain.ThumbDTO">
+  <delete id="thumbDelete" parameterType="com.green.book.domain.ThumbDTO">
     delete from THUMBUP
     where member_num = #{member_num} and e_book_num = #{e_book_num}
   </delete>
@@ -65,13 +65,7 @@
     insert ignore into 
     FAVORITE(favorite_num, member_num, e_book_num, favorite_date) 
     values ((select max(t.favorite_num)+1 
-    from THUMBUP t), #{member_num}, #{e_book_num}, CURDATE())
+    from FAVORITE t), #{member_num}, #{e_book_num}, CURDATE())
   </insert>
-
-  <!-- FAVORITE 테이블 멤버, 책 번호 삭제 -->
-  <delete id="favoriteDelete" parameterType="com.green.book.domain.FavoriteDTO">
-    delete from FAVORITE
-    where member_num = #{member_num} and e_book_num = #{e_book_num}
-  </delete>
 
 </mapper>

@@ -31,7 +31,7 @@ public class BookController {
   @RequestMapping(value = "/view", method = RequestMethod.GET)
   // @ResponseBody
   public void getView(@RequestParam("e_book_num") int e_book_num, ThumbDTO thumbParam, HttpSession session,
-      FavoriteDTO favoriteParam, Model model, @ModelAttribute("member2") MemberDTO member) throws Exception {
+      FavoriteDTO favoriteParam, Model model, MemberDTO member) throws Exception {
 
     // 책정보 가져오기
     BookDTO bookDTO = bookService.view(e_book_num);
@@ -103,7 +103,7 @@ public class BookController {
   @RequestMapping(value = "/thumbUp", method = RequestMethod.POST)
   @ResponseBody
   public void postThumbup(@RequestParam("e_book_num") int e_book_num, ThumbDTO thumbParam, HttpSession session,
-      @ModelAttribute("member2") MemberDTO member, Model model) throws Exception {
+    MemberDTO member, Model model) throws Exception {
 
     // 세션에서 회원정보 불러오기
     member = (MemberDTO) session.getAttribute("member");
@@ -135,11 +135,11 @@ public class BookController {
   // 찜하기 등록
   @RequestMapping(value = "/favorite", method = RequestMethod.POST)
   @ResponseBody
-  public void postFavorite(@RequestParam("e_book_num") int e_book_num, FavoriteDTO favoriteParam, 
-      HttpSession session) throws Exception {
-
+  public int postFavorite(@RequestParam("e_book_num") int e_book_num, FavoriteDTO favoriteParam, 
+      HttpSession session, MemberDTO member, Model model) throws Exception {
+    int result;
     // 세션에서 회원정보 불러오기
-    MemberDTO member = (MemberDTO) session.getAttribute("member");
+    member = (MemberDTO) session.getAttribute("member");
 
     // 회원번호
     int member_num = member.getMember_num();
@@ -150,11 +150,15 @@ public class BookController {
     if (favoriteCheck != true) {
       // 도서테이블 좋아요 증가
       bookService.favoriteInsert(favoriteParam);
-      favoriteCheck = true;
+      model.addAttribute("favoriteCheck",favoriteCheck);
+      System.out.println();
+      result = 1;
+      return result;
     } else {
       // 도서테이블 좋아요 감소
-      bookService.favoriteDelete(favoriteParam);
-      favoriteCheck = false;
+      model.addAttribute("favoriteCheck",favoriteCheck);
+      result = 0;
+      return result;
     }
   }
 }
