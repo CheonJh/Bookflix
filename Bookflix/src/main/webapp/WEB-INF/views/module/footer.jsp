@@ -11,11 +11,14 @@
 <meta name="author" content="김경재" />
 <meta name="description" content="푸터 모듈 페이지" />
 
-<title>footer</title>
+<!-- <title>footer</title> -->
 
 <!-- css -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/footer.css">
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/footer.css"> 
+ 
+<style>
 
+</style>
 </head>
 <body>
   <footer>

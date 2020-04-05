@@ -13,7 +13,7 @@
 <!-- 파비콘 삽입 -->
 <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
-<title>BOOKFLIX</title>
+<!-- <title>BOOKFLIX</title> -->
 
 <!-- *************************************************** -->
 
