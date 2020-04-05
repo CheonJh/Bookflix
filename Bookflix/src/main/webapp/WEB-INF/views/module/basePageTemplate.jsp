@@ -7,7 +7,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
 <meta name="author" content="천재헌" />
 <meta name="description" content="기본 페이지 템플릿, 헤더-바디-푸터 구조" />
 

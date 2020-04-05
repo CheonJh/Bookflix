@@ -7,6 +7,7 @@
   bottom: 200px;
   display: none;
   z-index: 999;
+  color: #458dd6;
 }
 
 /* 검색창 위아래 여백 */
@@ -23,8 +24,9 @@
 
 /* 책 컨텐츠 */
 .bookContent{
-  box-shadow: 5px 7px 20px -5px #8a8a8a;
+  width: 100%;  
   height: 430px;
+  box-shadow: 5px 7px 20px -5px #8a8a8a;
   margin: 15px auto;
   padding: 5px auto;
 }
@@ -32,7 +34,7 @@
 .bookContent img{
 /*   border-radius: 50%; */
   display : block;
-  width: 250px;
+  width: 100%;
   height: 300px;
   margin: 0 auto;
   padding: 5px;
@@ -51,10 +53,10 @@
 
 .bookList-dv:hover {
   border: solid 2px;
-  border-top-color: orange;
-  border-bottom-color: orange;
-  border-left-color: #D02090;
-  border-right-color: #D02090;
+  border-top-color: #3f99dc;
+  border-bottom-color: #458dd6;
+  border-left-color: #3f99dc;
+  border-right-color: #458dd6;
 }
 
 .bookList a{

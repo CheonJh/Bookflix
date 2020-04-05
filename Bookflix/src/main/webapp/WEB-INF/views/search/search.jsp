@@ -40,7 +40,6 @@
       </div>   
     </div>
     
-    
     <!-- 책 List View -->
     <!-- 책 이미지, 책번호, 책 제목, 책 저자 출력 -->
     <!-- e_book_img_path, e_book_num, e_book_title, e_book_writer -->

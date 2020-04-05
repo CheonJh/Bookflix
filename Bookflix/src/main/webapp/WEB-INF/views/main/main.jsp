@@ -144,7 +144,8 @@ li { list-style: none;} */
   width: 600px;
 }
 .container {
-  width: 600px; height:100%;
+  width: 600px;
+  height:100%;
   margin: 0;
   padding: 0;
   margin: 0 auto;
@@ -154,17 +155,28 @@ li { list-style: none;} */
   border-top: none;
   padding: 20px;
   width: 600px;
-  height: 790px;
+  height: 1040px;
 }
 
 .container .tab-content > div {
   width: 100%; height: 100%;
+}
+/* 재헌 추가 */
+.favor-wrap{
+  width: 560px;
+  height: 340px;
+}
+
+.tab-content .favor-wrap .imgbox{
+  width: 170px;
+  height: 335px;
 }
 
 .tab-content .favor-wrap .imgbox img {
   display: block;
   width: 170px;
   height: 240px;
+  margin-top: 40px;
 }
 
 .tab-content .favor-wrap div {
@@ -225,21 +237,20 @@ li { list-style: none;} */
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade in show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade in show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   <!-- 인기도서 탭 내부 내용 -->
     <c:forEach items="${favorite}" var="favorite">
       <div class="favor-wrap">
-          <div class="imgbox">
-            <a href="#"><img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
-          </div>
-          <div class="book-info">
-            <p class="book-title">${favorite.e_book_title}</p>
-            <p class="author">저자 : ${favorite.e_book_writer}</p>
-            <p class="publisher">출판사 : ${favorite.e_book_publisher}</p>
-            <p class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusantium perspiciatis voluptas ab nihil ullam, quisquam omnis optio excepturi sint at distinctio sequi iure cumque, placeat earum vitae beatae dolorum.</p>
-          </div>
+        <div class="imgbox">
+          <a href="#"><img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
         </div>
-       
+        <div class="book-info">
+          <p class="book-title">${favorite.e_book_title}</p>
+          <p class="author">저자 : ${favorite.e_book_writer}</p>
+          <p class="publisher">출판사 : ${favorite.e_book_publisher}</p>
+          <p class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusantium perspiciatis voluptas ab nihil ullam, quisquam omnis optio excepturi sint at distinctio sequi iure cumque, placeat earum vitae beatae dolorum.</p>
+        </div>
+      </div>
     </c:forEach>
       
      
