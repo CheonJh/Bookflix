@@ -133,34 +133,6 @@ li { list-style: none;} */
 </script>
 
 
-<!-- 인기,신간 슬라이드 JS -->
-<!-- <script>
-  $(document).ready(function() {
-
-    var $slide = $(".slide").find("ul");
-
-    var $slideWidth = $slide.children().outerWidth();
-    var $slideHeight = $slide.children().outerHeight();
-    var $slideLength = $slide.children().length;
-
-    function rollingStart() {
-      $slide.css("width", $slideWidth * $slideLength + "px");
-      $slide.css("height", $slideHeight + "px");
-      $slide.animate({
-        left : -$slideWidth + "px"
-      }, 1500, function() {
-
-        $(this).append("<li>" + $(this).find("li:first").html() + "</li>");
-        $(this).find("li:first").remove();
-        $(this).css("left", 0);
-      });
-    }
-
-    setInterval(rollingStart, 3000);
-
-  });
-</script> -->
-
 <!-- 인기 신간 탭-->
 <style>
 .space { height: 20px; width: 100%;}
