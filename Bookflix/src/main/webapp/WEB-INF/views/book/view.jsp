@@ -28,17 +28,17 @@
     
     var thumbCheck = '<c:out value="${thumbCheck}"/>';
     var favoriteCheck = '<c:out value="${favoriteCheck}"/>';
-		var i;		
+		var i;
 		
 		// 좋아요 버튼 초기화
 		if(thumbCheck == true){
-		  $('.thumbUp').addClass("btn-danger selected");
-		  $('.thumbUp').removeClass("btn-primary");
+		  $('.thumbUp').addClass("btn-primary selected");
+		  $('.thumbUp').removeClass("btn-outline-primary");
 		}
 		
 		else {
-      $('.thumbUp').addClass("btn-primary");
-      $('.thumbUp').removeClass("btn-danger selected");
+      $('.thumbUp').addClass("btn-outline-primary");
+      $('.thumbUp').removeClass("btn-primary selected");
 		}
 		
 		// 찜하기 버튼 초기화
@@ -56,13 +56,13 @@
      $('.thumbUp').click( function (){
        if($(this).hasClass('selected')){
          thumbUp(-1);
-         $(this).addClass("btn-primary");
-         $(this).removeClass("btn-danger selected");
+         $(this).addClass("btn-outline-primary");
+         $(this).removeClass("btn-primary selected");
        }
        
        else{
          thumbUp(1);
-         $(this).addClass("btn-danger selected");
+         $(this).addClass("btn-outline-primary selected");
          $(this).removeClass("btn-primary");
        }
      }); 
@@ -120,6 +120,20 @@
 	});
     
 </script>
+<style>
+  .btn{
+    background-color: transparent;
+    color: #007bff;
+    border-color: #007bff;
+  } 
+  
+  .btn:hover {
+    font-weight: bold;  
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+</style>
 </head>
 <body>
 
@@ -147,7 +161,7 @@
             <button type="button" class="btn btn-primary">
             e-북 읽기</button>
 
-            <button type="button" class="btn btn-primary thumbUp selected" 
+            <button type="button" class="btn thumbUp btn-outline-primary selected" 
               <c:if test="${member eq null}">
                 onclick="location.href='/member/login' "
               </c:if>
@@ -158,7 +172,7 @@
                 </span>
             </button>
              
-            <button type="button" class="btn btn-primary favorite"
+            <button type="button" class="btn btn-outline-primary favorite"
             <c:if test="${member eq null}">
                 onclick="location.href='/member/login' "
               </c:if>
@@ -193,7 +207,5 @@
       </ul>
     </div>
   </div>
-  <a class="sidetop" href="#">TOP</a>
-
 </body>
 </html>

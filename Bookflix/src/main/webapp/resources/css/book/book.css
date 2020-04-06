@@ -53,3 +53,16 @@ li {
   right: 0;
   transition-duration: 1s;
 }
+
+.btn{
+  background-color: transparent;
+  color: #007bff;
+  border-color: #007bff;
+} 
+
+.btn:hover {
+  font-weight: bold;  
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
