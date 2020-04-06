@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -11,114 +12,25 @@
 <meta name="author" content="김경재" />
 <meta name="description" content="헤더 모듈 페이지" />
 
-<title>header</title>
-
-<style>
-
-body * {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  display: block;
-  color: #333;
-}
-
-header {
-  width: 100%;
-  height: 100%;
-}
-
-
-/* 로고 part */
-.logo {
-  width: 100%;
-  height: 100%;
-}
-
-.logo a img {
-  width:500px;
-  display: block;
-  margin: 0 auto;
-}
-
-
-/* 내비게이션 part */
-#gnb {
-  width: 100%; height: 100%;
-  background-color: #eee;
-}
-
-#gnb .nav {
-  width: 100%; height: 35px;
-}
-
-#gnb .nav li {
-  float: left;
-  width: 25%;
-}
-
-#gnb .nav li a {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* 로그인 part */
-.signin {
-  width: 100%; height: 100%;
-}
-
-.signin li {
-  float: left;
-  width: 50%;
-}
-
-.signin li a {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  text-decoration: none;
-}
-</style>
-
-
 <!-- css -->
-<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/header.css"> --%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/header.css">
 
 </head>
-<body>
 
-  <header>
-  
-    <div class="logo">
-      <a href="/"><img src="/resources/imgs/common/logo.png" alt="logo"></a>
-    </div>
-    <div id="gnb">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-6">
-            <ul class="nav">
-              <li><a href="/search/search">검색</a></li>
-              <li><a href="#">신간</a></li>
-              <li><a href="#">인기</a></li>
-              <li><a href="/info/noticeList?num=1">고객센터</a></li>
-            </ul>
-          </div>
-          <div class="col-sm-3">
-            <ul class="signin">
+<body>
+  <header class="fixed-top">
+    <!-- 헤더 상단 -->
+    <div class="head-top-wrap">
+      <div class="head-top">
+        <!-- sns -->
+        <div class="head-sns float-left">
+          <a href="#"><i class="fa fa-facebook-square sns-icon" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter-square sns-icon" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-youtube-square sns-icon" aria-hidden="true"></i></a>
+        </div>
+        <!-- login, signin -->
+        <div class="head-member float-right">
+          <ul class="signin float-right cf">
               <!-- 세션 찾아서 멤버 없으면 로그인, 회원가입 출력 -->
               <c:if test="${member == null}">
                 <li><a href="/member/login">로그인</a></li>
@@ -136,13 +48,30 @@ header {
                 </c:if>
                 <li><a href="/member/logout">로그아웃</a></li>
               </c:if>
-
             </ul>
-          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 헤더 하단 -->
+    <div class="head-bottom-wrap">
+      <div class="head-bottom cf">
+        <!-- 상단 로고 -->
+        <div class="head-logo float-left">
+          <a href="/">
+            <img src="/resources/imgs/common/logo_transparent_680x480.png" alt="logo">
+          </a>
+        </div>
+        <!-- 메뉴 -->
+        <div class="head-menu cf">
+          <ul class="float-right cf">
+            <li><a href="/search/search">검색</a></li>
+            <li><a href="/info/noticeList?num=1">고객센터</a></li>
+          </ul>
         </div>
       </div>
     </div>
   </header>
-  
+
 </body>
 </html>

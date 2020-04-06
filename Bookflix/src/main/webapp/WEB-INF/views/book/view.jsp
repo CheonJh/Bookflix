@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -25,116 +25,146 @@
 	$( function () {
     var e_book_num = ${view.e_book_num};
     var thumbupcnt = ${view.e_book_thumbupcnt};
-		var i;
+    
+    var thumbCheck = '<c:out value="${thumbCheck}"/>';
+    var favoriteCheck = '<c:out value="${favoriteCheck}"/>';
+		var i;		
+		
+		// 좋아요 버튼 초기화
+		if(thumbCheck == true){
+		  $('.thumbUp').addClass("btn-danger selected");
+		  $('.thumbUp').removeClass("btn-primary");
+		}
+		
+		else {
+      $('.thumbUp').addClass("btn-primary");
+      $('.thumbUp').removeClass("btn-danger selected");
+		}
+		
+		// 찜하기 버튼 초기화
+		if(favoriteCheck == true){
+		  $('.favorite').addClass("btn-danger selected");
+		  $('.favorite').removeClass("btn-primary");
+		}
+		
+		else {
+      $('.favorite').addClass("btn-primary");
+      $('.favorite').removeClass("btn-danger selected");
+		}
 		
     // 좋아요 +1 호출
-/*     $('#thumbUp').on('click', clicked(1));
-    $('#thumbDown').on('click', clicked(-1)); 
-    */
-  
-    function clicked(event){
-      console.log("clicked");
-      event.stopPropagation();
-    }
+     $('.thumbUp').click( function (){
+       if($(this).hasClass('selected')){
+         thumbUp(-1);
+         $(this).addClass("btn-primary");
+         $(this).removeClass("btn-danger selected");
+       }
+       
+       else{
+         thumbUp(1);
+         $(this).addClass("btn-danger selected");
+         $(this).removeClass("btn-primary");
+       }
+     }); 
     
- 		// 좋아요 +1
-    $('#thumbUp').on('click', function thumbUp() {
+    // 찜하기 클릭 이벤트
+     $('.favorite').click(function(){
+       var ye = confirm("찜하시겠습니까?");
+       if(ye){
+         favorite();
+       }
+       else{
+         
+       }
+     });
+  
+ 		// 좋아요 ajax
+    function thumbUp(i) {
       $.ajax({
-        url : "/book/thumbUp?e_book_num=" + e_book_num,
+        url : "/book/thumbUp?e_book_num="+e_book_num,
         type : "POST",
         success : function() {
-          thumbupcnt = thumbupcnt + 1;
+          thumbupcnt = thumbupcnt + i;
           $("#result").text(thumbupcnt);
-          /* ${thumbCheck = !thumbCheck};
-          return ${thumbCheck}; */
-          console.log("clicked");
         },
         error : function() {
           console.log("실패");
         },
       });
-    });
+    }
     
-    function login(){
+ 		// 찜하기 ajax
+    function favorite() {
+      $.ajax({
+        url : "/book/favorite?e_book_num="+e_book_num,
+        type : "POST",        
+        success : function(result) {          
+          if(result == 1){
+            alert("찜한 도서 목록에 등록되었습니다.")
+          }else{
+           	alert("이미 찜한 도서입니다.")
+          }
+        },
+        error : function() {
+        },
+      });
+    }
+    /* function login(){
       if(conform("로그인 페이지로 이동하시겠습니까?") == true){
         
       }
       else {
         
-      }
-    }
+      } 
+    }*/
 	});
     
 </script>
 </head>
 <body>
+
   <div class="wrap">
     <div class="container">
       <div class="row">
         <div class="col-sm-4 offset-sm-1 thumbnail">
-          <a href="#"> <img src="http://via.placeholder.com/200X350"
-            alt="#">
+          <a href="#">
+          <img src="/book-imgs/${view.e_book_img_path }" alt="책 이미지">
           </a>
         </div>
         <div class="col-sm-6 offset-sm-1 wrapinfo">
-          <h4>책 제목${view.e_book_title}</h4>
-          <br>
           <div>
+            <h4>${view.e_book_title}</h4>
+            <br>
             <div class="writer">저자 ${view.e_book_writer}</div>
             <div class="writer">역자 ${view.e_book_translater}</div>
             <div class="writer">출판사 ${view.e_book_publisher}</div>
             <br>
           </div>
 
-
+          
+          
           <div class="form-group">
-            <button type="button" class="btn btn-primary">e-북
-              읽기</button>
+            <button type="button" class="btn btn-primary">
+            e-북 읽기</button>
 
-            <c:choose>
-              <c:when test="${member eq null}">
-                  <button type="button" class="btn btn-primary" 
-                  onclick="location.href='/member/login.jsp' ">
-                    좋아요 
-                    <span id="result">
-                        ${view.e_book_thumbupcnt} 
-                    </span>
-                  </button>
-              </c:when>
-              
-              <c:otherwise>
-                 <c:choose>
-                  <c:when test="${thumbCheck == true}">
-                    <button id="thumbUp" class="btn btn-primary">
-                      좋아요 <span id="result"> ${view.e_book_thumbupcnt}
-                      </span>
-                    </button>
-                  </c:when>
-                  
-                  <c:otherwise>
-                    <button id="thumbDown" class="btn btn-danger">
-                      좋아요 <span id="result"> ${view.e_book_thumbupcnt}
-                      </span>
-                    </button>
-                  </c:otherwise>
-                  </c:choose> 
-              </c:otherwise>
-            </c:choose>
-              
-              
-
-            <c:choose>
-              <c:when test="${member =! null} && ${favoriteDTO == null}">
-                <button type="button" class="btn btn-primary">찜하기</button>
-              </c:when>
-              
-              <c:when test="${member =! null} && ${favoriteDTO =! null}">
-                <button type="button" class="btn btn-primary">찜하기</button>
-              </c:when>
-            </c:choose>
-            
+            <button type="button" class="btn btn-primary thumbUp selected" 
+              <c:if test="${member eq null}">
+                onclick="location.href='/member/login' "
+              </c:if>
+            >
+                  좋아요 
+                <span id="result">
+                  ${view.e_book_thumbupcnt} 
+                </span>
+            </button>
+             
+            <button type="button" class="btn btn-primary favorite"
+            <c:if test="${member eq null}">
+                onclick="location.href='/member/login' "
+              </c:if>
+            >
+            찜하기</button>
           </div>
-
         </div>
       </div>
     </div>

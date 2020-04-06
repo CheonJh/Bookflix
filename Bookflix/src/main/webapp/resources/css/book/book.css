@@ -19,8 +19,9 @@ li {
 }
 
 .wrapinfo {
-  height: 350px;
+  height: 590px;
   position: relative;
+  padding-top : 20px;
 }
 
 .wrapinfo > .form-group {
@@ -50,4 +51,5 @@ li {
   position: fixed;
   top: 50%;
   right: 0;
+  transition-duration: 1s;
 }

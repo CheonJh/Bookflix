@@ -15,16 +15,17 @@
 <title>admNoticeList</title>
 
 <!-- *************************************************** -->
-<link rel="stylesheet" href="/resources/css/adminInfo/admNoticeList.css" />
+<link rel="stylesheet" href="/resources/css/adminInfo/admNoticeList.css?" />
 <script src="/resources/js/adminInfo/admNoticeList.js"></script>
 <!-- *************************************************** -->
 </head>
 
 <body>
-
+<div class="title">
+    <h3>공지사항 관리</h3>
+    <hr>
+  </div>
   <div class="container">
-    <h2 style="text-align: center;" class="text-primary" id="title">공지사항
-      관리</h2>
     <!-- 검색창 -->
     <div class="col-md-6" id="box1">
       <div class="input-group mb-3">

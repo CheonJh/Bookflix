@@ -18,7 +18,7 @@
 </head>
 <body>
   <div class="title">
-    <h3>내 정보 수정</h3>
+    <h3>내 정보 관리</h3>
     <hr>
   </div>
   <form method="post" autocomplete="off" id="usercheck" name="member">

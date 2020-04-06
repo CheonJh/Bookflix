@@ -27,7 +27,7 @@
         var member_email=$('#member_email').val();
         
         $.ajax({
-          url : '${pageContext.request.contextPath}/member/idCheck?member_email='+member_email,
+          url : '/member/idCheck?member_email='+member_email,
           type : 'get',
           //data : member_email,
           //dataType: 'json',
@@ -71,7 +71,7 @@
         var member_nickname=$('#member_nickname').val();
         
         $.ajax({
-          url : '${pageContext.request.contextPath}/member/nickCheck?member_nickname='+member_nickname,
+          url : '/member/nickCheck?member_nickname='+member_nickname,
           type : 'get',
           success: function(data) {
             console.log("1보다 크면 중복, 0은 중복x" + data);
