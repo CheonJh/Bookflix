@@ -40,14 +40,14 @@
           <th class="tb-ap">등록일</th>
         </tr>
       </thead>
-      <c:forEach items="${notiList}" var="notiList">
+      <c:forEach items="${notiList4}" var="notiList4">
         <tr>
-          <td>${notiList.notice_num}</td>
-          <td>${notiList.notice_category}</td>
+          <td>${notiList4.notice_num}</td>
+          <td>${notiList4.notice_category}</td>
           <td><a
-            href="/info/viewCnt?notice_num=${notiList.notice_num}">${notiList.notice_title}</a></td>
-          <td><c:out value="${notiList.notice_viewcnt}" /></td>
-          <td><fmt:formatDate value="${notiList.notice_date}"
+            href="/info/viewCnt?notice_num=${notiList4.notice_num}">${notiList4.notice_title}</a></td>
+          <td><c:out value="${notiList4.notice_viewcnt}" /></td>
+          <td><fmt:formatDate value="${notiList4.notice_date}"
               pattern="yyyy-MM-dd"></fmt:formatDate></td>
         </tr>
       </c:forEach>

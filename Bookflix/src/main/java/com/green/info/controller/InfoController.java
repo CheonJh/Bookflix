@@ -24,24 +24,69 @@ public class InfoController {
   InfoService service;
   
   @RequestMapping(value = "/notiList", method = RequestMethod.GET)
-  public void getNotiList2(Model model)throws Exception{
+  public void getNotiList(Model model)throws Exception{
     
     List<InfoNoticeDTO> notiList = null;
     notiList = service.notiList();
     model.addAttribute("notiList", notiList);
   }
   
-/*  @RequestMapping(value = "/notiList2", method = RequestMethod.GET)
+  @RequestMapping(value = "/notiList2", method = RequestMethod.GET)
   public void getNotiList2(Model model)throws Exception{
     
     List<InfoNoticeDTO> notiList2 = null;
     notiList2 = service.notiList2();
     model.addAttribute("notiList2", notiList2);
-  }*/
-
+  }
+  
+  @RequestMapping(value = "/notiList3", method = RequestMethod.GET)
+  public void getNotiList3(Model model)throws Exception{
+    
+    List<InfoNoticeDTO> notiList3 = null;
+    notiList3 = service.notiList3();
+    model.addAttribute("notiList3", notiList3);
+  }
+  
+  @RequestMapping(value = "/notiList4", method = RequestMethod.GET)
+  public void getNotiList4(Model model)throws Exception{
+    
+    List<InfoNoticeDTO> notiList4 = null;
+    notiList4 = service.notiList4();
+    model.addAttribute("notiList4", notiList4);
+  }
+  
+  @RequestMapping(value = "/FaqList", method = RequestMethod.GET)
+  public void getFaqList(Model model)throws Exception{
+    
+    List<InfoFaqDTO> FaqList = null;
+    FaqList = service.FaqList();
+    model.addAttribute("FaqList", FaqList);
+  }
+  @RequestMapping(value = "/FaqList2", method = RequestMethod.GET)
+  public void getFaqList2(Model model)throws Exception{
+    
+    List<InfoFaqDTO> FaqList2 = null;
+    FaqList2 = service.FaqList2();
+    model.addAttribute("FaqList2", FaqList2);
+  }
+  @RequestMapping(value = "/FaqList3", method = RequestMethod.GET)
+  public void getFaqList3(Model model)throws Exception{
+    
+    List<InfoFaqDTO> FaqList3 = null;
+    FaqList3 = service.FaqList3();
+    model.addAttribute("FaqList3", FaqList3);
+  }
+  @RequestMapping(value = "/FaqList4", method = RequestMethod.GET)
+  public void getFaqList4(Model model)throws Exception{
+    
+    List<InfoFaqDTO> FaqList4 = null;
+    FaqList4 = service.FaqList4();
+    model.addAttribute("FaqList4", FaqList4);
+  }
+  
+  //조회수 증가
   @RequestMapping(value = "/viewCnt", method = RequestMethod.GET)
   public String getViewCnt(@RequestParam("notice_num") int notice_num) throws Exception {
-    // 조회수 증가
     service.viewCnt(notice_num);
     return "redirect:/info/notice?notice_num=" + notice_num;
   }
@@ -56,7 +101,7 @@ public class InfoController {
 
   @RequestMapping(value = "/FAQ", method = RequestMethod.GET)
   public void getFaq(@RequestParam("faq_num") int faq_num, Model model) throws Exception {
-    // 공지사항 상세 조회
+    // FAQ 상세 조회
     InfoFaqDTO dto = service.FAQ(faq_num);
 
     model.addAttribute("FAQ", dto);
@@ -106,7 +151,7 @@ public class InfoController {
   @RequestMapping(value = "/noticeList2", method = RequestMethod.GET)
   public void getNoticePage2(Model model, @RequestParam("num") int num) throws Exception {
     // 페이지네이션
-    int count = service.notiCount();
+    int count = service.notiCount2();
 
     int postNum = 10;
 
@@ -129,9 +174,9 @@ public class InfoController {
     boolean prev = startPageNum == 1 ? false : true;
     boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 
-    List<InfoNoticeDTO> notiList = null;
-    notiList = service.noticePage2(displayPost, postNum);
-    model.addAttribute("notiList", notiList);
+    List<InfoNoticeDTO> notiList2 = null;
+    notiList2 = service.noticePage2(displayPost, postNum);
+    model.addAttribute("notiList2", notiList2);
     model.addAttribute("pageNum", pageNum);
 
     model.addAttribute("startPageNum", startPageNum);
@@ -147,7 +192,7 @@ public class InfoController {
   @RequestMapping(value = "/noticeList3", method = RequestMethod.GET)
   public void getNoticePage3(Model model, @RequestParam("num") int num) throws Exception {
     // 페이지네이션
-    int count = service.notiCount();
+    int count = service.notiCount3();
 
     int postNum = 10;
 
@@ -170,9 +215,9 @@ public class InfoController {
     boolean prev = startPageNum == 1 ? false : true;
     boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 
-    List<InfoNoticeDTO> notiList = null;
-    notiList = service.noticePage3(displayPost, postNum);
-    model.addAttribute("notiList", notiList);
+    List<InfoNoticeDTO> notiList3 = null;
+    notiList3 = service.noticePage3(displayPost, postNum);
+    model.addAttribute("notiList3", notiList3);
     model.addAttribute("pageNum", pageNum);
 
     model.addAttribute("startPageNum", startPageNum);
@@ -188,7 +233,7 @@ public class InfoController {
   @RequestMapping(value = "/noticeList4", method = RequestMethod.GET)
   public void getNoticePage4(Model model, @RequestParam("num") int num) throws Exception {
     // 페이지네이션
-    int count = service.notiCount();
+    int count = service.notiCount4();
 
     int postNum = 10;
 
@@ -211,9 +256,9 @@ public class InfoController {
     boolean prev = startPageNum == 1 ? false : true;
     boolean next = endPageNum * pageNum_cnt >= count ? false : true;
     
-    List<InfoNoticeDTO> notiList = null;
-    notiList = service.noticePage4(displayPost, postNum);
-    model.addAttribute("notiList", notiList);
+    List<InfoNoticeDTO> notiList4 = null;
+    notiList4 = service.noticePage4(displayPost, postNum);
+    model.addAttribute("notiList4", notiList4);
     model.addAttribute("pageNum", pageNum);
 
     model.addAttribute("startPageNum", startPageNum);
@@ -270,7 +315,7 @@ public class InfoController {
   @RequestMapping(value = "/FAQList2", method = RequestMethod.GET)
   public void getFaqPage2(Model model, @RequestParam("num") int num) throws Exception {
     
-    int count = service.faqCount();
+    int count = service.faqCount2();
 
     int postNum = 10;
 
@@ -293,9 +338,9 @@ public class InfoController {
     boolean prev = startPageNum == 1 ? false : true;
     boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 
-    List<InfoFaqDTO> FaqList = null;
-    FaqList = service.FaqPage2(displayPost, postNum);
-    model.addAttribute("FaqList", FaqList);
+    List<InfoFaqDTO> FaqList2 = null;
+    FaqList2 = service.FaqPage2(displayPost, postNum);
+    model.addAttribute("FaqList2", FaqList2);
     model.addAttribute("pageNum", pageNum);
 
     model.addAttribute("startPageNum", startPageNum);
@@ -311,7 +356,7 @@ public class InfoController {
   @RequestMapping(value = "/FAQList3", method = RequestMethod.GET)
   public void getFaqPage3(Model model, @RequestParam("num") int num) throws Exception {
     
-    int count = service.faqCount();
+    int count = service.faqCount3();
 
     int postNum = 10;
 
@@ -334,9 +379,9 @@ public class InfoController {
     boolean prev = startPageNum == 1 ? false : true;
     boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 
-    List<InfoFaqDTO> FaqList = null;
-    FaqList = service.FaqPage3(displayPost, postNum);
-    model.addAttribute("FaqList", FaqList);
+    List<InfoFaqDTO> FaqList3 = null;
+    FaqList3 = service.FaqPage3(displayPost, postNum);
+    model.addAttribute("FaqList3", FaqList3);
     model.addAttribute("pageNum", pageNum);
 
     model.addAttribute("startPageNum", startPageNum);
@@ -352,7 +397,7 @@ public class InfoController {
   @RequestMapping(value = "/FAQList4", method = RequestMethod.GET)
   public void getFaqPage4(Model model, @RequestParam("num") int num) throws Exception {
     
-    int count = service.faqCount();
+    int count = service.faqCount4();
 
     int postNum = 10;
 
@@ -375,9 +420,9 @@ public class InfoController {
     boolean prev = startPageNum == 1 ? false : true;
     boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 
-    List<InfoFaqDTO> FaqList = null;
-    FaqList = service.FaqPage4(displayPost, postNum);
-    model.addAttribute("FaqList", FaqList);
+    List<InfoFaqDTO> FaqList4 = null;
+    FaqList4 = service.FaqPage4(displayPost, postNum);
+    model.addAttribute("FaqList4", FaqList4);
     model.addAttribute("pageNum", pageNum);
 
     model.addAttribute("startPageNum", startPageNum);

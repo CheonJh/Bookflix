@@ -39,12 +39,12 @@
           <th class="tb-cl">내용</th>
         </tr>
       </thead>
-      <c:forEach items="${FaqList}" var="FaqList">
+      <c:forEach items="${FaqList4}" var="FaqList4">
         <tr>
-          <td>${FaqList.faq_num}</td>
-          <td>${FaqList.faq_category}</td>
+          <td>${FaqList4.faq_num}</td>
+          <td>${FaqList4.faq_category}</td>
           <td><a
-            href="/info/FAQ?faq_num=${FaqList.faq_num}">${FaqList.faq_title}</a></td>
+            href="/info/FAQ?faq_num=${FaqList4.faq_num}">${FaqList4.faq_title}</a></td>
         </tr>
       </c:forEach>
     </table>
