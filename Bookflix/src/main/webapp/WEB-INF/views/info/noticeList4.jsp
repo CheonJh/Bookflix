@@ -15,7 +15,7 @@
 <title>TestPageForm</title>
 
 <!-- *************************************************** -->
-<link rel="stylesheet" href="/resources/css/info/NoticeList.css" />
+<link rel="stylesheet" href="/resources/css/info/NoticeList.css?" />
 <!-- *************************************************** -->
 
 </head>
