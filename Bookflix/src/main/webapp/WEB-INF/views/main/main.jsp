@@ -194,7 +194,6 @@ li { list-style: none;} */
   overflow: hidden;
 }
 
-
 .book-info .book-title {
   font-size: 1.4em;
   font-weight: bold;
