@@ -13,12 +13,13 @@
 <meta name="description" content="기본 폼 예시 페이지" />
 
 <title>mylib</title>
-<link rel="stylesheet" href="/resources/css/myPage/mylib.css" />
+<link rel="stylesheet" href="/resources/css/myPage/mylib.css?" />
 </head>
 <body>
 
   <div class="title">
     <h3>내서재 관리</h3>
+    <a href="/myPage/Page" id="back"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
     <hr>
   </div>
 

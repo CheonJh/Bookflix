@@ -14,7 +14,7 @@
 
 <title>TestPageForm</title>
 <!-- css 연결 -->
-<link rel="stylesheet" href="/resources/css/myPage/sub1.css" />
+<link rel="stylesheet" href="/resources/css/myPage/sub1.css?" />
 <!-- js 연결 -->
 <script src="/resources/js/myPage/sub.js"></script>
 </head>
@@ -22,6 +22,7 @@
 
   <div class="title">
     <h3>구독 관리</h3>
+    <a href="/myPage/Page" id="back"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
     <hr>
   </div>
 
