@@ -18,7 +18,7 @@ public interface BookService {
   //좋아요 +1
   public void thumbUp(int e_book_num) throws Exception;
   
-//좋아요 _1
+//좋아요 -1
   public void thumbDown(int e_book_num) throws Exception;
   
   // thumbup테이블 insert

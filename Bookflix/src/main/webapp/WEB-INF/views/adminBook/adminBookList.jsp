@@ -189,9 +189,6 @@
       <div class="btn-group mr-2">
         <button class="btn btn-outline-primary" id="delete_btn">삭제</button>
       </div>
-      <div class="btn-group mr-2">
-        <button class="btn btn-primary" id="modify_btn">수정</button>
-      </div>
       <div class="btn-group mr-2 offset-md-8 col">
         <button class="btn btn-primary col-sm-12"
           onclick="location.href='adminBookReg'">등록</button>

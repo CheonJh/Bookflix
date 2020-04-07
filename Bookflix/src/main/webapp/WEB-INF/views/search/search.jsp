@@ -4,16 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ko">
-<head>
+<head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="천재헌" />
 <meta name="description" content="검색 페이지" />
 
 <title>BOOKFLIX 검색</title>
-
+ 
 <!-- css -->
 <link rel="stylesheet" href="/resources/css/search/search.css" />
 <!-- js -->
@@ -39,7 +39,6 @@
         
       </div>   
     </div>
-    
     
     <!-- 책 List View -->
     <!-- 책 이미지, 책번호, 책 제목, 책 저자 출력 -->

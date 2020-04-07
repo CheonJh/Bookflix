@@ -4,8 +4,9 @@
   display: flex;
   flex-direction: row;
   width: 50%;
-  margin-left: 22%; 
+  margin-left: 25%;
   padding-top: 10px;
+  
 }
 
 .notinav-item1, .notinav-item2, .notinav-item3, .notinav-item4 {
@@ -26,11 +27,13 @@
 
 .ntcontainer {
   margin: 20px auto;
-  width: 80%;
+/*   width: 80%; */
+/* 재헌수정 */
+  width: 1200px;
 }
 
 .tb-ttl {
-  background-color: #e8e9f9;
+  background-color: #8AD7FF;
 }
 
 .tbFAQ td, .tbFAQ th {

@@ -6,14 +6,14 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
 <meta name="author" content="천재헌" />
 <meta name="description" content="메뉴가 없는 빈 페이지 템플릿" />
 
 <!-- 파비콘 삽입 -->
 <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
-<title>BOOKFLIX</title>
+<!-- <title>BOOKFLIX</title> -->
 
 <!-- *************************************************** -->
 

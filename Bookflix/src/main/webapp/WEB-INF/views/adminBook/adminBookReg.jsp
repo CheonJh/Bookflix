@@ -60,6 +60,10 @@ h1 {
 	justify-content : center;
 	margin-top : 24px;
 }
+.input-group-text{
+	
+	width : 70px;
+}
 </style>
 
 <script>
@@ -173,7 +177,7 @@ h1 {
 				<img src="" />
 			</div>
 			<div class="row" id="bottom">
-				<button type="submit" class="btn btn-primary">전송</button>
+				<button type="submit" class="btn btn-primary">등록</button>
 			</div>
 		</form>
 

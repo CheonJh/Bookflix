@@ -187,7 +187,7 @@ h1 {
 				<img class="img-thumbnail" src="/book-imgs/${view.e_book_img_path}" />
 			</div>
 			<div class="row" id="bottom">
-				<button type="submit" class="btn btn-primary">전송</button>
+				<button type="submit" class="btn btn-primary">수정</button>
 			</div>
 		</form>
 
