@@ -12,7 +12,7 @@
 <meta name="author" content="안규철" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
+<title>전자책관리페이지</title>
 
 <!-- *************************************************** -->
 <link rel="stylesheet"
