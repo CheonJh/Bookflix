@@ -12,7 +12,7 @@
 <meta name="author" content="김성훈" />
 <meta name="description" content="공지사항 목록 페이지" />
 
-<title>TestPageForm</title>
+<title>noticeList4</title>
 
 <!-- *************************************************** -->
 <link rel="stylesheet" href="/resources/css/info/NoticeList.css?" />

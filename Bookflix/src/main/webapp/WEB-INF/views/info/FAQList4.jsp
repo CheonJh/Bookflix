@@ -12,7 +12,7 @@
 <meta name="author" content="김성훈" />
 <meta name="description" content="FAQ 목록 페이지" />
 
-<title>TestPageForm</title>
+<title>FAQList4</title>
 
 <!-- *************************************************** -->
 <link rel="stylesheet" href="/resources/css/info/FAQList.css?" />
