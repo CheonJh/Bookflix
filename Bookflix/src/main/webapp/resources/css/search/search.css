@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* TOP 버튼 */
+#MOVE_TOP_BTN{
+  position: fixed;
+  right: 2%;
+  bottom: 200px;
+  display: none;
+  z-index: 999;
+  color: #458dd6;
+}
+
+/* 검색창 위아래 여백 */
+#searchForm {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* 더보기 버튼 */
+.btn-search {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* 책 컨텐츠 */
+.bookContent{
+  width: 100%;  
+  height: 430px;
+  box-shadow: 5px 7px 20px -5px #8a8a8a;
+  margin: 15px auto;
+  padding: 5px auto;
+}
+
+.bookContent img{
+/*   border-radius: 50%; */
+  display : block;
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.bookContent h4{
+  padding-top : 10px;
+  text-align : center;
+/*   margin: 0 auto; */
+}
+
+.bookContent p{
+  text-align : center;
+
+}
+
+.bookList-dv:hover {
+  border: solid 2px;
+  border-top-color: #3f99dc;
+  border-bottom-color: #458dd6;
+  border-left-color: #3f99dc;
+  border-right-color: #458dd6;
+}
+
+.bookList a{
+  text-decoration: none;
+}

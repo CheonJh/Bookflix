@@ -20,7 +20,7 @@
     or E_BOOK_INFO LIKE '%' #{keyword} '%'
     or E_BOOK_INDEX LIKE '%' #{keyword} '%' 
     or E_BOOK_TAG LIKE '%' #{keyword} '%'
-    order by E_BOOk_NUM DESC;
+    order by E_BOOK_NUM DESC;
   </select>
 
 

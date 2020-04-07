@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,18 +15,21 @@
 <title>admFAQList</title>
 
 
-  <!-- *************************************************** -->
-  <link rel="stylesheet" href="/resources/css/adminInfo/admFAQList.css" />
+<!-- *************************************************** -->
+<link rel="stylesheet" href="/resources/css/adminInfo/admFAQList.css?" />
 <script src="/resources/js/adminInfo/admFAQList.js"></script>
-  <!-- *************************************************** -->
-  
+<!-- *************************************************** -->
+
 </head>
 <body>
+  <div class="title">
+    <h3>F A Q 관리</h3>
+    <hr>
+  </div>
 
   <div class="container">
-    <h2 style="text-align: center;" class="text-primary" id="title">공지사항 관리</h2>
     <!-- 검색창 -->
-     <div class="col-md-6" id="box1">
+    <div class="col-md-6" id="box1">
       <div class="input-group mb-3">
         <select class="custom-select col-md-3"
           aria-label="Example select with button addon"
@@ -94,7 +98,7 @@
       </div>
     </div>
     <!-- 페이지 네이션 -->
-      <div class="row" id="box4">
+    <div class="row" id="box4">
       <div id="pagination">
         <ul class="pagination">
           <!-- 검색시 페이지 네이션 -->
@@ -145,8 +149,7 @@
               </c:if>
               <c:if test="${select == num}">
                 <li class="page-item active"><a class="page-link"
-                  id="page-link"
-                  href="/adminInfo/admFAQList?num=${num}">${num}</a></li>
+                  id="page-link" href="/adminInfo/admFAQList?num=${num}">${num}</a></li>
               </c:if>
 
             </c:forEach>

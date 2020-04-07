@@ -1,0 +1,175 @@
+header{
+  width: 100%;
+  height: 111px;
+}
+
+/* header:hover .head-top-wrap,
+header:hover .head-bottom-wrap {
+  background-color: #458dd6;
+  border-bottom: 1px solid #fff;
+} */
+
+.head-top-wrap{
+  width: 1200px;
+  height: 40px;
+  margin: 0 auto;
+  border-bottom: 1px solid #333;
+  background-color: #fff;
+}
+
+.head-bottom-wrap{
+  width: 1200px;
+  height: 70px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+/************ 
+ 헤더 - 상단 
+************/
+
+.head-top{
+  width: 100%;
+  height: 100%;
+}
+
+/* sns - 폰트어썸 */
+
+.head-sns{
+  height: 40px;
+  margin-left: 20px;
+}
+
+.sns-icon{
+  font-size: 30px;
+  margin-top: 5px;
+  color: #000;
+}
+
+.sns-icon:hover{
+  color: #458dd6;
+}
+
+/* 회원 로그인, 가입 */
+
+.head-member{
+/*   width: 200px; */
+  height: 100%;
+}
+
+.head-member .signin{
+  width: 100%;
+  height: 100%;
+}
+
+.head-member .signin li{
+  width: 100px;
+  height: 100%;
+  float: left;
+}
+
+.head-member .signin li a{
+  display : block;
+  text-align: center;
+  line-height: 40px;
+  color: #000;
+  text-decoration: none !important;
+}
+.head-member .signin li a:hover{
+  color: #458dd6;
+}
+
+/************ 
+ 헤더 - 하단
+************/
+
+.head-bottom{
+  width: 100%;
+  height: 100%;
+}
+
+/* 헤더 - 로고 */
+
+.head-bottom .head-logo{
+  width: 120px;
+  height: 70px;
+}
+
+.head-bottom .head-logo a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.head-bottom .head-logo img{
+  width: 85px;
+  height: 60px;
+  margin-top: 5px;
+  margin-left: 17px;
+  padding: 3px;
+  float: left;
+}
+
+/* 헤더 - 메뉴 */
+.head-menu{
+  width: 1200px;
+  height: 100%;
+}
+.head-menu ul{
+  width: 200px;
+  height: 100%;
+}
+
+.head-menu ul li{
+  width: 100px;
+  height: 100%;
+  float: left;
+}
+.head-menu ul li a{
+  display : block;
+  text-align: center;
+  line-height: 70px;
+  color: #000;
+  text-decoration: none !important;
+  font-size: 1.5rem
+}
+.head-menu ul li a:hover{
+  color: #458dd6;
+}
+
+/************ 
+ 미디어쿼리 
+************/
+
+/* 1200px 밑으로 */
+@media screen and (max-width:1200px) {
+  .head-top-wrap, .head-bottom-wrap, .head-menu{
+    width: 1024px;
+  }
+}
+
+/* 1024px 밑으로 */
+@media screen and (max-width:1024px) {
+  .head-top-wrap, .head-bottom-wrap, .head-menu{
+    width: 768px;
+  }
+}
+
+/* 768px 밑으로 */
+@media screen and (max-width:768px) {
+  .head-top-wrap, .head-bottom-wrap, .head-menu{
+    width: 628px;
+  }
+}
+
+/* 628px 밑으로 */
+@media screen and (max-width:628px) {
+  .head-top-wrap, .head-bottom-wrap, .head-menu{
+    width: 480px;
+  }
+}
+
+/* 480px 밑으로 */
+@media screen and (max-width:480px) {
+
+}
