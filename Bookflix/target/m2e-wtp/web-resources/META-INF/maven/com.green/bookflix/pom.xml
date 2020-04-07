@@ -225,6 +225,20 @@
       <version>0.4.8</version>
     </dependency>
 
+    <!-- 메일전송 추가 라이브러리 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>3.2.8.RELEASE</version>
+    </dependency>
+
+    <!-- 메일전송 -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4</version>
+    </dependency>
+
   </dependencies>
 
 

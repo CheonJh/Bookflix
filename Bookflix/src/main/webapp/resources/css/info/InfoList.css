@@ -1,12 +1,7 @@
 @charset "UTF-8";
 
-.table {
-  top: 100px;
-}
-
-.active {
-  background-color: lightgray;
-  width: 200px;
+.tbFAQ{
+  margin-top: 20px; 
 }
 
 .tb-ttl {
@@ -25,6 +20,26 @@
 li, a {
   list-style: none;
 }
+
+.noti-all{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#noti-ttl{
+  font-size: 20px;
+}
+
+#noti-con{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.buttons{
+  margin-top: 20px;
+  margin-bottom: 20px;  
+}
+
 .btn-back {
   background-color: #77ace1;
 }

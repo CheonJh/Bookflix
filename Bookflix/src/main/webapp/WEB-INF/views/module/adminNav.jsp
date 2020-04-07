@@ -12,8 +12,9 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>관리자 네비</title>
+<!-- <title>관리자 네비</title> -->
 <link rel="stylesheet" href="/resources/css/module/adminNav.css" />
+
 </head>
 <body>
   <nav class="nav flex-column" id="nav">

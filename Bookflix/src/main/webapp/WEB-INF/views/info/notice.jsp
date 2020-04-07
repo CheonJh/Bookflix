@@ -35,21 +35,22 @@
               pattern="yyyy-MM-dd"></fmt:formatDate></td>
         </tr>
       </table>
-
-      <p>Q:${notice.notice_title}</p>
-      <p>${notice.notice_contents}</p>
-
-      <p>조회수 : ${notice.notice_viewcnt}</p>
-
+      
+      <ul class="noti-all">
+        <li id="noti-ttl">Q:${notice.notice_title}</li>
+        <br>
+        <li id="noti-con">${notice.notice_contents}</li>
+      </ul>
       <hr>
 
-      <button type="button" class="btn btn-back">
-        <a href="javascript:history.back()">이전페이지</a>
-      </button>
-      <button type="button" class="btn btn-page">
-        <a href="/info/noticeList?num=1">목록페이지</a>
-      </button>
-
+      <div class="buttons">
+        <button type="button" class="btn btn-back">
+          <a href="javascript:history.back()">이전페이지</a>
+        </button>
+        <button type="button" class="btn btn-page">
+          <a href="/info/noticeList?num=1">목록페이지</a>
+        </button>
+      </div>
     </div>
   </form>
 </body>

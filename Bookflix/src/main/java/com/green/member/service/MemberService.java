@@ -28,6 +28,10 @@ public interface MemberService {
   // 4-2) 회원정보 수정 전 비밀번호 체크
   public int pwCheck(MemberDTO dto) throws Exception;
   
+  //비번찾기
+  public String findPW(MemberDTO dto) throws Exception;
   
+  //아디찾기
+  public String findID(MemberDTO dto) throws Exception;
 
 }

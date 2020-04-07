@@ -51,9 +51,9 @@ $(document)
 
                             } else {
                               $('#pw_checkPre').text('　　　　　　　　　　　비밀번호가 맞습니다.');
+                              $('#pw_checkPre').css('color', 'red');
                               // 맞으면 바로 readonly
                               $('#member_pwPre').attr("readonly", true);
-                              $('#pw_checkPre').css('color', 'red');
                               $('#usercheck').attr("disabled", true);
                               // 폼 보이기
                               $('.hide-form').show();

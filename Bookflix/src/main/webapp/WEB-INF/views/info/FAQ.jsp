@@ -29,21 +29,24 @@
           <th class="tb-ttl">제목</th>
           <th>${FAQ.faq_title}</th>
         </tr>
-        <tr>
+      
       </table>
 
-      <p>Q:${FAQ.faq_title}</p>
-      <p>${FAQ.faq_contents}</p>
-
+      <ul class="noti-all">
+        <li id="noti-ttl">Q:${FAQ.faq_title}</li>
+        <br>
+        <li id="noti-con">${FAQ.faq_contents}</li>
+      </ul>
       <hr>
 
-      <button type="button" class="btn btn-back">
-        <a href="javascript:history.back()">이전페이지</a>
-      </button>
-      <button type="button" class="btn btn-page">
-        <a href="/info/FAQList?num=1">목록페이지</a>
-      </button>
-
+      <div class="buttons">
+        <button type="button" class="btn btn-back">
+          <a href="javascript:history.back()">이전페이지</a>
+        </button>
+        <button type="button" class="btn btn-page">
+          <a href="/info/FAQList?num=1">목록페이지</a>
+        </button>
+      </div>
     </div>
   </form>
 </body>

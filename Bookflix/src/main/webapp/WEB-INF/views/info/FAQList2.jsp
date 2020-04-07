@@ -23,10 +23,10 @@
  
   <div id="notignb">
     <ul class="notinav-con">
-      <li class="notinav-item"><a href="/info/FAQList?num=1">전체보기</a></li>
-      <li class="notinav-item"><a href="/info/FAQList2?num=1">이용방법</a></li>
-      <li class="notinav-item"><a href="/info/FAQList3?num=1">구독</a></li>
-      <li class="notinav-item"><a href="/info/FAQList4?num=1">자주하는 질문</a></li>
+      <li class="notinav-item1"><a class="ab1" href="/info/FAQList?num=1">전체보기</a></li>
+      <li class="notinav-item2"><a class="ab2" href="/info/FAQList2?num=1">이용방법</a></li>
+      <li class="notinav-item3"><a class="ab3" href="/info/FAQList3?num=1">구독</a></li>
+      <li class="notinav-item4"><a class="ab4" href="/info/FAQList4?num=1">자주하는 질문</a></li>
     </ul>
   </div>
 

@@ -15,17 +15,17 @@
 <title>TestPageForm</title>
 
 <!-- *************************************************** -->
-<link rel="stylesheet" href="/resources/css/info/NoticeList.css" />
+<link rel="stylesheet" href="/resources/css/info/NoticeList.css?" />
 <!-- *************************************************** -->
 
 </head>
 <body>
   <div class="notignb">
     <ul class="notinav-con">
-      <li class="notinav-item"><a href="/info/noticeList?num=1">전체보기</a></li>
-      <li class="notinav-item"><a href="/info/noticeList2?num=1">공지사항</a></li>
-      <li class="notinav-item"><a href="/info/noticeList3?num=1">업데이트</a></li>
-      <li class="notinav-item"><a href="/info/noticeList4?num=1">이벤트</a></li>
+      <li class="notinav-item1"><a class="ab1" href="/info/noticeList?num=1">전체보기</a></li>
+      <li class="notinav-item2"><a class="ab2" href="/info/noticeList2?num=1">공지사항</a></li>
+      <li class="notinav-item3"><a class="ab3" href="/info/noticeList3?num=1">업데이트</a></li>
+      <li class="notinav-item4"><a class="ab4" href="/info/noticeList4?num=1">이벤트</a></li>
     </ul>
   </div>
 
