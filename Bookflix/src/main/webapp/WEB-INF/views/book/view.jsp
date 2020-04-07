@@ -127,9 +127,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 offset-sm-1 thumbnail">
-          <a href="#">
           <img src="/book-imgs/${view.e_book_img_path }" alt="책 이미지">
-          </a>
         </div>
         <div class="col-sm-6 offset-sm-1 wrapinfo">
           <div>

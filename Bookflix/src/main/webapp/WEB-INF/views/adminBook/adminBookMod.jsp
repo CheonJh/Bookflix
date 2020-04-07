@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
+<title>전자책수정페이지</title>
 
 <!-- *************************************************** -->
 
@@ -187,7 +187,7 @@ h1 {
 				<img class="img-thumbnail" src="/book-imgs/${view.e_book_img_path}" />
 			</div>
 			<div class="row" id="bottom">
-				<button type="submit" class="btn btn-primary">전송</button>
+				<button type="submit" class="btn btn-primary">수정</button>
 			</div>
 		</form>
 
