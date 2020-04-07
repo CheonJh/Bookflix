@@ -202,7 +202,7 @@ li { list-style: none;} */
   -webkit-line-clamp: 1;
   overflow: hidden;
 }
-
+ 
 .book-info .author, .publisher {
   font-size: 1.1em;
 }
