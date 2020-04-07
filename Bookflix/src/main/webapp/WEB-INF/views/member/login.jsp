@@ -11,7 +11,7 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="로그인 페이지" />
 
-<title>Bookflix 로그인</title>
+<title>BOOKFLIX 로그인</title>
 <link rel="stylesheet" href="/resources/css/member/login.css" />
 
 </head>
@@ -21,8 +21,10 @@
 
     <div class="row align-items-center">
       <div class="col">
-        
-        <h1><a href="/">BOOKFLIX</a></h1>
+        <!-- 로고 -->
+        <a href="/" class="login-logo">
+          <img src="/resources/imgs/common/logo.png" alt="logo">
+        </a>
         
         <form action="/member/login" method="post" autocomplete="off">
           <div class="form-group">
@@ -32,7 +34,7 @@
           </div>
         </form>
         
-        <div class="link clear" >
+        <div class="link cf" >
         <div class="log1"><a class="ab1" href="/member/signIn">회원가입</a></div>
         <div class="log2"><a class="ab2" href="/member/findID">아이디 찾기</a></div>
         <div class="log3"><a class="ab3" href="/member/findPW">비밀번호 찾기</a></div>

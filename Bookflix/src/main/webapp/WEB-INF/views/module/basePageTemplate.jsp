@@ -7,14 +7,14 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
 <meta name="author" content="천재헌" />
 <meta name="description" content="기본 페이지 템플릿, 헤더-바디-푸터 구조" />
 
 <!-- 파비콘 삽입 -->
 <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
-<title>BOOKFLIX</title>
+<!-- <title>BOOKFLIX</title> -->
 
 <!-- *************************************************** -->
 
@@ -34,11 +34,17 @@
 
 <!-- *************************************************** -->
 
-
+<style>
+.width-120{
+  width: 100%;
+  height: 120px;
+}
+</style>
 </head>
 <body>
 
     <tiles:insertAttribute name="header" />
+    <div class="width-120"></div>
     <tiles:insertAttribute name="content" />
     <tiles:insertAttribute name="footer" />
 

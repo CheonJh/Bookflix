@@ -11,11 +11,12 @@
 <meta name="author" content="김경재" />
 <meta name="description" content="푸터 모듈 페이지" />
 
-<title>footer</title>
-
 <!-- css -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/footer.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/module/footer.css"> 
+ 
+<style>
 
+</style>
 </head>
 <body>
   <footer>
@@ -24,7 +25,7 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
-            <ul class="nav-li">
+            <ul class="nav-li cf">
               <li><a href="/info/noticeList?num=1">공지사항</a></li>
               <li>|</li>
               <li><a href="/info/FAQList?num=1">FAQ</a></li>
@@ -42,11 +43,16 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-2"></div>
-          <div class="col-sm-8 company-info">
+          <div class="col-sm-6 company-info">
             <p>상호명 : (주)북플릭스 | 서울특별시 영등포구 여의도동 123</p>
             <p>대표 : 천재헌 | 사업자 등록번호 : 123-45-67890</p>
             <p>Tel : 02-123-4567 | Fax : 02-123-4568</p>
             <p>E-mail : bookflix@bookflix.co.kr</p>
+          </div>
+          <div class="col-sm-2 foot-logo">
+            <a href="/">
+              <img src="/resources/imgs/common/logo_transparent_680x480.png" alt="logo">
+            </a>
           </div>
           <div class="col-sm-2"></div>
         </div>
