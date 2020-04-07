@@ -13,7 +13,7 @@
 <meta name="description" content="검색 페이지" />
 
 <title>BOOKFLIX 검색</title>
- 
+
 <!-- css -->
 <link rel="stylesheet" href="/resources/css/search/search.css" />
 <!-- js -->
