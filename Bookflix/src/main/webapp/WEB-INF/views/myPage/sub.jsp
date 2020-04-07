@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="김지나" />
-<meta name="description" content="기본 폼 예시 페이지" />
+<meta name="description" content="구독 페이지" />
 
 <title>TestPageForm</title>
 <!-- css 연결 -->
