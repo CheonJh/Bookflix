@@ -22,6 +22,21 @@ public class InfoServiceImpl implements InfoService {
     return dao.notiList();
   }
   
+  @Override
+  public List<InfoNoticeDTO> notiList2() throws Exception {
+    return dao.notiList2();
+  }
+  
+  @Override
+  public List<InfoNoticeDTO> notiList3() throws Exception {
+    return dao.notiList3();
+  }
+  
+  @Override
+  public List<InfoNoticeDTO> notiList4() throws Exception {
+    return dao.notiList4();
+  }
+  
   public InfoNoticeDTO notice(int notice_num) throws Exception {
     return dao.notice(notice_num);
   }
@@ -29,6 +44,21 @@ public class InfoServiceImpl implements InfoService {
   @Override
   public int notiCount() throws Exception {
     return dao.notiCount();
+  }
+  
+  @Override
+  public int notiCount2() throws Exception {
+    return dao.notiCount2();
+  }
+  
+  @Override
+  public int notiCount3() throws Exception {
+    return dao.notiCount3();
+  }
+  
+  @Override
+  public int notiCount4() throws Exception {
+    return dao.notiCount4();
   }
 
   @Override
@@ -60,6 +90,21 @@ public class InfoServiceImpl implements InfoService {
   public List<InfoFaqDTO> FaqList() throws Exception {
     // TODO Auto-generated method stub
     return dao.FaqList();
+  }
+  @Override
+  public List<InfoFaqDTO> FaqList2() throws Exception {
+    // TODO Auto-generated method stub
+    return dao.FaqList2();
+  }
+  @Override
+  public List<InfoFaqDTO> FaqList3() throws Exception {
+    // TODO Auto-generated method stub
+    return dao.FaqList3();
+  }
+  @Override
+  public List<InfoFaqDTO> FaqList4() throws Exception {
+    // TODO Auto-generated method stub
+    return dao.FaqList4();
   }
 
   @Override
@@ -96,6 +141,21 @@ public class InfoServiceImpl implements InfoService {
   public int faqCount() throws Exception {
     // TODO Auto-generated method stub
     return dao.faqCount();
+  }
+  @Override
+  public int faqCount2() throws Exception {
+    // TODO Auto-generated method stub
+    return dao.faqCount2();
+  }
+  @Override
+  public int faqCount3() throws Exception {
+    // TODO Auto-generated method stub
+    return dao.faqCount3();
+  }
+  @Override
+  public int faqCount4() throws Exception {
+    // TODO Auto-generated method stub
+    return dao.faqCount4();
   }
   
 

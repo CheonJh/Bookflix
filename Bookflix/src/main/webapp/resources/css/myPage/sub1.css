@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 .title {
+  position: relative;
   padding: 30px;
 }
 
@@ -45,3 +46,15 @@ h3 {
 .btn{
   margin-bottom: 200px;
 }
+
+
+#back {
+   position: absolute;
+   top: 30px;
+   right: 50px;
+   text-decoration: none;
+  }
+#back > i.fa.fa-arrow-left {
+ display:block;
+ font-size: 30px;
+ }

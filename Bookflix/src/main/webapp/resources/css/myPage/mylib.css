@@ -12,6 +12,7 @@
 
 .title {
   padding: 30px;
+  position : relative;
 }
 
 .title > h3 {
@@ -119,3 +120,15 @@ th {
 .img {
   background-image: url('/resources/imgs/common/s.jpg');
 }
+
+
+#back {
+   position: absolute;
+   top: 30px;
+   right: 50px;
+   text-decoration: none;
+  }
+#back > i.fa.fa-arrow-left {
+ display:block;
+ font-size: 30px;
+ }
