@@ -1,12 +1,16 @@
 package com.green.book.model;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.green.book.domain.BookDTO;
 import com.green.book.domain.FavoriteDTO;
+import com.green.book.domain.HadReadDTO;
 import com.green.book.domain.ThumbDTO;
 
 @Repository
@@ -31,6 +35,11 @@ public class BookDAOImpl implements BookDAO {
   // 찜하기 테이블 가져오기
   public FavoriteDTO favoriteDTO(FavoriteDTO favoriteParam) throws Exception{
     return sql.selectOne(namespace + ".favoriteDTO", favoriteParam);
+  }
+  
+  // e-북 읽기
+  public HadReadDTO hadReadDTO(HadReadDTO hadReadParam) throws Exception{
+    return sql.selectOne(namespace + ".hadReadDTO", hadReadParam);
   }
   
   // 좋아요 +1
@@ -66,4 +75,17 @@ public class BookDAOImpl implements BookDAO {
   public void favoriteDelete(FavoriteDTO favoriteParam) throws Exception {
     sql.delete(namespace + ".favoriteDelete", favoriteParam);
   }
+
+  // 관련도서 
+  @Override
+  public List<BookDTO> tagBooks(@Param("tagArray") String[] tagArray) throws Exception {
+    return sql.selectList(namespace + ".tagBooks", tagArray);
+  }
+  
+  // e-북 읽기
+  @Override
+  public void hadReadInsert(HadReadDTO hadReadParam) throws Exception {
+    sql.insert(namespace + ".hadReadInsert", hadReadParam);
+  }
+
 }

@@ -1,11 +1,15 @@
 package com.green.book.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.green.book.domain.BookDTO;
 import com.green.book.domain.FavoriteDTO;
+import com.green.book.domain.HadReadDTO;
 import com.green.book.domain.ThumbDTO;
 import com.green.book.model.BookDAO;
 
@@ -18,7 +22,6 @@ public class BookServiceImpl implements BookService {
   // 책정보 불러오기
   @Override
   public BookDTO view(Integer e_book_num) throws Exception {
-
     return bookDao.view(e_book_num);
   }
   
@@ -28,6 +31,10 @@ public class BookServiceImpl implements BookService {
   
   public FavoriteDTO favoriteDTO(FavoriteDTO favoriteParam) throws Exception{
     return bookDao.favoriteDTO(favoriteParam);
+  }
+  
+  public HadReadDTO hadReadDTO(HadReadDTO hadReadParam) throws Exception {
+    return bookDao.hadReadDTO(hadReadParam);
   }
   
 
@@ -62,4 +69,15 @@ public class BookServiceImpl implements BookService {
   public void favoriteDelete(FavoriteDTO favoriteParam) throws Exception {
     bookDao.favoriteDelete(favoriteParam);
   }
+
+  @Override
+  public List<BookDTO> tagBooks(@Param("tagArray") String[] tagArray) throws Exception {
+    return bookDao.tagBooks(tagArray);
+  }
+
+  @Override
+  public void hadReadInsert(HadReadDTO hadReadParam) throws Exception {
+    bookDao.hadReadInsert(hadReadParam);
+  }
+  
 }

@@ -1,17 +1,4 @@
 @charset "UTF-8";
-* {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-}
-
 .wrap {
   padding: 50px 20px;
   max-width: 1200px;
@@ -47,9 +34,20 @@ li {
   text-align: center;
 }
 
-.sidetop {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transition-duration: 1s;
+.btn{
+  background-color: transparent;
+  color: #007bff;
+  border-color: #007bff;
+} 
+
+.btn:hover {
+  font-weight: bold;  
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+img {
+  width : 400px;
+  height : 600px;
 }
