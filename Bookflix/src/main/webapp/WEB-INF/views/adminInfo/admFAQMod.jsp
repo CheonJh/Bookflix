@@ -12,7 +12,7 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
+<title>admFAQMod</title>
 
 <!-- *************************************************** -->
 <link rel="stylesheet" href="/resources/css/adminInfo/admFAQMod.css" />

@@ -12,7 +12,7 @@
 <meta name="author" content="천재헌" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>임시 메인</title>
+<title>BOOKFLIX</title>
 
 <!-- 메인 배너 슬라이드 CSS -->
 <style>
@@ -132,7 +132,6 @@ li { list-style: none;} */
   });
 </script>
 
-
 <!-- 인기 신간 탭-->
 <style>
 .space { height: 20px; width: 100%;}
@@ -188,9 +187,20 @@ li { list-style: none;} */
   padding: 20px;
 }
 
+.book-info .detail {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+
 .book-info .book-title {
   font-size: 1.4em;
   font-weight: bold;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
 .book-info .author, .publisher {
@@ -242,13 +252,13 @@ li { list-style: none;} */
     <c:forEach items="${favorite}" var="favorite">
       <div class="favor-wrap">
         <div class="imgbox">
-          <a href="#"><img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
+          <a href="/book/view?e_book_num=${favorite.e_book_num}"><img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
         </div>
         <div class="book-info">
           <p class="book-title">${favorite.e_book_title}</p>
           <p class="author">저자 : ${favorite.e_book_writer}</p>
           <p class="publisher">출판사 : ${favorite.e_book_publisher}</p>
-          <p class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusantium perspiciatis voluptas ab nihil ullam, quisquam omnis optio excepturi sint at distinctio sequi iure cumque, placeat earum vitae beatae dolorum.</p>
+          <p class="detail">${favorite.e_book_info}</p>
         </div>
       </div>
     </c:forEach>
@@ -260,13 +270,13 @@ li { list-style: none;} */
     <c:forEach items="${newbook}" var="newbook">
       <div class="favor-wrap">
           <div class="imgbox">
-            <a href="#"><img src="resources/imgs/book-imgs/${newbook.e_book_img_path }" alt="" /></a>
+            <a href="/book/view?e_book_num=${newbook.e_book_num}"><img src="resources/imgs/book-imgs/${newbook.e_book_img_path }" alt="" /></a>
           </div>
           <div class="book-info">
             <p class="book-title">${newbook.e_book_title}</p>
             <p class="author">저자 : ${newbook.e_book_writer}</p>
             <p class="publisher">출판사 : ${newbook.e_book_publisher}</p>
-            <p class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusantium perspiciatis voluptas ab nihil ullam, quisquam omnis optio excepturi sint at distinctio sequi iure cumque, placeat earum vitae beatae dolorum.</p>
+            <p class="detail">${newbook.e_book_info}</p>
           </div>
         </div>
        
