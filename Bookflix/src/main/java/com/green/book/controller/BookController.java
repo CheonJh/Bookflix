@@ -208,8 +208,8 @@ public class BookController {
 
     // hDTO 데이터 셋팅
     hadReadParam.setE_book_num(e_book_num);
-    hadReadParam.setMember_num(member_num);
-
+    hadReadParam.setMember_num(member_num); 
+    
     // 도서테이블 좋아요 증가
     if (hadReadCheck != true) {
       // 도서테이블 좋아요 증가
