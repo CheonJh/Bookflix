@@ -45,17 +45,26 @@ public class BookController {
     List<BookDTO> tagBooks = null;
     String e_book_tag = bookDTO.getE_book_tag();
     String[] tagArray = e_book_tag.split("#");
-
-    System.out.println("tagArray 0번-------------------" + tagArray[0] + "--------------");
-    tagArray[0] = tagArray[1];
+    model.addAttribute("tagArray", tagArray);
+    
+    if(tagArray.length != 1) {
+      tagArray[0] = tagArray[1];
+    }
+    else {
+      return;
+    }
+    
     tagBooks = bookService.tagBooks(tagArray);
 
     model.addAttribute("tagBooks", tagBooks);
 
-    System.out.println("태그북" + tagBooks);
-    // Thumbup, favorite 초기값 세팅
+    // 버튼 초기값 세팅
     if (member != null) {
       int member_num = member.getMember_num();
+      
+      // hadRead 비교값 세팅
+      hadReadParam.setE_book_num(e_book_num);
+      hadReadParam.setMember_num(member_num);
 
       // Thumbup 비교값 세팅
       thumbParam.setE_book_num(e_book_num);
@@ -64,26 +73,22 @@ public class BookController {
       // favorite 비교값 세팅
       favoriteParam.setE_book_num(e_book_num);
       favoriteParam.setMember_num(member_num);
-
-      // Thumbup테이블 가져오기
+      
+      // 버튼 테이블 가져오기
       ThumbDTO thumbDTO = bookService.thumbDTO(thumbParam);
-
       FavoriteDTO favoriteDTO = bookService.favoriteDTO(favoriteParam);
-
       HadReadDTO hadReadDTO = bookService.hadReadDTO(hadReadParam);
 
       // hadRead가 이미 있을때
       if (hadReadDTO != null) {
         hadReadCheck = true;
         model.addAttribute("hadReadCheck", hadReadCheck);
-        System.out.println(hadReadCheck);
       }
 
       // hadRead가 없을때
       else {
         hadReadCheck = false;
         model.addAttribute("hadReadCheck", hadReadCheck);
-        System.out.println(hadReadCheck);
       }
 
       // 좋아요가 이미 있을때
@@ -117,8 +122,10 @@ public class BookController {
       }
     } else {
       System.out.println("멤버 널");
+      hadReadCheck = false;
       thumbCheck = false;
       favoriteCheck = false;
+      model.addAttribute("hadReadCheck", hadReadCheck);
       model.addAttribute("thumbCheck", thumbCheck);
       model.addAttribute("favoriteCheck", favoriteCheck);
     }
@@ -137,19 +144,19 @@ public class BookController {
 
     // 회원번호
     int member_num = member.getMember_num();
-    // thumbDTO 데이터 셋팅
     thumbParam.setE_book_num(e_book_num);
     thumbParam.setMember_num(member_num);
-
+    
+    // 도서테이블 좋아요 증가
     if (thumbCheck != true) {
-      // 도서테이블 좋아요 증가
       bookService.thumbUp(e_book_num);
       bookService.thumbInsert(thumbParam);
       thumbCheck = true;
       model.addAttribute("thumbCheck", thumbCheck);
       System.out.println("증가" + thumbCheck);
-    } else {
-      // 도서테이블 좋아요 감소
+    } 
+    // 도서테이블 좋아요 감소
+    else {      
       bookService.thumbDown(e_book_num);
       bookService.thumbDelete(thumbParam);
       thumbCheck = false;
