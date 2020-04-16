@@ -14,7 +14,6 @@
 <!-- 파비콘 삽입 -->
 <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/imgs/common/favicon.ico" />
-<!-- <title>BOOKFLIX</title> -->
 
 <!-- *************************************************** -->
 
@@ -41,12 +40,12 @@
 }
 </style>
 </head>
-<body>
+  <body>
 
     <tiles:insertAttribute name="header" />
     <div class="width-120"></div>
     <tiles:insertAttribute name="content" />
     <tiles:insertAttribute name="footer" />
 
-</body>
+  </body>
 </html>

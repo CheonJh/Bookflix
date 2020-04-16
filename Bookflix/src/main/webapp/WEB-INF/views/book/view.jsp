@@ -334,7 +334,7 @@
     <h5>관련도서</h5>
     <hr>
     <div class="row related">
-      <c:forEach items="${tagBooks}" var="tagBooks" varStatus="status" begin="1" end="7">
+      <c:forEach items="${tagBooks}" var="tagBooks" varStatus="status" begin="1" end="8">
         <div class="col-sm-6 col-md-3 bookList-dv" >
           <a href="/book/view?e_book_num=${tagBooks.e_book_num}">
             <div class="bookContent">

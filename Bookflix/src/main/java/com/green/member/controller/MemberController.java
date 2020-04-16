@@ -86,20 +86,18 @@ public class MemberController {
     logger.info("login post");
 
     HttpSession session = rq.getSession();
-
     MemberDTO member = service.login(dto);
-
     String stay = "";
 
     // 가져온 멤버 확인
-    if (member == null) { // 객체 확인
+    if (member == null) {                        // 객체 확인
       session.setAttribute("member", null);
       rttr.addFlashAttribute("msg", false);
       stay = "redirect:/member/login";
     } else if (member.getMember_grade() == 0) { // 관리자 확인
       session.setAttribute("member", member);
       stay = "redirect:/adminInfo/admNoticeList";
-    } else { // 그 외 회원
+    } else {                                    // 그 외 회원
       session.setAttribute("member", member);
       stay = "redirect:/";
     }
@@ -163,9 +161,8 @@ public class MemberController {
   public String postModify(MemberDTO member, HttpServletRequest rq, HttpSession session) throws Exception {
     logger.info("post Modify");
 
-    MemberDTO memberSession = (MemberDTO) session.getAttribute("member");
-
     // member 객체에 세션에서 받아온 회원번호 넣어준다.
+    MemberDTO memberSession = (MemberDTO) session.getAttribute("member");
     member.setMember_num(memberSession.getMember_num());
 
     // 넘겨받은 멤버에 비밀번호가 비어있으면
@@ -173,25 +170,20 @@ public class MemberController {
     if (member.getMember_pw() == "") {
       member.setMember_pw(rq.getParameter("member_pwPre"));
     }
+    
+    service.modifyMember(member); // 회원 수정
 
-    // 회원 수정
-    service.modifyMember(member);
-
-    // 세션 다시 올림.
-    // 비밀번호
-    memberSession.setMember_pw(member.getMember_pw());
-    // 닉네임
-    memberSession.setMember_nickname(member.getMember_nickname());
-    // 생년월일
-    memberSession.setMember_birth(member.getMember_birth());
-    // 휴대폰번호
-    memberSession.setMember_phone(member.getMember_phone());
+    // 세션 수정
+    memberSession.setMember_pw(member.getMember_pw());              // 비밀번호
+    memberSession.setMember_nickname(member.getMember_nickname());  // 닉네임
+    memberSession.setMember_birth(member.getMember_birth());        // 생년월일
+    memberSession.setMember_phone(member.getMember_phone());        // 휴대폰번호
 
     session.setAttribute("member", memberSession);
     return "redirect:/myPage/Page";
   }
 
-  // 5-3) 정보 수정 전 비밀번호 체크
+  // 5-3) 정보 수정 전 비밀번호 체크 - AJAX
   @RequestMapping(value = "/pwCheck", method = RequestMethod.GET, produces = "application/text; charset=utf8")
   @ResponseBody
   public String pwCheck(@RequestParam String member_pw, HttpSession session) throws Exception {
@@ -203,6 +195,7 @@ public class MemberController {
     int result = service.pwCheck(member);
     return Integer.toString(result);
   }
+  
   //비번찾기
   @RequestMapping(value = "/findPW", method = RequestMethod.GET)
   public void getFindPW() throws Exception {
@@ -240,6 +233,7 @@ public class MemberController {
       return result;
     }
   }
+  
   //ID 찾기
   @RequestMapping(value = "/findID", method = RequestMethod.GET)
   public void getFindID() throws Exception {

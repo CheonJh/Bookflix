@@ -91,7 +91,6 @@ public class AdminBookController {
    //파일 삭제 코드
    File oldFile = new File(uploadPath+File.separator+path);
    File oldThumbnail = new File(uploadPath+File.separator+thumbpath);
-
    String imgUploadPath = uploadPath + File.separator ;
    String fileName = null;
 
@@ -110,7 +109,6 @@ public class AdminBookController {
    } else {
      fileName = path;
    }
-
    DTO.setE_book_img_path(fileName);
    DTO.setE_book_thumbnail("thumbnail" + File.separator + "thumbnail_" + fileName);
    
