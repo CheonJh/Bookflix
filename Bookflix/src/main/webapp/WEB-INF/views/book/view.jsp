@@ -85,30 +85,19 @@
          return false;
        }
        
-       if(hadReadCheck == true){
-				 return false;
-       }
-       
-       if(memGrade == 1){
+       if(memGrade == 2){
          var ye = confirm("읽으시겠습니까?");
            
          if(ye){
            hadRead();
-           hadReadCheck = true;
          }
          else{
            
          }
        }
        
-       else if(memGrade == 2){
-         var ye = confirm("구독하시겠습니까?");
-         if(ye){
-           
-         }
-         else{
-           
-         }
+       else if(memGrade == 1){
+         alert("구독회원만 가능합니다");
        }
      }); 
 		
@@ -255,11 +244,12 @@
             <h4>${view.e_book_title}</h4>
             <br>
             <div class="writer">저자 ${view.e_book_writer}</div>
-            <c:if test="${view.e_book_translater ne null || view.e_book_translater ne ''}">
+            <c:if test="${view.e_book_translater ne ''}">
               <div class="writer">역자 ${view.e_book_translater}</div>
             </c:if>
             
             <div class="writer">출판사 ${view.e_book_publisher}</div>
+            <div class="writer">출판일 ${view.e_book_date}</div>
             <br>
           </div>
 
@@ -323,22 +313,28 @@
         </div>
       </div>
     </div>
-    
+      
+    <!-- 감성태그(카테고리) -->
+    <br>
     <br>
     <h5>감성태그</h5>
+    <hr>
     <div class="bookTag">
     <c:forEach items="${tagArray}" var="tagArray" begin="1">
-      <a href="/search/search" class="btn btn-primary">
-         #${tagArray}
-      </a>
+      <form id="searchForm" action="/search/search" method="post" role="search" class="center">
+          <button type="submit" id="subBtn" class="btn btn-outline-secondary" value="${tagArray}" name="searchKeyword">
+              #${tagArray}
+          </button>
+      </form>
     </c:forEach>
     </div>
     <!-- 관련도서 -->
     <br>
+    <br>
     <h5>관련도서</h5>
     <hr>
     <div class="row related">
-      <c:forEach items="${tagBooks}" var="tagBooks" varStatus="status" end="7">
+      <c:forEach items="${tagBooks}" var="tagBooks" varStatus="status" begin="1" end="8">
         <div class="col-sm-6 col-md-3 bookList-dv" >
           <a href="/book/view?e_book_num=${tagBooks.e_book_num}">
             <div class="bookContent">
