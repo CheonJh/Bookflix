@@ -79,7 +79,7 @@
       $('.favorite').removeClass("btn-danger selected");
 		}
 		
-		// hadread 버튼 이벤트
+		// e-북 읽기 버튼 이벤트
 		$('.hadread').click( function (){
        if (member == null || member == ""){
          return false;
@@ -255,7 +255,10 @@
             <h4>${view.e_book_title}</h4>
             <br>
             <div class="writer">저자 ${view.e_book_writer}</div>
-            <div class="writer">역자 ${view.e_book_translater}</div>
+            <c:if test="${view.e_book_translater ne null || view.e_book_translater ne ''}">
+              <div class="writer">역자 ${view.e_book_translater}</div>
+            </c:if>
+            
             <div class="writer">출판사 ${view.e_book_publisher}</div>
             <br>
           </div>
@@ -321,6 +324,15 @@
       </div>
     </div>
     
+    <br>
+    <h5>감성태그</h5>
+    <div class="bookTag">
+    <c:forEach items="${tagArray}" var="tagArray" begin="1">
+      <a href="/search/search" class="btn btn-primary">
+         #${tagArray}
+      </a>
+    </c:forEach>
+    </div>
     <!-- 관련도서 -->
     <br>
     <h5>관련도서</h5>
