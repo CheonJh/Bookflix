@@ -29,7 +29,7 @@ public class BookController {
 
   @Inject
   private BookService bookService;
-
+ 
   // 책정보 불러오기
   @RequestMapping(value = "/view", method = RequestMethod.GET)
   // @ResponseBody
