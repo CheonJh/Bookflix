@@ -77,7 +77,7 @@
   <!-- 업로드 경로 설정(규철) -->
   <beans:bean class="java.lang.String" id="uploadPath">
     <beans:constructor-arg
-      value="C:\Users\ih5jh\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
+      value="C:\Users\AGC\git\Bookflix\Bookflix\src\main\webapp\resources\imgs\book-imgs" />
   </beans:bean>
   
   <!-- 업로드 경로 설정(지나) -->

@@ -36,8 +36,6 @@ public class UploadFileUtils {
       thumbnail.getParentFile().mkdirs();
       Thumbnails.of(image).size(THUMB_WIDTH, THUMB_HEIGHT).toFile(thumbnail);
       }
-    
-   
     return newFileName;
   }
   
