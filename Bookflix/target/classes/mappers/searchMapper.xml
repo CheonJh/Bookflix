@@ -23,5 +23,4 @@
     order by E_BOOK_NUM DESC;
   </select>
 
-
 </mapper>
