@@ -35,15 +35,14 @@
   </select>
 
   <!-- 로그인 -->
-  <select id="login"
-    resultType="com.green.member.domain.MemberDTO">
+  <select id="login" resultType="com.green.member.domain.MemberDTO">
     select * from MEMBER
     where MEMBER_EMAIL=#{member_email}
     and MEMBER_PW=#{member_pw}
   </select>
 
   <!-- 회원탈퇴 첫번째 페이지 - 구독잔여일수 -->
-  <select id="signOut1" resultType="int" parameterType="int">
+  <select id="signOut1" parameterType="int" resultType="int">
     select datediff(date_add(max(SUBSCRIBE_DATE), INTERVAL 1 MONTH),now()) as day
     from SUBSCRIBE where member_num = #{member_num}
   </select>

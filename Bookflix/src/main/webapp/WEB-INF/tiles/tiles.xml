@@ -22,21 +22,20 @@
    <put-attribute name="adminContent" value=""/>
   </definition>
    
-    <!-- ***** 메뉴가 없는 빈 페이지
-   메뉴 미표시 : 페이지 중 로그인페이지 같은건 보통 header, footer모두를 레이아웃으로 가지지 않을 것이다.
-    다만, header에 js라이브러리등을 포함하고 있을 것이므로 이런 특정경로의 jsp파일들은 header만 상속받고 footer는 사용하지 
-    않는 방식으로 할 수 있다.
-    ***** --> 
-    <definition name="empty" template="/WEB-INF/views/module/emptyPageTemplate.jsp">
-      <put-attribute name="content" value="" />
-    </definition>
+  <!-- ***** 메뉴가 없는 빈 페이지
+ 메뉴 미표시 : 페이지 중 로그인페이지 같은건 보통 header, footer모두를 레이아웃으로 가지지 않을 것이다.
+  다만, header에 js라이브러리등을 포함하고 있을 것이므로 이런 특정경로의 jsp파일들은 header만 상속받고 footer는 사용하지 
+  않는 방식으로 할 수 있다.
+  ***** --> 
+  <definition name="empty" template="/WEB-INF/views/module/emptyPageTemplate.jsp">
+    <put-attribute name="content" value="" />
+  </definition>
   
    <!--
     2. base를 상속받은것. 즉, body부분만 설정한 경로대로 갈아 끼우고,
     나머지 header, footer는 base의 형식대로 상속받아 오는 것이다.
     -->
   <!-- 기본페이지의 바디에 들어갈거 -->
-  
   <definition name="*" extends="base">
     <put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
   </definition>
@@ -52,7 +51,6 @@
   <definition name="info/*" extends="base">
     <put-attribute name="content" value="/WEB-INF/views/info/{1}.jsp" />
   </definition>
-
   
   <!-- 관리자페이지의 바디에 들어갈거 -->
    <definition name="adminBook/*" extends="admin">
