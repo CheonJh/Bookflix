@@ -16,10 +16,8 @@ public class CertifyInterceptor extends HandlerInterceptorAdapter {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
     try {
-      
       HttpSession session = request.getSession();
       MemberDTO member = (MemberDTO) session.getAttribute("member");
-      
       // 관리자가 아닐때 메인으로 이동
       // 세션에 멤버가 안올라와 있으면 로그인 페이지로 이동
       if (member.getMember_grade() != 0) {
@@ -28,11 +26,9 @@ public class CertifyInterceptor extends HandlerInterceptorAdapter {
       } else {
         return true;
       }
-      
     } catch (Exception e) {
       e.printStackTrace();
     }
-
     return super.preHandle(request, response, handler);
   }
 

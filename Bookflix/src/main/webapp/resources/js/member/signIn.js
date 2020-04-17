@@ -17,15 +17,12 @@
   // 휴대폰 번호 정규식
   var phoneJ = /^01(?:[0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$/;
   
-  
   $(document).ready(function () {
     
     // 이메일 중복 확인 (1 = 중복 / 0 != 중복)
     $("#member_email").blur(function () {
-             
         // 이메일 ajax 중복 체크
         var member_email=$('#member_email').val();
-        
         $.ajax({
           url : '/member/idCheck?member_email='+member_email,
           type : 'get',
@@ -36,7 +33,7 @@
             console.log("1보다 크면 중복, 0은 중복x" + data);
             // 0 보다 크면 이미 있는 거니까
             if (data > 0) {
-              $('#email_check').text('　　　　　　　　　　이미 사용중인 이메일 입니다.');
+              $('#email_check').text('　　　　　　　　　　　이미 사용중인 이메일 입니다.');
               $('#email_check').css('color','red');
               $('#usercheck').attr("disabled",true);
             } else {
@@ -55,21 +52,16 @@
                 $('#usercheck').attr("disabled",true);
               }
             }
-            
           }, error : function () {
             console.log("실패");
-            
           } // error
         }); // ajax - email
-
     }); // blur
     
     // 닉네임 중복 확인 (1 이상 중복o / 0 = 중복x)
     $("#member_nickname").blur(function () {
-             
         // 닉네임 ajax 중복 체크
         var member_nickname=$('#member_nickname').val();
-        
         $.ajax({
           url : '/member/nickCheck?member_nickname='+member_nickname,
           type : 'get',
@@ -77,7 +69,7 @@
             console.log("1보다 크면 중복, 0은 중복x" + data);
             // 0 보다 크면 이미 있는 거니까
             if (data > 0) {
-              $('#nickname_check').text('이미 사용중인 닉네임 입니다.');
+              $('#nickname_check').text('　　　　　　　　　　　이미 사용중인 닉네임 입니다.');
               $('#nickname_check').css('color','red');
               $('#usercheck').attr("disabled",true);
             } else {
@@ -91,21 +83,16 @@
                 $('#nickname_check').css('color','red');
                 $('#usercheck').attr("disabled",true);
               } else {
-                $('#nickname_check').text('　　　　　　　　　　　이메일 형식에 맞지 않습니다.');
+                $('#nickname_check').text('　　　　　　　　　　　닉네임 형식에 맞지 않습니다.');
                 $('#nickname_check').css('color','red');
                 $('#usercheck').attr("disabled",true);
               }
             }
-            
           }, error : function () {
             console.log("실패");
-            
           } // error
         }); // ajax - nickname
-
     }); // blur
-    
-    
     
     // 폼 입력이 정확한지 검사, + 정규식 유효성 검사까지
     $('form').on('submit',function(){
@@ -177,10 +164,11 @@
           validAll = false;
         }
       }
+      
       if (validAll == true) { // 유효성 모두 통과
-        alert('회원 가입을 환영');
+        alert('회원 가입을 환영합니다.');
       } else {
-        alert('정보를 다시 확인');
+        alert('정보를 다시 확인해주세요.');
       }
       
     }); // form on submit
@@ -263,8 +251,4 @@
       }
     });
     
-    
-    
-    
   }); // document ready
-  

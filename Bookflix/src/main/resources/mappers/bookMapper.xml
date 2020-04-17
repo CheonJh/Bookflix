@@ -12,6 +12,21 @@
     from E_BOOK where e_book_num = #{e_book_num}
   </select>
   
+  <!-- hadRead 테이블 가져오기 -->
+  <select id="hadReadDTO" parameterType="com.green.book.domain.HadReadDTO" 
+  resultType="com.green.book.domain.HadReadDTO">
+    select * FROM HADREAD
+    where member_num = #{member_num} and e_book_num = #{e_book_num}
+  </select>
+  
+  <!-- hadRead 테이블 삽입 -->
+  <insert id="hadReadInsert" parameterType="com.green.book.domain.HadReadDTO">
+    insert ignore into 
+    HADREAD(hadread_num, member_num, e_book_num, hadread_date) 
+    values ((select max(t.hadread_num)+1 
+    from HADREAD t), #{member_num}, #{e_book_num}, CURDATE())
+  </insert>
+  
   <!-- 좋아요 테이블 가져오기 -->
   <select id="thumbDTO" resultType="com.green.book.domain.ThumbDTO"
     parameterType="com.green.book.domain.ThumbDTO">
@@ -77,18 +92,4 @@
     </foreach>
   </select>
   
-  <!-- hadRead 테이블 가져오기 -->
-  <select id="hadReadDTO" parameterType="com.green.book.domain.HadReadDTO" 
-  resultType="com.green.book.domain.HadReadDTO">
-    select * FROM HADREAD
-    where member_num = #{member_num} and e_book_num = #{e_book_num}
-  </select>
-  
-  <!-- hadRead 테이블 삽입 -->
-  <insert id="hadReadInsert" parameterType="com.green.book.domain.HadReadDTO">
-    insert ignore into 
-    HADREAD(hadread_num, member_num, e_book_num, hadread_date) 
-    values ((select max(t.hadread_num)+1 
-    from HADREAD t), #{member_num}, #{e_book_num}, CURDATE())
-  </insert>
 </mapper>
