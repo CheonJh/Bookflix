@@ -171,7 +171,7 @@
       $.ajax({
         url : "/book/favorite?e_book_num="+e_book_num,
         type : "POST",        
-        success : function(result) {          
+        success : function(result) {        
           if(result == 1){
             alert("찜한 도서 목록에 등록되었습니다.")
           }else{
