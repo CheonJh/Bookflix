@@ -181,14 +181,13 @@ public class BookController {
     favoriteParam.setMember_num(member_num);
 
     if (favoriteCheck != true) {
-      // 도서테이블 좋아요 증가
       bookService.favoriteInsert(favoriteParam);
       model.addAttribute("favoriteCheck", favoriteCheck);
       System.out.println();
+      favoriteCheck =true;
       result = 1;
       return result;
     } else {
-      // 도서테이블 좋아요 감소
       model.addAttribute("favoriteCheck", favoriteCheck);
       result = 0;
       return result;

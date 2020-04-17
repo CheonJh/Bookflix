@@ -171,7 +171,7 @@
       $.ajax({
         url : "/book/favorite?e_book_num="+e_book_num,
         type : "POST",        
-        success : function(result) {          
+        success : function(result) {        
           if(result == 1){
             alert("찜한 도서 목록에 등록되었습니다.")
           }else{
@@ -319,7 +319,7 @@
     <br>
     <h5>감성태그</h5>
     <hr>
-    <div class="bookTag">
+    <div class="bookTag row">
     <c:forEach items="${tagArray}" var="tagArray" begin="1">
       <form id="searchForm" action="/search/search" method="post" role="search" class="center">
           <button type="submit" id="subBtn" class="btn btn-outline-secondary" value="${tagArray}" name="searchKeyword">
