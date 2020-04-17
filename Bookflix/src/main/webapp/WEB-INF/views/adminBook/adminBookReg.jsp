@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
+<title>전자책등록페이지</title>
 
 <!-- *************************************************** -->
 
@@ -59,6 +59,12 @@ h1 {
 #bottom{
 	justify-content : center;
 	margin-top : 24px;
+}
+.input-group-text{
+	width : 70px;
+}
+#imgbox{
+	display:none;
 }
 </style>
 
@@ -144,9 +150,7 @@ h1 {
 				<input type="text" class="form-control" name="e_book_tag">
 			</div>
 
-
-
-			<div class="inputArea input-group mb-3">
+			<div class="inputArea input-group mb-3" >
 				<div class="input-group-prepend">
 					<label class="input-group-text" for="e_book_img_path">이미지</label>
 				</div>
@@ -159,6 +163,7 @@ h1 {
                   reader.onload = function(data) {
                     $(".select_img img").attr("src", data.target.result).width(
                         500);
+                    $("#imgbox").css("display", "block");
                   }
                   reader.readAsDataURL(this.files[0]);
                 }
@@ -169,11 +174,11 @@ h1 {
 
 			</div>
 
-			<div class="row select_img">
+			<div class="row select_img" id="imgbox">
 				<img src="" />
 			</div>
 			<div class="row" id="bottom">
-				<button type="submit" class="btn btn-primary">전송</button>
+				<button type="submit" class="btn btn-primary">등록</button>
 			</div>
 		</form>
 

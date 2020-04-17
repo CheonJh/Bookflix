@@ -12,10 +12,10 @@
 <meta name="author" content="김성훈" />
 <meta name="description" content="FAQ 목록 페이지" />
 
-<title>TestPageForm</title>
+<title>FAQList3</title>
 
 <!-- *************************************************** -->
-<link rel="stylesheet" href="/resources/css/info/FAQList.css" />
+<link rel="stylesheet" href="/resources/css/info/FAQList.css?" />
 <!-- *************************************************** -->
 
 </head>
@@ -39,12 +39,12 @@
           <th class="tb-cl">내용</th>
         </tr>
       </thead>
-      <c:forEach items="${FaqList}" var="FaqList">
+      <c:forEach items="${FaqList3}" var="FaqList3">
         <tr>
-          <td>${FaqList.faq_num}</td>
-          <td>${FaqList.faq_category}</td>
+          <td>${FaqList3.faq_num}</td>
+          <td>${FaqList3.faq_category}</td>
           <td><a
-            href="/info/FAQ?faq_num=${FaqList.faq_num}">${FaqList.faq_title}</a></td>
+            href="/info/FAQ?faq_num=${FaqList3.faq_num}">${FaqList3.faq_title}</a></td>
         </tr>
       </c:forEach>
     </table>

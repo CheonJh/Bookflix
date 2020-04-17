@@ -4,8 +4,9 @@
   display: flex;
   flex-direction: row;
   width: 50%;
-  margin-left: 22%; 
+  margin-left: 25%;
   padding-top: 10px;
+  
 }
 
 .notinav-item1, .notinav-item2, .notinav-item3, .notinav-item4 {

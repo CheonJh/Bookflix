@@ -6,30 +6,63 @@
 <!-- 직접 쿼리문을 입력 하는 곳 -->
 <!-- NOTICE -->
 <mapper namespace="com.green.mapper.infoMapper">
-
+  <!-- 노티스 리스트 -->
  <select id="notiList"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
   </select>
   
+  <select id="notiList2"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    where notice_category='공지사항'
+  </select>
+  
+  <select id="notiList3"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    where notice_category='업데이트'
+  </select>
+  
+  <select id="notiList4"
+    resultType="com.green.info.domain.InfoNoticeDTO">
+    select * from NOTICE
+    where notice_category='이벤트'
+  </select>
+  <!-- 상세사항 이동 시 해당 페이지 지정 -->
   <select id="notice" parameterType="int"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
     where
     notice_num = #{notice_num}
   </select>
-  
+  <!-- 전체 게시글 수 카운트 -->
   <select id="notiCount" resultType="int">
     select count(notice_num) from NOTICE
   </select>
-
+  <!-- 공지사항 게시글 수 카운트 -->
+  <select id="notiCount2" resultType="int">
+    select count(notice_num) from NOTICE
+    where notice_category='공지사항'
+  </select>
+  <!-- 업데이트 게시글 수 카운트 -->
+  <select id="notiCount3" resultType="int">
+    select count(notice_num) from NOTICE
+    where notice_category='업데이트'
+  </select>
+  <!-- 이벤트 게시글 수 카운트 -->
+  <select id="notiCount4" resultType="int">
+    select count(notice_num) from NOTICE
+    where notice_category='이벤트'
+  </select>
+  <!-- 전체보기 페이지네이션 -->
   <select id="noticePage" parameterType="hashMap"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
     order by notice_num desc  
     limit #{displayPost}, #{postNum}
   </select>
-  
+  <!-- 공지사항 페이지네이션 -->
   <select id="noticePage2" parameterType="hashMap"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
@@ -37,7 +70,7 @@
     order by notice_num desc  
     limit #{displayPost}, #{postNum}
   </select>
-  
+  <!-- 업데이트 페이지네이션 -->
   <select id="noticePage3" parameterType="hashMap"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
@@ -45,7 +78,7 @@
     order by notice_num desc  
     limit #{displayPost}, #{postNum}
   </select>
-  
+  <!-- 이벤트 페이지네이션 -->
   <select id="noticePage4" parameterType="hashMap"
     resultType="com.green.info.domain.InfoNoticeDTO">
     select * from NOTICE
@@ -53,7 +86,7 @@
     order by notice_num desc  
     limit #{displayPost}, #{postNum}
   </select>
-   
+   <!-- 조회수 카운트 -->
    <update id="viewCnt" parameterType="int">
       update NOTICE set 
       NOTICE_VIEWCNT = NOTICE_VIEWCNT+1
@@ -67,6 +100,24 @@
     select * from FAQ
   </select>
   
+  <select id="FaqList2"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where faq_category='이용방법'
+  </select>
+  
+  <select id="FaqList3"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where faq_category='구독'
+  </select>
+  
+  <select id="FaqList4"
+    resultType="com.green.info.domain.InfoFaqDTO">
+    select * from FAQ
+    where faq_category='자주하는 질문'
+  </select>
+  
   <select id="FAQ" parameterType="int"
     resultType="com.green.info.domain.InfoFaqDTO">
     select * from FAQ
@@ -76,6 +127,21 @@
   
   <select id="faqCount" resultType="int">
     select count(faq_num) from FAQ
+  </select>
+  
+  <select id="faqCount2" resultType="int">
+    select count(faq_num) from FAQ
+    where faq_category='이용방법'
+  </select>
+  
+  <select id="faqCount3" resultType="int">
+    select count(faq_num) from FAQ
+    where faq_category='구독'
+  </select>
+  
+  <select id="faqCount4" resultType="int">
+    select count(faq_num) from FAQ
+    where faq_category='자주하는 질문'
   </select>
   
   <select id="FaqPage" parameterType="hashMap"

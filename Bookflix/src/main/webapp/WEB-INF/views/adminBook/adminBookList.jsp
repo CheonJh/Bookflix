@@ -12,7 +12,7 @@
 <meta name="author" content="안규철" />
 <meta name="description" content="기본 폼 예시 페이지" />
 
-<title>TestPageForm</title>
+<title>전자책관리페이지</title>
 
 <!-- *************************************************** -->
 <link rel="stylesheet"
@@ -20,6 +20,7 @@
 <!-- *************************************************** -->
 
 <style>
+/* 안규철 */
 </style>
 <script>
 	$(document).ready(function () {
@@ -188,9 +189,6 @@
     <div class="row btn-toolbar" id="box3">
       <div class="btn-group mr-2">
         <button class="btn btn-outline-primary" id="delete_btn">삭제</button>
-      </div>
-      <div class="btn-group mr-2">
-        <button class="btn btn-primary" id="modify_btn">수정</button>
       </div>
       <div class="btn-group mr-2 offset-md-8 col">
         <button class="btn btn-primary col-sm-12"
