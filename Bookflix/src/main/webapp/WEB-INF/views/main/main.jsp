@@ -252,7 +252,8 @@ li { list-style: none;} */
     <c:forEach items="${favorite}" var="favorite">
       <div class="favor-wrap">
         <div class="imgbox">
-          <a href="/book/view?e_book_num=${favorite.e_book_num}"><img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
+          <a href="/book/view?e_book_num=${favorite.e_book_num}">
+          <img src="resources/imgs/book-imgs/${favorite.e_book_img_path }" alt="" /></a>
         </div>
         <div class="book-info">
           <p class="book-title">${favorite.e_book_title}</p>
@@ -270,7 +271,8 @@ li { list-style: none;} */
     <c:forEach items="${newbook}" var="newbook">
       <div class="favor-wrap">
           <div class="imgbox">
-            <a href="/book/view?e_book_num=${newbook.e_book_num}"><img src="resources/imgs/book-imgs/${newbook.e_book_img_path }" alt="" /></a>
+            <a href="/book/view?e_book_num=${newbook.e_book_num}">
+            <img src="resources/imgs/book-imgs/${newbook.e_book_img_path }" alt="" /></a>
           </div>
           <div class="book-info">
             <p class="book-title">${newbook.e_book_title}</p>
@@ -278,8 +280,7 @@ li { list-style: none;} */
             <p class="publisher">출판사 : ${newbook.e_book_publisher}</p>
             <p class="detail">${newbook.e_book_info}</p>
           </div>
-        </div>
-       
+        </div>  
     </c:forEach>
   
       </div>
