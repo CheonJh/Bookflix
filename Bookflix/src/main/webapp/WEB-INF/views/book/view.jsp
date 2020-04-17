@@ -21,7 +21,7 @@
 
 
 <script>
-   $( function () {
+  $( function () {
     var e_book_num = ${view.e_book_num};
     var thumbupcnt = ${view.e_book_thumbupcnt};
     var member = '<c:out value="${member}"/>';
@@ -30,88 +30,77 @@
     var thumbCheck = '<c:out value="${thumbCheck}"/>';
     var favoriteCheck = '<c:out value="${favoriteCheck}"/>';
     var hadReadCheck = '<c:out value="${hadReadCheck}"/>';
-      var i;
+    var i;
+    
+    // 책소개, 목차 크기 초기화
+    var textEle = $('textarea');
+    $('.bookInfo textarea').css('height', textEle[0].scrollHeight);
+    $('.bookIndex textarea').css('height', textEle[1].scrollHeight);
       
-      // 책소개, 목차 크기 초기화
-      var textEle = $('textarea');
-      $('.bookInfo textarea').css('height', textEle[0].scrollHeight);
-      $('.bookIndex textarea').css('height', textEle[1].scrollHeight);
-        
-      $('.bookInfo div').css('max-height','100px');
-      $('.bookIndex div').css('max-height','100px');
-        
-      // 펼치기 버튼
-     $('.open').toggle(function(){
-        $(this).prev('div').css('max-height','');
-     },
-     //접기
-     function(){
-        $(this).prev('div').css('max-height','100px');
-     });
+    $('.bookInfo div').css('max-height','100px');
+    $('.bookIndex div').css('max-height','100px');
       
-      // e-북 읽기버튼 초기화
-     if(hadReadCheck == true){
-        $('.hadread').addClass("btn-primary selected");
-        $('.hadread').removeClass("btn-outline-primary");
-      }      
-      else {
+    // 펼치기 버튼
+    $('.open').toggle(function(){
+      $(this).prev('div').css('max-height','');
+    },
+    //접기
+    function(){
+      $(this).prev('div').css('max-height','100px');
+    });
+    
+    // e-북 읽기버튼 초기화
+    if(hadReadCheck == true){
+      $('.hadread').addClass("btn-primary selected");
+      $('.hadread').removeClass("btn-outline-primary");
+    }   
+    else {
       $('.hadread').addClass("btn-outline-primary");
       $('.hadread').removeClass("btn-primary selected");
-      }
-      
-      // 좋아요 버튼 초기화
-      if(thumbCheck == true){
-        $('.thumbUp').addClass("btn-primary selected");
-        $('.thumbUp').removeClass("btn-outline-primary");
-      }      
-      else {
+    }
+    
+    // 좋아요 버튼 초기화
+    if(thumbCheck == true){
+      $('.thumbUp').addClass("btn-primary selected");
+      $('.thumbUp').removeClass("btn-outline-primary");
+    }   
+    else {
       $('.thumbUp').addClass("btn-outline-primary");
       $('.thumbUp').removeClass("btn-primary selected");
-      }
-      
-      // 찜하기 버튼 초기화
-      if(favoriteCheck == true){
-        $('.favorite').addClass("btn-danger selected");
-        $('.favorite').removeClass("btn-primary");
-      }      
-      else {
+    }
+    
+    // 찜하기 버튼 초기화
+    if(favoriteCheck == true){
+      $('.favorite').addClass("btn-danger selected");
+      $('.favorite').removeClass("btn-primary");
+    }   
+    else {
       $('.favorite').addClass("btn-primary");
       $('.favorite').removeClass("btn-danger selected");
-      }
-      
-      // e-북 읽기 버튼 이벤트
-      $('.hadread').click( function (){
+    }
+    
+    // e-북 읽기 버튼 이벤트
+    $('.hadread').click( function (){
        if (member == null || member == ""){
          return false;
        }
        
-       if(hadReadCheck == true){
-             return false;
-       }
-       
-       if(memGrade == 1){
+       if(memGrade == 2){
          var ye = confirm("읽으시겠습니까?");
            
          if(ye){
            hadRead();
-           hadReadCheck = true;
          }
          else{
            
          }
        }
        
-       else if(memGrade == 2){
-         var ye = confirm("구독하시겠습니까?");
-         if(ye){
-           
-         }
-         else{
-           
-         }
+       else if(memGrade == 1){
+         alert("구독회원만 가능합니다");
        }
      }); 
-      
+    
     // 좋아요 버튼 이벤트
      $('.thumbUp').click( function (){
        if (member == null || member == ""){
@@ -162,7 +151,7 @@
        });
      }
   
-       // 좋아요 ajax
+    // 좋아요 ajax
     function thumbUp(i) {
       $.ajax({
         url : "/book/thumbUp?e_book_num="+e_book_num,
@@ -177,16 +166,16 @@
       });
     }
     
-       // 찜하기 ajax
+    // 찜하기 ajax
     function favorite() {
       $.ajax({
         url : "/book/favorite?e_book_num="+e_book_num,
         type : "POST",        
-        success : function(result) {          
+        success : function(result) {        
           if(result == 1){
             alert("찜한 도서 목록에 등록되었습니다.")
           }else{
-              alert("이미 찜한 도서입니다.")
+            alert("이미 찜한 도서입니다.")
           }
         },
         error : function() {
@@ -195,7 +184,7 @@
       });
     }
  
-   });
+  });
 </script>
 <style>
   .btn{
@@ -255,11 +244,12 @@
             <h4>${view.e_book_title}</h4>
             <br>
             <div class="writer">저자 ${view.e_book_writer}</div>
-            <c:if test="${view.e_book_translater ne null || view.e_book_translater ne ''}">
+            <c:if test="${view.e_book_translater ne ''}">
               <div class="writer">역자 ${view.e_book_translater}</div>
             </c:if>
             
             <div class="writer">출판사 ${view.e_book_publisher}</div>
+            <div class="writer">출판일 ${view.e_book_date}</div>
             <br>
           </div>
 
@@ -323,22 +313,28 @@
         </div>
       </div>
     </div>
-    
+      
+    <!-- 감성태그(카테고리) -->
+    <br>
     <br>
     <h5>감성태그</h5>
-    <div class="bookTag">
+    <hr>
+    <div class="bookTag row">
     <c:forEach items="${tagArray}" var="tagArray" begin="1">
-      <a href="/search/search" class="btn btn-primary">
-         #${tagArray}
-      </a>
+      <form id="searchForm" action="/search/search" method="post" role="search" class="center">
+          <button type="submit" id="subBtn" class="btn btn-outline-secondary" value="${tagArray}" name="searchKeyword">
+              #${tagArray}
+          </button>
+      </form>
     </c:forEach>
     </div>
     <!-- 관련도서 -->
     <br>
+    <br>
     <h5>관련도서</h5>
     <hr>
     <div class="row related">
-      <c:forEach items="${tagBooks}" var="tagBooks" varStatus="status">
+      <c:forEach items="${tagBooks}" var="tagBooks" varStatus="status" begin="1" end="8">
         <div class="col-sm-6 col-md-3 bookList-dv" >
           <a href="/book/view?e_book_num=${tagBooks.e_book_num}">
             <div class="bookContent">
